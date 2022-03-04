@@ -1,0 +1,46 @@
+.not-found {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $column-width;
+
+    @media (min-width: $breakpoint-medium) {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  &__title {
+    @include font-h3;
+    color: $color-white;
+  }
+  &__text {
+    color: $color-white;
+    margin-bottom: responsive-value(30px, 56px);
+  }
+  &__button {
+    flex: 0 1 auto;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+
+  &__right {
+    order: -1;
+    display: flex;
+    align-items: center;
+
+    @media (min-width: $breakpoint-medium) {
+      order: 1;
+      justify-content: end;
+    }
+  }
+  &__code {
+    font-size: responsive-value(200px, 350px);
+    font-weight: 700;
+    line-height: 1;
+  }
+}

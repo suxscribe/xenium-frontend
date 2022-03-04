@@ -1,0 +1,24 @@
+
+mixin gallery-item(args)
+  li(class="gallery__item gallery__item--" + args.class)
+    .gallery__item-image 
+      a(href="#").gallery__item-link
+      img(src="/assets/" + args.image, alt="")
+      div(data-micromodal-open="modal-like").gallery__item-like
+        +svg-like()
+
+        
+    .gallery__item-content 
+      .gallery__item-title
+        a(href="") !{args.title}
+      .gallery__item-author !{args.author}
+      .gallery__item-tags= args.tags
+
+mixin gallery-pagination(args)
+  .gallery__pagination 
+    a(href="").gallery__pagination-item.active 1 
+    a(href="").gallery__pagination-item 2 
+    a(href="").gallery__pagination-item 3
+    a(href="").gallery__pagination-item-next
+      .arrow.arrow--right
+        +svg({name: 'arrow-head'}).arrow__head

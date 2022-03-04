@@ -1,0 +1,86 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Xenium Gallery';
+  - var description = 'Description';
+  - var pageClass = 'page--index';
+  - var footerClass = 'footer--black';
+
+block content
+  include ../includes/modules/preloader
+  section.section
+    .main-slider__container.container
+      .main-slider-1.swiper-container
+        ul.main-slider__wrapper.swiper-wrapper 
+          +main-slide-1({author: 'Aurello Bruni', title: 'Still <br> Life', desc: 'oil on canvas, 50x70'})
+          +main-slide-1({author: 'Aurello Bruni', title: 'Still <br> Life 2', desc: 'oil on canvas, 50x80'})
+          +main-slide-1({author: 'Aurello Bruni', title: 'Still <br> Life 3', desc: 'oil on canvas, 50x90'})
+          
+            
+      .main-slider-2.swiper-container
+        ul.main-slider__wrapper.swiper-wrapper
+          +main-slide-2({author: 'Aurello Bruni', title: 'Still <br> Life', desc: 'oil on canvas, 50x70', image: 'main-slider-01.jpg'})
+          +main-slide-2({author: 'Aurello Bruni', title: 'Still <br> Life 2', desc: 'oil on canvas, 50x80', image: 'main-slider-01.jpg'})
+          +main-slide-2({author: 'Aurello Bruni', title: 'Still <br> Life 4', desc: 'oil on canvas, 50x90', image: 'main-slider-01.jpg'})
+          
+        .main-slider__nav 
+          .main-slider__nav-arrow.main-slider__nav-arrow--left
+            +button-arrow({class:'left'}) 
+          .main-slider__nav-arrow.main-slider__nav-arrow--right
+            +button-arrow({class:'right'})
+  section.section 
+    .container 
+      .main-posts
+        ul.main-posts__nav
+          li.main-posts__nav-item
+            a(href="")
+              span(data-aos-delay="200", data-aos="slide-right") reviews
+          li.main-posts__nav-item
+            a(href="")
+              span(data-aos-delay="300", data-aos="slide-right") news
+          li.main-posts__nav-item.active
+            a(href="")
+              span(data-aos-delay="400", data-aos="slide-right") articles
+        ul.main-posts__list.posts__list.posts__list--articles
+          .posts__list-title articles
+          +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'vertical', delay: '200'})
+          +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'horizontal', delay: '200'})
+          +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'The new <br> part of art <br> history', class: 'vertical', delay: '200'})
+          +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'The Youth <br> of Antiquity', class: 'horizontal', delay: '200'})
+        ul.main-posts__list.posts__list.posts__list--news
+          .posts__list-title news
+          +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'vertical', delay: '200'})
+          +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'horizontal', delay: '200'})
+          +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'The new <br> part of art <br> history', class: 'vertical', delay: '200'})
+          +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'The Youth <br> of Antiquity', class: 'horizontal', delay: '200'})
+        ul.main-posts__list.posts__list.posts__list--reviews
+          .posts__list-title reviews
+          +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'vertical', delay: '200'})
+          +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'horizontal', delay: '200'})
+          +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'The new <br> part of art <br> history', class: 'vertical', delay: '200'})
+          +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'The Youth <br> of Antiquity', class: 'horizontal', delay: '200'})
+
+  section.section.main-black
+    .main-black__bg
+      +main-black-bg-item({class:'01', image: 'main-black-bg-01.jpg', delay: '100'})
+      +main-black-bg-item({class:'02', image: 'main-black-bg-02.jpg', delay: '200'})
+      +main-black-bg-item({class:'03', image: 'main-black-bg-03.jpg', delay: '300'})
+      +main-black-bg-item({class:'04', image: 'main-black-bg-04.jpg', delay: '400'})
+      +main-black-bg-item({class:'05', image: 'main-black-bg-05.jpg', delay: '500'})
+      +main-black-bg-item({class:'06', image: 'main-black-bg-06.jpg', delay: '600'})
+      +main-black-bg-item({class:'07', image: 'main-black-bg-01.jpg', delay: '700'})
+      +main-black-bg-item({class:'08', image: 'main-black-bg-05.jpg', delay: '800'})
+
+    .container 
+      .main-black__grid
+        .main-black__title(data-aos="fade-up", data-aos-delay="1000") Xenium Gallery
+        .main-black__subtitle(data-aos="fade-up", data-aos-delay="1100", data-aos-anchor=".main-black__title")
+          | in association 
+          br
+          | with
+        .main-black__title-2(data-aos="fade-up", data-aos-delay="1200", data-aos-anchor=".main-black__title") The New Athens
+        .main-black__text(data-aos="fade-up", data-aos-delay="1300", data-aos-anchor=".main-black__title") The following catalogue comprises Russian painting, and Greek and Italian sculpture from the mid 20th to early 21st centuries, in bronze, marble, gold, and oil on canvas. 
+      a(href="#", data-aos="fade-up", data-aos-delay="1400", data-aos-anchor=".main-black__title").main-black__button.button.button--black Check gallery
+
+
+              

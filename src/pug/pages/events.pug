@@ -1,0 +1,28 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Xenium Gallery';
+  - var description = 'Description';
+  - var pageClass = 'page--events';
+  - var footerClass = '';
+
+block content
+  include ../includes/modules/preloader
+  section.section.events
+    .container
+      h1.events__title
+        span events 
+      .events__navigation 
+        .events__navigation-sections 
+          a(href="").events__navigation-sections-item.active all
+          a(href="").events__navigation-sections-item news
+          a(href="").events__navigation-sections-item master classes
+          a(href="").events__navigation-sections-item exhibitions
+          a(href="").events__navigation-sections-item articles
+        .events__navigation-time 
+          a(href="").events__navigation-time-item future
+          a(href="").events__navigation-time-item now
+          a(href="").events__navigation-time-item past
+      ul.events__list.posts__list 
+        +post-teaser({image: 'post-teaser-01.jpg', sections: 'events, exhibitions, future', title: 'Valery <br> Alyoshin', address:'27 Rainsborough Square', date: '16 nov 2021 - 16 dec 2021', class: 'vertical'})
+        +post-teaser({image: 'post-teaser-02.jpg', sections: 'events, exhibitions, future', title: 'Valery <br> Alyoshin', address:'27 Rainsborough Square', date: '16 nov 2021 - 16 dec 2021', class: 'horizontal'})

@@ -1,0 +1,67 @@
+.arrow {
+  $slide-arrow-height: 22px;
+  $slide-arrow-width: calc(#{$slide-arrow-height} * 3);
+
+  display: block;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+
+  width: $slide-arrow-width;
+  height: $slide-arrow-height;
+
+  transition: all var(--transition);
+
+  &:hover {
+    width: calc(#{$slide-arrow-height} * 4);
+
+    &:before {
+      background-color: $color-gray;
+    }
+    & svg {
+      fill: $color-gray;
+    }
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: relative;
+    right: 1px;
+    width: 100%;
+    top: calc(#{$slide-arrow-height} / 2);
+    transform: translateY(-50%);
+    height: 3px;
+    background-color: rgba($color-black, 1);
+    transition: all var(--transition);
+  }
+  & svg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: $slide-arrow-height;
+    width: $slide-arrow-height;
+    fill: $color-black;
+    transition: all var(--transition);
+  }
+
+  &--wide {
+    width: 100%;
+
+    &:hover {
+      width: calc(100% + #{$content-padding});
+    }
+  }
+
+  &--prev {
+    &:before {
+      right: auto;
+      left: 1px;
+    }
+    & svg {
+      right: auto;
+      left: 0;
+      transform: rotate(180deg);
+    }
+  }
+}

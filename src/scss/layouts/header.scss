@@ -1,0 +1,68 @@
+.header {
+  margin: 54px 0;
+
+  &__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    flex: 0 0 auto;
+    transition: all var(--transition);
+    opacity: 0;
+    body.init & {
+      animation: SlideFadeBottom 0.6s var(--easing) 0.5s forwards;
+    }
+
+    &-big {
+      display: none;
+
+      @media (min-width: $breakpoint-small) {
+        display: block;
+
+        height: responsive-value(54px, 101px, $tablet-width, $fhd-width);
+        width: auto;
+      }
+    }
+    &-small {
+      width: auto;
+      height: 40px;
+      @media (min-width: $breakpoint-small) {
+        display: none;
+      }
+    }
+
+    &:hover svg {
+      // filter: invert(1);
+    }
+  }
+
+  &__menu {
+    flex: 0 0 auto;
+    position: relative;
+    opacity: 0;
+
+    body.init & {
+      animation: SlideFadeBottom 0.6s var(--easing) 0.5s forwards;
+    }
+
+    &-link {
+      font-size: 20px;
+      font-weight: bold;
+      height: 31px;
+      padding: 0 8px;
+      background-color: $color-black;
+      color: $color-white;
+      display: flex;
+      align-items: center;
+      transition: all var(--transition);
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-white;
+        color: $color-black;
+      }
+    }
+  }
+}

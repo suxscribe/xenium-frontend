@@ -1,0 +1,53 @@
+@import '/node_modules/swiper/swiper.scss';
+@import '/node_modules/swiper/modules/effect-cards/effect-cards.scss';
+@import '/node_modules/swiper/modules/effect-fade/effect-fade.scss';
+// @import '/node_modules/accordion-js/dist/accordion.css';
+
+@import 'abstract/mixins';
+@import 'abstract/functions';
+@import 'abstract/variables'; //base vars and styles
+
+@import 'base/base';
+@import 'base/fonts';
+@import 'base/typography';
+@import 'base/animations';
+@import 'base/utils.scss';
+
+@import 'layouts/header';
+@import 'layouts/page';
+@import 'layouts/footer';
+
+// @import 'pages/index';
+
+@import './vendor/photoswipe/main.scss';
+@import './vendor/photoswipe/default-skin/default-skin.scss';
+
+@import 'aos/dist/aos.css';
+
+@import 'components/section.scss';
+@import 'components/modal';
+@import 'components/preloader';
+@import 'components/button.scss';
+@import 'components/menu';
+@import 'components/main-slider.scss';
+@import 'components/content-slider.scss';
+@import 'components/main-posts.scss';
+@import 'components/posts.scss';
+@import 'components/main-black.scss';
+@import 'components/gallery.scss';
+@import 'components/arrow.scss';
+@import 'components/author.scss';
+@import 'components/artwork.scss';
+@import 'components/navigation.scss';
+@import 'components/events.scss';
+@import 'components/event.scss';
+@import 'components/about.scss';
+@import 'components/tags.scss';
+@import 'components/contacts.scss';
+@import 'components/form.scss';
+@import 'components/accordion.scss';
+@import 'components/faq.scss';
+@import 'components/content.scss';
+@import 'components/not-found.scss';
+@import 'components/cookie.scss';
+@import 'components/title.scss';

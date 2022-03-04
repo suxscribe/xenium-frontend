@@ -1,0 +1,28 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Xenium Gallery';
+  - var description = 'Description';
+  - var pageClass = 'page--about';
+  - var footerClass = '';
+
+block content
+  include ../includes/modules/preloader
+  section.section.about
+    .container 
+      h1.about__title 
+        span about
+      .about__content-wrap
+        .about__left
+          .about__lead «Colors as facial features follow the change of emotions»
+        .about__content 
+          .about__slider.content-slider.swiper-container
+            ul.content-slider__wrapper.swiper-wrapper 
+              +content-slide({image: 'main-slider-01.jpg'})
+              +content-slide({image: 'main-slider-01.jpg'})
+              +content-slide({image: 'main-slider-01.jpg'})
+          .about__content-text 
+            p It shows the Feeling Wagner series by Viktor Vasiliev (see his page). The exhibition, which is part of the Wagner in Riga integrative creative project, is dedicated to the 180th anniversary of Richard Wagner becoming kapellmeister of the German Theatre in Riga (celebrated in August, 2017). 
+            p The exhibition is on display from 18th October until 18th December, 2017.
+
+

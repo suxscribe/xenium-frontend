@@ -1,0 +1,50 @@
+.main-posts {
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: responsive-value(30px, 98px);
+    margin-bottom: responsive-value(60px, 180px);
+
+    @media (min-width: $breakpoint-medium) {
+      flex-direction: row;
+    }
+
+    &-item {
+      @include font-h4;
+      position: relative;
+
+      a {
+        display: block;
+        color: $color-gray;
+        overflow: hidden;
+
+        & span {
+          display: block;
+        }
+      }
+
+      &.active {
+        & a {
+          color: $color-black;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -15px;
+          left: 0;
+          width: 100vw;
+          background-color: $color-black;
+          height: 2px;
+        }
+      }
+    }
+  }
+
+  &__list {
+    margin-bottom: responsive-value(80px, 180px);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

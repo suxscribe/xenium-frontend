@@ -1,0 +1,43 @@
+.event {
+  &__title {
+    // margin-bottom: responsive-value(40px, 60px);
+    // & span {
+    //   @include title-underline;
+    //   padding-bottom: responsive-value(40px, 60px);
+    // }
+  }
+
+  &__content-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 60px;
+    margin-bottom: $margin-large;
+
+    @media (min-width: $breakpoint-medium) {
+      grid-template-columns: 1fr minmax(0, 2fr);
+      gap: responsive-value(30px, 60px);
+    }
+  }
+  &__content {
+    position: relative;
+  }
+  &__date {
+    color: $color-gray;
+    margin-bottom: responsive-value(30px, 60px);
+  }
+
+  &__lead {
+    @include font-lead;
+    margin-bottom: responsive-value(40px, 60px);
+  }
+
+  &__slider {
+    margin-left: calc(#{$container-margin} * -1);
+    margin-right: calc(#{$container-margin} * -1);
+
+    @media (min-width: $breakpoint-medium) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+}

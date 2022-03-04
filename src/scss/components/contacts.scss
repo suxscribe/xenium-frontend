@@ -1,0 +1,82 @@
+.contacts {
+  &__title {
+    margin-bottom: $margin-large;
+    & span {
+      @include title-underline;
+      padding-bottom: responsive-value(40px, 60px);
+    }
+  }
+  &__subtitle {
+    @include font-h3;
+    font-weight: 700;
+    margin-bottom: responsive-value(30px, 60px);
+  }
+
+  &__content-wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 60px;
+    margin-bottom: $margin-large;
+
+    @media (min-width: $breakpoint-medium) {
+      grid-template-columns: 1fr minmax(0, 2fr);
+      gap: responsive-value(30px, 60px);
+    }
+  }
+
+  &__content {
+    order: -1;
+    text-align: center;
+
+    @media (min-width: $breakpoint-medium) {
+      order: 1;
+    }
+  }
+
+  &__card {
+    position: relative;
+    text-align: left;
+    margin: 0 auto;
+
+    @media (min-width: $breakpoint-medium) {
+      max-width: 70%;
+    }
+
+    &-image {
+      min-height: 600px;
+
+      background-color: rgba($color-black, 0.3);
+
+      & img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    &-content {
+      position: absolute;
+      padding: $content-padding;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      color: $color-white;
+      display: flex;
+      flex-direction: column;
+
+      & a {
+        color: $color-white;
+        &:hover,
+        &:focus {
+          color: $color-gray;
+        }
+      }
+    }
+    &-role {
+      margin-bottom: 20px;
+    }
+    &-name {
+      @include font-h3;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+  }
+}

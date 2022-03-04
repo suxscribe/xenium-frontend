@@ -1,0 +1,21 @@
+.tags {
+}
+.tag {
+  color: $color-gray;
+
+  display: inline-block;
+  &:after {
+    content: ', ';
+    margin-right: 5px;
+  }
+  &:last-child {
+    &:after {
+      content: '';
+    }
+  }
+
+  & a {
+    color: $color-gray;
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,31 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Xenium Gallery';
+  - var description = 'Description';
+  - var pageClass = 'page--faq';
+  - var footerClass = '';
+
+block content
+  include ../includes/modules/preloader
+  section.section.faq
+    .container 
+      h1.faq__title 
+        span FAQ
+
+      .accordion
+        .accordion__item
+          h2.accordion__item-header
+            button.accordion__item-trigger Is it possible to organize a demonstration of works on my territory?
+          .accordion__item-panel
+            p.accordion__item-text Yes, you can. But a preliminary agreement and an entry through the feedback form on the website are required. Philip will contact you and discuss all the nuances of the demonstration.
+        .accordion__item
+          h2.accordion__item-header
+            button.accordion__item-trigger How is the transfer of the work performed?
+          .accordion__item-panel
+            p.accordion__item-text Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        .accordion__item
+          h2.accordion__item-header
+            button.accordion__item-trigger How does the payment happen?
+          .accordion__item-panel
+            p.accordion__item-text Lorem ipsum dolor sit amet, consectetur adipiscing elit.

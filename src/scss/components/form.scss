@@ -1,0 +1,235 @@
+$input-height: responsive-value(52px, 52px);
+$input-padding: responsive-value(16px, 24px);
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__wrap {
+    max-height: 1500px;
+    opacity: 1;
+    overflow: hidden;
+    transition: all var(--transition);
+
+    .form.sent & {
+      //wpcf7
+      max-height: 0;
+      opacity: 0;
+    }
+  }
+
+  &__row {
+    display: block;
+    // margin-bottom: responsive-value(12px, 24px);
+    position: relative;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-input {
+    }
+  }
+
+  &__label {
+    display: block;
+    // transform: translateY(-#{$input-height * 1.5});
+    top: responsive-value(12px, 29px);
+    margin-left: $input-padding;
+    position: absolute;
+    // top: percent-view(0px);
+    pointer-events: none;
+    @include font-body;
+    transition: all var(--transition);
+    color: rgba($color-gray, 0.6);
+  }
+
+  &__input,
+  &__textarea,
+  &__select {
+    @include font-body;
+    font-family: $font-family;
+
+    // height: $input-height;
+    vertical-align: middle;
+    max-width: 100%;
+    width: 100%;
+    border: 1px solid $color-black;
+    background: $color-white;
+
+    // background-color: transparent;
+    color: $color-black;
+    box-sizing: border-box;
+    box-shadow: none;
+    appearance: none;
+
+    // padding-top: responsive-value(40px, 72px);
+    // padding: responsive-value(40px, 72px) $input-padding responsive-value(20px, 40px);
+    padding: 0 $input-padding;
+    height: $input-height;
+
+    transition: var(--transition);
+    transition-property: all;
+    transition-property: color, background-color, border;
+
+    &:focus,
+    &:hover {
+      // background-color: $color-white;
+      // color: $color-gray;
+      // border-color: rgba($color-gray, 0.8);
+      outline: 0px solid transparent;
+      border-color: rgba(67, 64, 71, 0.4);
+    }
+
+    &:required {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &.invalid,
+    &.just-validate-error-field {
+      border-color: $color-error;
+    }
+  }
+
+  &__textarea {
+    height: 180px;
+    padding-top: calc(#{$input-height} / 3);
+
+    @media (min-width: $breakpoint-small) {
+      height: auto;
+      min-height: 180px;
+    }
+  }
+
+  &__note,
+  .validation-error {
+    @include font-small;
+    position: absolute;
+    // margin-top: 0.5rem;
+
+    // margin-bottom: -0.5rem;
+    bottom: 0;
+    left: $input-padding;
+    color: var(--color-error);
+  }
+
+  &__note {
+    color: var(--color-muted);
+  }
+
+  &__controls {
+    flex: 1 1 auto;
+  }
+
+  &__submit {
+    // align-items: center;
+    appearance: none;
+    gap: 24px;
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+  }
+  &__submit-button {
+    font-family: $font-family;
+    align-self: end;
+
+    flex: 0 0 auto;
+    // margin-bottom: 28px;
+
+    @media (min-width: $breakpoint-medium) {
+      margin-bottom: 0;
+    }
+
+    &:hover {
+    }
+
+    .form--modal & {
+      align-self: stretch;
+      flex: 1 1 auto;
+    }
+  }
+  &__submit-note {
+    margin-top: responsive-value(11px, 22px);
+    @include font-small;
+    text-align: center;
+
+    color: $color-gray;
+    // text-align: center;
+  }
+
+  .validation-error + &__note {
+    display: none;
+  }
+}
+
+.input-sizer {
+  display: inline-grid;
+  vertical-align: top;
+  align-items: center;
+  position: relative;
+  width: 100%;
+
+  &.stacked {
+    align-items: stretch;
+
+    &::after,
+    & input,
+    & textarea,
+    & > span {
+      grid-area: 2 / 1;
+      width: 100%;
+    }
+  }
+
+  &::after,
+  input,
+  textarea,
+  span {
+    width: auto;
+    min-width: 1em;
+    grid-area: 1 / 2;
+    resize: none;
+  }
+
+  &::after {
+    @include font-h2;
+    padding: responsive-value(40px, 72px) $input-padding
+      responsive-value(84px, 108px);
+
+    content: attr(data-value) ' ';
+    visibility: hidden;
+    white-space: pre-wrap;
+  }
+}
+
+// wordpress contact form 7 tweaks
+
+.wpcf7-response-output {
+  opacity: 0;
+  transition: all var(--transition);
+  border-radius: $button-border-radius;
+  height: $button-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-gray-2;
+  @include font-h2;
+
+  .wpcf7 form.sent & {
+    opacity: 1;
+    border-color: transparent !important;
+  }
+  .wpcf7 form.invalid & {
+    display: none;
+  }
+}
+.wpcf7-not-valid-tip {
+  display: none !important;
+}
+
+.wpcf7 .form-submitting .ajax-loader {
+  // cf7 loader circle
+  display: none;
+}

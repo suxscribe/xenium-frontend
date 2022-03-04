@@ -1,0 +1,83 @@
+$animation-translate: 50px;
+.animation {
+  &--left {
+    transform: translateX(-20%);
+    opacity: 0;
+    transition: all var(--transition);
+
+    &.on {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes Fade {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes SlideFade {
+  0% {
+    transform: translateX(-20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes SlideFadeBottom {
+  0% {
+    transform: translateY(-#{$animation-translate});
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes SlideFadeTop {
+  0% {
+    transform: translateY(#{$animation-translate});
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes SlideTopStickyFix {
+  0% {
+    transform: translateY(#{$animation-translate});
+    opacity: 0;
+  }
+  99% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes SlideTop {
+  0% {
+    transform: translateY(#{$animation-translate});
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes SlideTop100 {
+  0% {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

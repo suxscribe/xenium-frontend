@@ -1,0 +1,43 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column-reverse;
+  gap: 96px;
+
+  @media (min-width: $breakpoint-medium) {
+    flex-direction: row;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    color: $color-gray;
+    flex: 0 0 33%;
+
+    &:hover {
+      color: $color-black;
+    }
+
+    &--prev {
+      @media (min-width: $breakpoint-medium) {
+        align-items: end;
+      }
+    }
+  }
+
+  &__arrow {
+    margin-bottom: responsive-value(16px, 30px);
+
+    .navigation__link:hover & {
+      width: calc(100% + #{$content-padding});
+    }
+  }
+
+  &__name {
+    @include font-h4;
+    margin-bottom: responsive-value(16px, 30px);
+  }
+  &__desc {
+    // @include font-lead;
+  }
+}

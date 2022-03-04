@@ -1,0 +1,168 @@
+.main-slider {
+  position: relative;
+
+  &__wrapper {
+  }
+
+  &__container {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: responsive-value(30px, 60px);
+
+    @media (min-width: $breakpoint-medium) {
+      margin: $container-margin;
+      flex-direction: row;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    position: absolute;
+    gap: 20px;
+
+    bottom: $content-padding;
+    right: $content-padding;
+
+    z-index: 5;
+  }
+}
+
+.main-slider-1 {
+  position: relative;
+  order: 2;
+  margin: 0 $container-margin;
+
+  @media (min-width: $breakpoint-medium) {
+    flex: 0 0 30%;
+    width: 30%;
+    order: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // gap: $column-margin;
+    // width: 75%;
+    background-color: $color-white;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    flex: 0 0 auto;
+    // display: block;
+
+    @media (min-width: $breakpoint-medium) {
+      align-items: center;
+      // gap: $column-margin;
+      // width: 75%;
+      // padding: $column-margin;
+      flex-direction: row;
+    }
+
+    &-content {
+      width: 100%;
+    }
+
+    &-author {
+      margin-bottom: 20px;
+      @include animation-left;
+      // transition: all var(--transition);
+      // opacity: 0;
+
+      .swiper-slide-active & {
+        @include animation-left-active;
+        transition-delay: 0.2s;
+        // animation: SlideFade 0.5s var(--transition) forwards;
+      }
+    }
+    &-name {
+      display: inline-block;
+      @include font-h3;
+      font-weight: 700;
+      margin-bottom: 20px;
+      @include animation-left;
+
+      & > a {
+        @include underline-hover;
+
+        &:hover {
+          color: $color-black;
+        }
+      }
+
+      .swiper-slide-active & {
+        @include animation-left-active;
+        transition-delay: 0.3s;
+      }
+    }
+    &-description {
+      margin-bottom: 30px;
+      @include animation-left;
+
+      .swiper-slide-active & {
+        @include animation-left-active;
+        transition-delay: 0.4s;
+      }
+    }
+    &-button {
+      @include animation-left;
+
+      .swiper-slide-active & {
+        @include animation-left-active;
+
+        transition-delay: 0.5s;
+      }
+    }
+  }
+}
+
+.main-slider-2 {
+  position: relative;
+
+  @media (min-width: $breakpoint-medium) {
+    flex: 0 0 70%;
+    width: 70%;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // gap: $column-margin;
+    // width: 75%;
+    background-color: $color-white;
+    box-sizing: border-box;
+
+    flex: 0 0 auto;
+    // display: block;
+
+    @media (min-width: $breakpoint-medium) {
+      align-items: center;
+      // gap: $column-margin;
+      // width: 75%;
+      flex-direction: row;
+    }
+
+    &-image {
+      order: -1;
+      // cursor: url(/assets/cursor-arrow-button.svg), auto;
+
+      @media (min-width: $breakpoint-medium) {
+        order: 1;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    position: absolute;
+    gap: 20px;
+
+    bottom: $content-padding;
+    right: $content-padding;
+
+    z-index: 5;
+  }
+}

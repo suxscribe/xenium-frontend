@@ -1,0 +1,12 @@
+.faq {
+  &__title {
+    margin-bottom: responsive-value(40px, 60px);
+
+    & span {
+      width: 50%;
+
+      @include title-underline;
+      padding-bottom: responsive-value(40px, 60px);
+    }
+  }
+}

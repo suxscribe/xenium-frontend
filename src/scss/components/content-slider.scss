@@ -1,0 +1,25 @@
+.content-slider {
+  position: relative;
+  margin-bottom: $margin-100;
+  overflow: hidden;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $column-margin;
+    box-sizing: border-box;
+
+    flex: 0 0 auto;
+    // display: block;
+
+    &-image {
+      order: -1;
+      cursor: url(/assets/cursor-arrow-button.svg), auto;
+
+      @media (min-width: $breakpoint-medium) {
+        order: 1;
+      }
+    }
+  }
+}

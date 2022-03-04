@@ -1,0 +1,37 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Xenium Gallery';
+  - var description = 'Description';
+  - var pageClass = 'page--event';
+  - var footerClass = '';
+
+block content
+  include ../includes/modules/preloader
+  section.section.event
+    .container 
+      h1.event__title.title
+        span.title__wrap
+          span.title__text Feeling Wagner Exhibition in London
+      .event__date 16 november 2021 - 16 december 2021
+      .event__content-wrap
+        .event__left
+          .event__lead А new exhibition is on display at the Consulate General of the Republic of Latvia in London
+          .event__sections.tags
+            li.tag: a(href="").event__sections-item events
+            li.tag: a(href="").event__sections-item past
+            li.tag: a(href="").event__sections-item all
+        .event__content 
+          .event__slider.content-slider.swiper-container
+            ul.content-slider__wrapper.swiper-wrapper 
+              +content-slide({image: 'main-slider-01.jpg'})
+              +content-slide({image: 'main-slider-01.jpg'})
+              +content-slide({image: 'main-slider-01.jpg'})
+          .event__content-text 
+            p It shows the Feeling Wagner series by Viktor Vasiliev (see his page). The exhibition, which is part of the Wagner in Riga integrative creative project, is dedicated to the 180th anniversary of Richard Wagner becoming kapellmeister of the German Theatre in Riga (celebrated in August, 2017). 
+            p The exhibition is on display from 18th October until 18th December, 2017.
+      .event__navigation.navigation 
+        +navigation-link({class:'prev', name:'Valery Leontiev', desc: 'previous artist'})
+        +navigation-link({class:'next', name:'Aurello Bruni', desc: 'next artist'})
+
+

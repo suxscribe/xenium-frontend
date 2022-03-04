@@ -1,0 +1,211 @@
+.button {
+  @include font-button;
+
+  position: relative;
+  font-family: $font-family;
+  height: $button-height;
+  display: inline-flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 0 28px;
+  border: 2px solid $color-black;
+  color: $color-black;
+  background: transparent; //$color-white;
+  overflow: hidden;
+  transition: all var(--transition);
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    transition: inherit;
+    z-index: -1;
+    top: 0;
+    width: 0;
+    height: 100%;
+  }
+  &:before {
+    right: 0;
+    border: 1px solid $color-black;
+    border-left: 0;
+    border-right: 0;
+  }
+  &:after {
+    left: 0;
+  }
+
+  &:hover,
+  &:focus {
+    // border-color: $color-white;
+    transition-delay: 0.35s;
+
+    text-decoration: none;
+    // background-color: $color-black;
+    color: $color-white;
+
+    &:before {
+      transition-delay: 0s;
+      // width: 100%;
+    }
+    &:after {
+      background: $color-black;
+      transition-delay: 0.1s;
+      width: 100%;
+    }
+  }
+
+  &--black {
+    color: $color-white;
+    background-color: $color-black;
+    border-color: $color-white;
+
+    &:hover,
+    &:focus {
+      border-color: $color-black;
+      text-decoration: none;
+      background-color: $color-white;
+      color: $color-black;
+    }
+  }
+
+  &--arrow-left,
+  &--arrow-right {
+    width: $button-arrow-size;
+    height: $button-arrow-size;
+    padding: 0;
+    background-color: $color-black;
+    border-color: $color-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    & svg {
+      width: 50%;
+      height: 50%;
+
+      path {
+        stroke: $color-white;
+        transition: all var(--transition);
+      }
+    }
+
+    &:hover {
+      background-color: $color-white;
+      border-color: $color-black;
+
+      & svg {
+        path {
+          stroke: $color-black;
+        }
+      }
+    }
+  }
+  &--arrow-left {
+    & svg {
+      transform: rotate(180deg);
+    }
+  }
+  &--fullscreen {
+    width: $button-arrow-size;
+    height: $button-arrow-size;
+    padding: 0;
+    background-color: $color-black;
+    border-color: $color-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    & * {
+      pointer-events: none;
+    }
+
+    & svg {
+      width: 50%;
+      height: 50%;
+
+      stroke: $color-white;
+      fill: transparent;
+      transition: all var(--transition);
+      path {
+      }
+    }
+
+    &:hover {
+      background-color: $color-white;
+      border-color: $color-black;
+
+      & svg {
+        stroke: $color-black;
+        fill: transparent;
+        path {
+        }
+      }
+    }
+  }
+
+  &--close-icon {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+    background-color: $color-white;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 90%;
+      left: 26%;
+      background-color: $color-white;
+      width: 36px;
+      border-bottom: 1px solid $color-white;
+      transform: rotate(60deg);
+      z-index: -1;
+    }
+
+    & * {
+      pointer-events: none;
+    }
+
+    & svg {
+      width: 10px;
+      height: 10px;
+      stroke: $color-black;
+    }
+  }
+  &--zoom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $button-arrow-size;
+    height: $button-arrow-size;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      border-bottom: 1px solid $color-white;
+    }
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      border-bottom: 1px solid $color-white;
+      transform: rotate(90deg);
+      transition: all var(--transition);
+
+      .pswp--zoomed-in & {
+        opacity: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+header.header
+  .header__wrapper.container 
+    a.header__logo(href="#") 
+      +logo()
+    .header__menu
+      .header__menu-link MENU 
+  nav.menu
+    a.menu__close
+      +svg({name: 'close'})
+    ul.menu__list
+      +menu-item({name: 'Gallery', href: '/gallery.html'})
+      +menu-item({name: 'Artists', href: '/artists.html'})
+      +menu-item({name: 'Events', href: '/artists.html'})
+      +menu-item({name: 'About', href: '/artists.html'})
+      +menu-item({name: 'Contacts', href: '/artists.html'})
+      +menu-item({name: 'FAQ', href: '/artists.html'})
+    .menu__buttons 
+      a.button.button--black(href="") Send e-mail 
+    .menu__language 
+      a.menu__language-item(href="") RU 
+          

@@ -1,0 +1,50 @@
+.events {
+  &__title {
+    margin-bottom: responsive-value(20px, 30px);
+    & span {
+      @include title-underline;
+      padding-bottom: responsive-value(30px, 40px);
+    }
+  }
+
+  &__navigation {
+    &-sections {
+      margin-bottom: responsive-value(20px, 30px);
+      text-align: right;
+      &-item {
+        @include font-lead;
+        color: $color-gray;
+
+        &:hover {
+          color: $color-black;
+        }
+
+        &:after {
+          content: ', ';
+        }
+
+        &:last-child {
+          &:after {
+            content: '';
+          }
+        }
+
+        &.active {
+          color: $color-black;
+        }
+      }
+    }
+
+    &-time {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: responsive-value(20px, 30px);
+      margin-bottom: $margin-large;
+
+      &-item {
+        @include font-h2;
+      }
+    }
+  }
+}

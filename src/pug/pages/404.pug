@@ -1,0 +1,26 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Xenium Gallery';
+  - var description = 'Description';
+  - var pageClass = 'page--404';
+  - var footerClass = 'footer--black';
+
+
+block content
+  include ../includes/modules/preloader
+  section.section.not-found
+    .container 
+      .not-found__grid 
+        .not-found__left 
+          h1.not-found__title
+            | Page not
+            br
+            | found 
+          .not-found__text You can visit our
+            |
+            br
+            | gallery for now.
+          a(href="").not-found__button.button.button--black Go to the homepage
+        .not-found__right 
+          .not-found__code 404 

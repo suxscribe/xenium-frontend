@@ -1,0 +1,39 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Xenium Gallery';
+  - var description = 'Description';
+  - var pageClass = 'page--artist';
+  - var footerClass = '';
+
+block content
+  include ../includes/modules/preloader
+  section.section.author
+    .container 
+      .author__header
+        .author__top
+          .author__avatar 
+            img(src="/assets/author-image-01.jpg", alt="")
+          h1.author__name 
+            | Valery 
+            br
+            | Alyoshin
+        .author__years 1937-2011
+        .author__description 
+          p Valeriy Ivanovich Alyoshin was born in Gorky. Не is Nizhny Novgorod artist and poet. During his studies at the Gorky Art School, he showed an «unhealthy», in the opinion of the then Soviet authorities, interest in avant-garde art and religion.
+          p Aleshin was called the father of Gorky underground. He still has something to say to longtime fans and those who met his work for the first time.
+        ul.author__tags.tags
+          li.tag: a(href="") noncomformism
+          li.tag: a(href="") 60th
+          li.tag: a(href="") oil canvas
+          li.tag: a(href="") all
+      ul.author__items.gallery__items 
+        +gallery-item({image: 'gallery-item-01.jpg', title: 'Red <br> Man I', author: 'Valery Alyoshin', tags: 'nonconformism, avant-garde, 60th, russian art, all, oil canvas', class: ''})
+        +gallery-item({image: 'gallery-item-02.jpg', title: 'Red <br> Man I', author: 'Valery Alyoshin', tags: 'nonconformism, avant-garde, 60th, russian art, all, oil canvas', class: 'reverse'})
+        +gallery-item({image: 'gallery-item-01.jpg', title: 'Red <br> Man I', author: 'Valery Alyoshin', tags: 'nonconformism, avant-garde, 60th, russian art, all, oil canvas', class: ''})
+        +gallery-item({image: 'gallery-item-02.jpg', title: 'Red <br> Man I', author: 'Valery Alyoshin', tags: 'nonconformism, avant-garde, 60th, russian art, all, oil canvas', class: 'reverse'})
+      .author__navigation.navigation
+        +navigation-link({class:'prev', name:'Valery Leontiev', desc: 'previous artist'})
+        +navigation-link({class:'next', name:'Aurello Bruni', desc: 'next artist'})
+
+          

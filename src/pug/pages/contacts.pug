@@ -1,0 +1,42 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Xenium Gallery';
+  - var description = 'Description';
+  - var pageClass = 'page--contacts';
+  - var footerClass = '';
+
+block content
+  include ../includes/modules/preloader
+  section.section.contacts
+    .container 
+      h1.contacts__title 
+        span contacts
+      .contacts__content-wrap
+        .contacts__left
+          .contacts__subtitle feedback
+          form.contacts__form.form 
+            +form-row({name: "form-name", title: "", validate: 'empty', inputmask: "", placeholder: 'Name'})
+            +form-row({name: "form-email", title: "", validate: 'email', inputmask: "", placeholder: 'E-mail'})
+            .form__row.form__row-input.input-sizer.stacked
+              textarea.form__textarea.validate--empty(placeholder='Write your text here', name='form-message', oninput='this.parentNode.dataset.value = this.value')
+            .form__row.form__submit
+              button(type="submit").form__submit-button.button Send
+              
+        .contacts__content 
+          .contacts__card 
+            .contacts__card-image 
+              img(src="/assets/contacts-image.jpg", alt="")
+            .contacts__card-content
+              .contacts__card-role 
+                | Gallery
+                br
+                | curator 
+              .contacts__card-name 
+                | Philip 
+                br 
+                | Firsov 
+              .contacts__card-phone: a(href="+447745022062") +44 7745 022062
+              .contacts__card-email: a(href="office@xeniumgallery.ru") office@xeniumgallery.ru
+
+

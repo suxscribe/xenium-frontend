@@ -1,0 +1,73 @@
+.cookie {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: $color-black;
+  color: $color-white;
+  display: none;
+  z-index: 1000;
+
+  &.active {
+    display: block;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: responsive-value(45px, 90px);
+    margin: 0 auto;
+    max-width: 80%;
+
+    padding: $margin-100 0 responsive-value(70px, 120px) 0;
+
+    @media (min-width: $breakpoint-small) {
+      flex-direction: row;
+    }
+
+    @media (min-width: $breakpoint-large) {
+      max-width: 80%;
+    }
+  }
+  &__left {
+    $cookie-img-size: responsive-value(120px, 240px);
+    flex: 0 0 auto;
+
+    & img {
+      width: $cookie-img-size;
+      height: $cookie-img-size;
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 30px;
+  }
+
+  &__text {
+    opacity: 0.5;
+    @include font-small;
+
+    @media (min-width: $breakpoint-small) {
+      @include font-body;
+    }
+    @media (min-width: $breakpoint-large) {
+      max-width: 80%;
+    }
+  }
+  &__link {
+    color: $color-white;
+    text-decoration: underline;
+    @include font-small;
+
+    @media (min-width: $breakpoint-small) {
+      @include font-body;
+    }
+
+    &:hover {
+      color: $color-gray;
+    }
+  }
+}

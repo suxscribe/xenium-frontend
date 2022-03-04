@@ -1,0 +1,50 @@
+extends ../layout/main
+
+block variables
+  - var title = 'Xenium Gallery';
+  - var description = 'Description';
+  - var pageClass = 'page--index';
+
+block content
+  include ../includes/modules/preloader
+  section.section
+    .container
+      h1 H1 Red Man I 
+      h2 
+        | H2 Yellow Man
+        | a la 
+        | Modigliani
+      h3 H3 A new exhibition is on display at the Consulate
+      p.font-lead events, past, all
+      p Paragraph It shows the Feeling Wagner series by Viktor Vasiliev (see his page). The exhibition, which is part of the Wagner in Riga integrative creative project, is dedicated to the 180th anniversary of Richard Wagner becoming kapellmeister of the German Theatre in Riga (celebrated in August, 2017).
+      hr 
+      a.button(href="#", data-micromodal-open="modal-signup") Learn More
+      a.button(href="#", data-micromodal-open="modal-like") Like
+    .modals 
+      +modal({id:"modal-signup", title:"Sign up <br> for an event", class:'--form'})
+        h3.modal__title !{'Sign up <br>for an event'}
+        form.modal__form.form.form--modal
+          +form-row({name: "form-name", title: "", validate: 'empty', inputmask: "", placeholder: 'Name'})
+          +form-row({name: "form-email", title: "", validate: 'email', inputmask: "", placeholder: 'E-mail'})
+          +form-row({name: "form-text", title: "", validate: 'empty', inputmask: "", placeholder: 'Number of participants'})
+          .form__row.form__submit
+            button(type="submit").form__submit-button.button.button--black Send
+      +modal({id:"modal-like", title:"thank you!", class:"--like"})
+        .modal__like
+          +svg({name:'like'})
+        h3.modal__title thank you!
+        p You can share your favorite post in your social networks.
+        form.modal__form.form.form--modal
+          +form-row({name:"form-email", title:'', validate:'email', inputmask:'',placeholder:'E-mail'})
+          .form__row.form__submit
+            button(type="submit").form__submit-button.button.button--black Send
+
+        .modal__socials 
+          a.modal__social(href="#")
+            +svg({name:'facebook'})
+          a.modal__social(href="#")
+            +svg({name:'twitter'})
+          a.modal__social(href="#")
+            +svg({name:'instagram'})
+          a.modal__social(href="#")
+            +svg({name:'link'})
