@@ -10,8 +10,9 @@ block content
   include ../includes/modules/preloader
   section.section.events
     .container
-      h1.events__title
-        span events 
+      h1.events__title.title 
+        span.title__wrap
+          span.title__text events 
       .events__navigation 
         .events__navigation-sections 
           a(href="").events__navigation-sections-item.active all
@@ -22,7 +23,7 @@ block content
         .events__navigation-time 
           a(href="").events__navigation-time-item future
           a(href="").events__navigation-time-item now
-          a(href="").events__navigation-time-item past
+          a(href="").events__navigation-time-item.disabled past
       ul.events__list.posts__list 
         +post-teaser({image: 'post-teaser-01.jpg', sections: 'events, exhibitions, future', title: 'Valery <br> Alyoshin', address:'27 Rainsborough Square', date: '16 nov 2021 - 16 dec 2021', class: 'vertical'})
         +post-teaser({image: 'post-teaser-02.jpg', sections: 'events, exhibitions, future', title: 'Valery <br> Alyoshin', address:'27 Rainsborough Square', date: '16 nov 2021 - 16 dec 2021', class: 'horizontal'})

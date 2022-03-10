@@ -24,11 +24,36 @@
   &__date {
     color: $color-gray;
     margin-bottom: responsive-value(30px, 60px);
+
+    // animation
+    opacity: 0;
+    transform: translateY($animation-translate);
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 1.5s forwards;
+    }
+  }
+
+  &__left {
+    // animation
+    opacity: 0;
+    transform: translateY($animation-translate);
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 1.8s forwards;
+    }
   }
 
   &__lead {
     @include font-lead;
     margin-bottom: responsive-value(40px, 60px);
+  }
+
+  &__content {
+    // animation
+    opacity: 0;
+    transform: translateY($animation-translate);
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 2.2s forwards;
+    }
   }
 
   &__slider {

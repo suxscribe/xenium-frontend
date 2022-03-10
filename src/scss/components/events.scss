@@ -1,16 +1,24 @@
 .events {
-  &__title {
-    margin-bottom: responsive-value(20px, 30px);
-    & span {
-      @include title-underline;
-      padding-bottom: responsive-value(30px, 40px);
-    }
-  }
+  // &__title {
+  //   margin-bottom: responsive-value(20px, 30px);
+  //   & span {
+  //     @include title-underline;
+  //     padding-bottom: responsive-value(30px, 40px);
+  //   }
+  // }
 
   &__navigation {
     &-sections {
       margin-bottom: responsive-value(20px, 30px);
       text-align: right;
+
+      // animation
+      opacity: 0;
+      transform: translateY($animation-translate);
+      body.init & {
+        animation: SlideFadeLeft 0.6s var(--easing) 1.3s forwards;
+      }
+
       &-item {
         @include font-lead;
         color: $color-gray;
@@ -42,8 +50,26 @@
       gap: responsive-value(20px, 30px);
       margin-bottom: $margin-large;
 
+      // animation
+      opacity: 0;
+      transform: translateY($animation-translate);
+      body.init & {
+        animation: SlideFadeTop 0.6s var(--easing) 1.7s forwards;
+      }
+
       &-item {
         @include font-h2;
+
+        @include underline-hover;
+
+        &:hover {
+          color: $color-black;
+        }
+
+        &.disabled {
+          color: $color-gray;
+          pointer-events: none;
+        }
       }
     }
   }

@@ -1,7 +1,9 @@
 @import '/node_modules/swiper/swiper.scss';
-@import '/node_modules/swiper/modules/effect-cards/effect-cards.scss';
 @import '/node_modules/swiper/modules/effect-fade/effect-fade.scss';
+@import '/node_modules/swiper/modules/effect-creative/effect-creative.scss';
+
 // @import '/node_modules/accordion-js/dist/accordion.css';
+// @import 'aos/dist/aos.css';
 
 @import 'abstract/mixins';
 @import 'abstract/functions';
@@ -19,10 +21,9 @@
 
 // @import 'pages/index';
 
-@import './vendor/photoswipe/main.scss';
-@import './vendor/photoswipe/default-skin/default-skin.scss';
-
-@import 'aos/dist/aos.css';
+@import 'vendor/aos/aos.scss';
+@import 'vendor/photoswipe/main.scss';
+@import 'vendor/photoswipe/default-skin/default-skin.scss';
 
 @import 'components/section.scss';
 @import 'components/modal';

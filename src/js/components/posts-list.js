@@ -35,7 +35,7 @@ export const postsList = () => {
       new ScrollMagic.Scene({
         triggerElement: post,
 
-        duration: 1000,
+        duration: post.offsetHeight * 2,
         triggerHook: 1,
       })
         .setTween(animation)

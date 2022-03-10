@@ -289,11 +289,13 @@ export const artworkSizeListener = () => {
 };
 
 export const artworkStickySidebar = () => {
-  let sidebar = new StickySidebar('.artwork__left-wrap', {
-    topSpacing: 40,
-    bottomSpacing: 40,
-    containerSelector: '.artwork__left',
-    // innerWrapperSelector: '.artwork__left-wrap',
-    // scrollContainer: '.main',
-  });
+  if (document.querySelector('.artwork__left-wrap')) {
+    let sidebar = new StickySidebar('.artwork__left-wrap', {
+      topSpacing: 40,
+      bottomSpacing: 40,
+      containerSelector: '.artwork__left',
+      // innerWrapperSelector: '.artwork__left-wrap',
+      // scrollContainer: '.main',
+    });
+  }
 };

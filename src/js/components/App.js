@@ -16,6 +16,11 @@ import { cookies } from './cookie';
 import { preloaderHide, preloaderInit } from './preloader';
 import Aos from 'aos';
 import { initAnimations } from './init-animations';
+import { authorTitleAnimation } from './author';
+import {
+  MainPostsNavSticky,
+  MainPostsNavProgress,
+} from './main-posts-nav-sticky';
 
 export default class App {
   constructor(_options) {
@@ -32,6 +37,9 @@ export default class App {
 
       swiperMain();
       postsList();
+      MainPostsNavSticky();
+      MainPostsNavProgress();
+
       swiperContent();
       faqAccordion();
 
@@ -59,6 +67,7 @@ export default class App {
     window.addEventListener('load', (event) => {
       preloaderHide();
       initAnimations();
+      authorTitleAnimation();
       // headerAnimationInit();
       // titleAnimationInit();
     });

@@ -256,11 +256,14 @@
 @mixin animation-left {
   transform: translateX(-20%);
   opacity: 0;
+  // animation: SlideFadeLeft 0.6s var(--easing) 1.5s forwards;
+
   transition: all var(--transition);
 }
 @mixin animation-left-active {
   transform: translateX(0);
   opacity: 1;
+  // animation: SlideFadeRight 0.6s var(--easing) 1s forwards;
 }
 
 @mixin underline-hover {

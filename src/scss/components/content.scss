@@ -1,11 +1,11 @@
 .content {
-  &__title {
-    margin-bottom: responsive-value(40px, 60px);
-    & span {
-      @include title-underline;
-      padding-bottom: responsive-value(40px, 60px);
-    }
-  }
+  // &__title {
+  //   margin-bottom: responsive-value(40px, 60px);
+  //   & span {
+  //     @include title-underline;
+  //     padding-bottom: responsive-value(40px, 60px);
+  //   }
+  // }
 
   &__intro {
     margin-bottom: $margin-large;

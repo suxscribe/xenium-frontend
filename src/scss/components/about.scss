@@ -1,12 +1,4 @@
 .about {
-  &__title {
-    margin-bottom: responsive-value(40px, 60px);
-    & span {
-      @include title-underline;
-      padding-bottom: responsive-value(40px, 60px);
-    }
-  }
-
   &__content-wrap {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -18,8 +10,18 @@
       gap: responsive-value(30px, 60px);
     }
   }
+  &__left {
+    opacity: 0;
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 1.2s forwards;
+    }
+  }
   &__content {
     position: relative;
+    opacity: 0;
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 1.4s forwards;
+    }
   }
   &__date {
     color: $color-gray;

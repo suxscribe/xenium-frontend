@@ -28,6 +28,13 @@
       right: 0;
       left: -50vw;
       border-bottom: 2px solid $color-black;
+
+      transform: translateX(-100%);
+      transition: transform 1s var(--easing) 0.5s;
+
+      body.init & {
+        transform: translateX(0);
+      }
     }
   }
 
@@ -44,19 +51,69 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+
+      // animation
+      transform: translateY(100%);
+      body.init & {
+        animation: SlideTop100 0.6s var(--easing) 1s forwards;
+      }
     }
   }
 
   &__name {
     margin-bottom: 0;
+    overflow: hidden;
+
+    & > span {
+      display: inline-block;
+      // animation
+      transform: translateY(100%);
+      body.init & {
+        animation: SlideTop100 0.6s var(--easing) 1.3s forwards;
+      }
+    }
+    // & .word {
+    //   transition: transform var(--transition);
+    //   transform: translateY(100%);
+    //   display: inline-block;
+    // }
+
+    // body.init & {
+    //   & .word {
+    //     // transition-delay: calc( 0.2s * ( 1 - var(--distance-percent) ) );
+    //     transform: translateY(0);
+    //   }
+    // }
   }
 
   &__years {
     color: $color-gray;
     margin-bottom: responsive-value(30px, 60px);
+
+    // animation
+    opacity: 0;
+    transform: translateY(100%);
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 1.5s forwards;
+    }
   }
   &__description {
     margin: responsive-value(30px, 60px) 0;
+
+    // animation
+    opacity: 0;
+    transform: translateY($animation-translate);
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 2s forwards;
+    }
+  }
+  &__tags {
+    // animation
+    opacity: 0;
+    transform: translateY($animation-translate);
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 2.3s forwards;
+    }
   }
 
   &__navigation {
@@ -71,5 +128,12 @@
   &__items {
     margin-bottom: responsive-value(100px, 200px);
     margin-top: responsive-value(100px, 200px);
+
+    // animation
+    opacity: 0;
+    transform: translateY($animation-translate);
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 2.5s forwards;
+    }
   }
 }

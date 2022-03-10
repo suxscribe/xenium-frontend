@@ -875,10 +875,10 @@ body[data-aos-easing='ease-in-out-quart'] [data-aos] {
   transform: translateZ(0);
 }
 [data-aos='slide-up'] {
-  transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, #{$animation-translate}, 0);
 }
 [data-aos='slide-down'] {
-  transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, #{$animation-translate}, 0);
 }
 [data-aos='slide-right'] {
   transform: translate3d(-100%, 0, 0);

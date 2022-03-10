@@ -64,7 +64,8 @@ mixin main-slide-1(args)
       .main-slider-1__item-name
         a(href="") !{args.title}
       .main-slider-1__item-description= args.desc
-      a.main-slider-1__item-button.button(href="") Learn more 
+      .main-slider-1__item-button-wrap
+        a.main-slider-1__item-button.button(href="") Learn more 
 
 mixin main-slide-2(args)
   li.main-slider-2__item.swiper-slide

@@ -1,6 +1,6 @@
 
 mixin gallery-item(args)
-  li(class="gallery__item gallery__item--" + args.class)
+  li(class="gallery__item gallery__item--" + args.class, data-aos="fade-up", data-aos-delay="200")
     .gallery__item-image 
       a(href="#").gallery__item-link
       img(src="/assets/" + args.image, alt="")

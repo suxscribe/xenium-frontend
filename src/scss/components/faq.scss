@@ -1,12 +1,19 @@
 .faq {
   &__title {
-    margin-bottom: responsive-value(40px, 60px);
+    // margin-bottom: responsive-value(40px, 60px);
 
-    & span {
-      width: 50%;
+    // & span {
+    //   width: 50%;
 
-      @include title-underline;
-      padding-bottom: responsive-value(40px, 60px);
+    //   @include title-underline;
+    //   padding-bottom: responsive-value(40px, 60px);
+    // }
+  }
+
+  &__accordion {
+    opacity: 0;
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 1.2s forwards;
     }
   }
 }

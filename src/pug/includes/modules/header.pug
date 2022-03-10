@@ -1,6 +1,6 @@
 header.header
   .header__wrapper.container 
-    a.header__logo(href="#") 
+    a.header__logo(href="index.html") 
       +logo()
     .header__menu
       .header__menu-link MENU 
@@ -9,11 +9,11 @@ header.header
       +svg({name: 'close'})
     ul.menu__list
       +menu-item({name: 'Gallery', href: '/gallery.html'})
-      +menu-item({name: 'Artists', href: '/artists.html'})
-      +menu-item({name: 'Events', href: '/artists.html'})
-      +menu-item({name: 'About', href: '/artists.html'})
-      +menu-item({name: 'Contacts', href: '/artists.html'})
-      +menu-item({name: 'FAQ', href: '/artists.html'})
+      +menu-item({name: 'Artists', href: '/gallery.html'})
+      +menu-item({name: 'Events', href: '/events.html'})
+      +menu-item({name: 'About', href: '/about.html'})
+      +menu-item({name: 'Contacts', href: '/contacts.html'})
+      +menu-item({name: 'FAQ', href: '/faq.html'})
     .menu__buttons 
       a.button.button--black(href="") Send e-mail 
     .menu__language 

@@ -1,16 +1,18 @@
 import Swiper, {
   Navigation,
   EffectFade,
-  EffectCoverflow,
-  EffectCards,
+  // EffectCoverflow,
+  // EffectCards,
+  EffectCreative,
   Keyboard,
   Controller,
 } from 'swiper';
 Swiper.use([
   Navigation,
   EffectFade,
-  EffectCards,
-  EffectCoverflow,
+  // EffectCards,
+  // EffectCoverflow,
+  EffectCreative,
   Keyboard,
   Controller,
 ]);
@@ -22,7 +24,7 @@ export const swiperMain = () => {
       crossFade: true,
     },
 
-    speed: 600,
+    speed: 1000,
     loop: false,
     loopedSlides: 6,
     slidesPerView: '1',
@@ -40,12 +42,19 @@ export const swiperMain = () => {
     },
   });
   let swiperMainSlider2 = new Swiper('.main-slider-2', {
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true,
+    effect: 'creative',
+    creativeEffect: {
+      prev: {
+        // will set `translateZ(-400px)` on previous slides
+        translate: [0, 0, -400],
+      },
+      next: {
+        // will set `translateX(100%)` on next slides
+        translate: ['120%', 0, 0],
+      },
     },
 
-    speed: 600,
+    speed: 1000,
     loop: false,
     loopedSlides: 6,
     slidesPerView: '1',
@@ -53,8 +62,8 @@ export const swiperMain = () => {
     allowTouchMove: true,
     keyboard: true,
     navigation: {
-      nextEl: '.main-slider__nav-arrow--right',
-      prevEl: '.main-slider__nav-arrow--left',
+      nextEl: '.main-slider-2__nav-arrow--right',
+      prevEl: '.main-slider-2__nav-arrow--left',
     },
     keyboard: true,
 
