@@ -266,6 +266,23 @@
   // animation: SlideFadeRight 0.6s var(--easing) 1s forwards;
 }
 
+@mixin animation-right {
+  transform: translateX(#{$animation-translate});
+  opacity: 0;
+  transition: all var(--transition);
+}
+@mixin animation-right-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+@mixin animation-fade {
+  opacity: 0;
+  transition: all var(--transition);
+}
+@mixin animation-fade-active {
+  opacity: 1;
+}
+
 @mixin underline-hover {
   background-image: linear-gradient($color-black, $color-black);
   background-repeat: no-repeat;

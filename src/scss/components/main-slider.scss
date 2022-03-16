@@ -3,6 +3,7 @@
   position: relative;
 
   &__wrapper {
+    align-items: center;
   }
 
   &__container {
@@ -144,6 +145,7 @@
     box-sizing: border-box;
 
     flex: 0 0 auto;
+    transition-timing-function: $easing;
 
     @media (min-width: $breakpoint-medium) {
       align-items: center;

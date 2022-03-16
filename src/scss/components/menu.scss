@@ -3,21 +3,23 @@
   right: 0;
   top: 0;
   background-color: $color-black;
-  padding: 0 45px 0 102px;
+  padding: calc(#{$header-margin} * 2) 45px 102px 102px;
+
   box-sizing: border-box;
   width: 100%;
   transition: all var(--transition);
-  max-height: 0;
+  // max-height: 0;
   overflow: hidden;
   z-index: 1000;
+  transform: translateX(100%);
 
   @media (min-width: $breakpoint-small) {
     width: 340px;
   }
 
   &.active {
-    max-height: 1000px;
-    padding: calc(#{$header-margin} * 2) 45px 102px 102px;
+    // max-height: 1000px;
+    transform: translateX(0);
   }
 
   & > *:last-child {
@@ -38,10 +40,22 @@
     &:hover {
       opacity: 0.8;
     }
+
+    @include animation-fade;
+    .menu.active & {
+      @include animation-fade-active;
+      transition-delay: 0.7s;
+    }
   }
 
   &__list {
     margin-bottom: 98px;
+
+    @include animation-right;
+    .menu.active & {
+      @include animation-right-active;
+      transition-delay: 0.2s;
+    }
   }
 
   &__item {
@@ -58,12 +72,24 @@
   }
   &__buttons {
     margin-bottom: 113px;
+
+    @include animation-right;
+    .menu.active & {
+      @include animation-right-active;
+      transition-delay: 0.4s;
+    }
   }
 
   &__language {
     &-item {
       @include font-menu;
       color: $color-white;
+    }
+
+    @include animation-right;
+    .menu.active & {
+      @include animation-right-active;
+      transition-delay: 0.5s;
     }
   }
 }

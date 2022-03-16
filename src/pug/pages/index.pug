@@ -7,7 +7,7 @@ block variables
   - var footerClass = 'footer--black';
 
 block content
-  include ../includes/modules/preloader
+  include ../includes/modules/preloader-main
   section.section.main-slider
     .main-slider__container.container
       .main-slider-1.swiper-container
@@ -36,30 +36,30 @@ block content
           ul.main-posts__nav
             li.main-posts__nav-item(data-anchor="1")
               .main-posts__nav-item-progress
-              a(href="")
+              a(href="#posts-list-articles")
                 span articles
             li.main-posts__nav-item(data-anchor="2")
               .main-posts__nav-item-progress
-              a(href="")
+              a(href="#posts-list-news")
                 span news
             li.main-posts__nav-item(data-anchor="3")
               .main-posts__nav-item-progress
-              a(href="")
+              a(href="#posts-list-reviews")
                 span reviews
     .container
-      ul.main-posts__list.posts__list.posts__list--articles
+      ul.main-posts__list.posts__list.posts__list--articles#posts-list-articles
         .posts__list-title articles
         +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'vertical', delay: '200'})
         +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'horizontal', delay: '200'})
         +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'The new <br> part of art <br> history', class: 'vertical', delay: '200'})
         +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'The Youth <br> of Antiquity', class: 'horizontal', delay: '200'})
-      ul.main-posts__list.posts__list.posts__list--news
+      ul.main-posts__list.posts__list.posts__list--news#posts-list-news
         .posts__list-title news
         +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'vertical', delay: '200'})
         +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'horizontal', delay: '200'})
         +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'The new <br> part of art <br> history', class: 'vertical', delay: '200'})
         +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'The Youth <br> of Antiquity', class: 'horizontal', delay: '200'})
-      ul.main-posts__list.posts__list.posts__list--reviews
+      ul.main-posts__list.posts__list.posts__list--reviews#posts-list-reviews
         .posts__list-title reviews
         +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'vertical', delay: '200'})
         +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'horizontal', delay: '200'})

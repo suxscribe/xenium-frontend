@@ -29,7 +29,7 @@ export default class App {
 
   init() {
     window.addEventListener('DOMContentLoaded', (event) => {
-      preloaderInit();
+      // preloaderInit();
       setVh();
       window.addEventListener('resize', setVh);
 
@@ -65,7 +65,7 @@ export default class App {
 
     // Wait for everything to load
     window.addEventListener('load', (event) => {
-      preloaderHide();
+      // preloaderHide();
       initAnimations();
       authorTitleAnimation();
       // headerAnimationInit();

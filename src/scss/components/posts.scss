@@ -43,7 +43,7 @@
 
       @media (min-width: $breakpoint-medium) {
         position: absolute;
-        top: 0;
+        top: $margin-100;
       }
 
       @media (min-width: $desktop-width) {

@@ -1,7 +1,12 @@
-.preloader.preloader--active
-  .preloader__main 
-    .preloader__center
-      .preloader__image 
-
-      .preloader__content 
-        img(src="/assets/logo.svg", alt="").preloader__logo
+.preloader.preloader--visible.preloader--inner
+  //- .preloader__container 
+  //-   .preloader__left 
+  //-     +svg({name:'preloader-x'})
+  //-   .preloader__center 
+  //-     +svg({name:'preloader-center'})
+  //-   .preloader__right 
+  //-     +svg({name:'preloader-g'})
+  .preloader__inner
+    .preloader__inner-center
+      .preloader__inner-image 
+      img(src="/assets/logo.svg", alt="").preloader__logo

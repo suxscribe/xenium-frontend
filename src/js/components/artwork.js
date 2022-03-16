@@ -1,7 +1,9 @@
 import PhotoSwipe from 'photoswipe';
 import PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default.js';
 import MicroModal from 'micromodal';
+import ResizeSensorMin from 'resize-sensor';
 import StickySidebar from 'sticky-sidebar-v2';
+import { vars } from './vars';
 
 export const artworkGallery = () => {
   var initPhotoSwipeFromDOM = function (gallerySelector) {
@@ -294,6 +296,8 @@ export const artworkStickySidebar = () => {
       topSpacing: 40,
       bottomSpacing: 40,
       containerSelector: '.artwork__left',
+      resizeSensor: true,
+      minWidth: vars.breakpointDesktop,
       // innerWrapperSelector: '.artwork__left-wrap',
       // scrollContainer: '.main',
     });

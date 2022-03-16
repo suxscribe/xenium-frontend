@@ -7,6 +7,7 @@
   color: $color-white;
   display: none;
   z-index: 1000;
+  // display: block;
 
   &.active {
     display: block;
@@ -16,10 +17,11 @@
     display: flex;
     flex-direction: column;
     gap: responsive-value(45px, 90px);
-    margin: 0 auto;
+    // margin: 0 auto;
     max-width: 80%;
+    justify-content: start;
 
-    padding: $margin-100 0 responsive-value(70px, 120px) 0;
+    padding: $block-margin 0 $margin-60 0;
 
     @media (min-width: $breakpoint-small) {
       flex-direction: row;
@@ -43,7 +45,7 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 30px;
+    gap: 20px;
   }
 
   &__text {
@@ -51,19 +53,20 @@
     @include font-small;
 
     @media (min-width: $breakpoint-small) {
-      @include font-body;
+      @include font-small;
     }
     @media (min-width: $breakpoint-large) {
-      max-width: 80%;
+      // max-width: 80%;
     }
   }
   &__link {
     color: $color-white;
     text-decoration: underline;
+    margin-bottom: 5px;
     @include font-small;
 
     @media (min-width: $breakpoint-small) {
-      @include font-body;
+      // @include font-body;
     }
 
     &:hover {

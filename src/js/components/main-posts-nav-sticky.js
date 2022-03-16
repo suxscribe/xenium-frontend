@@ -2,6 +2,9 @@ import { gsap } from 'gsap';
 
 import * as ScrollMagic from 'scrollmagic';
 import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
+import ResizeSensorMin from 'resize-sensor';
+import StickySidebar from 'sticky-sidebar-v2';
+import { vars } from './vars';
 
 ScrollMagicPluginGsap(ScrollMagic, gsap);
 const controller = new ScrollMagic.Controller();
@@ -13,6 +16,8 @@ export const MainPostsNavSticky = () => {
       bottomSpacing: 40,
       containerSelector: '.main-posts',
       innerWrapperSelector: '.main-posts__nav-sticky',
+      resizeSensor: true,
+      minWidth: vars.breakpointSmall,
       // scrollContainer: '.main',
     });
   }

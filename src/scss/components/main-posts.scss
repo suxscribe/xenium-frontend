@@ -9,7 +9,7 @@ $nav-underline: 2px;
 
     // gap: responsive-value(30px, 98px);
 
-    @media (min-width: $breakpoint-medium) {
+    @media (min-width: $breakpoint-small) {
       flex-direction: row-reverse;
     }
 
@@ -104,16 +104,22 @@ $nav-underline: 2px;
       }
 
       &-progress {
-        position: absolute;
-        bottom: 0;
-        background-color: $color-black;
-        height: $nav-underline;
-        right: 0;
+        display: none;
+
+        @media (min-width: $breakpoint-small) {
+          display: block;
+          position: absolute;
+          bottom: 0;
+          background-color: $color-black;
+          height: $nav-underline;
+          right: 0;
+        }
       }
     }
   }
 
   &__list {
+    padding-top: $margin-100;
     margin-bottom: responsive-value(80px, 180px);
 
     &:last-child {

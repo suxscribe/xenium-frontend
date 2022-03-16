@@ -3,7 +3,8 @@ header.header
     a.header__logo(href="index.html") 
       +logo()
     .header__menu
-      .header__menu-link MENU 
+      .header__menu-link
+        +svg({name: 'menu', viewbox:'0 0 56.3 14.9'})
   nav.menu
     a.menu__close
       +svg({name: 'close'})

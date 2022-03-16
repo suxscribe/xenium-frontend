@@ -24,11 +24,11 @@ mixin modal-size()
   +modal({id:"modal-size", class:'--size'})
     .artwork__size.artwork__size--sculpture
       figure.artwork__size-work 
-        figcaption.artwork__size-caption: span 100 cm
+        figcaption.artwork__size-caption.artwork__size-caption--left: span 100 cm
         img(src="/assets/artwork-size-01.png", alt="", data-height="100")
       figure.artwork__size-reference 
         img(src="/assets/artwork-size-reference.svg", alt="", data-height="200")
-        figcaption.artwork__size-caption: span 200 cm
+        figcaption.artwork__size-caption.artwork__size-caption--right: span 200 cm
 
 mixin modal-like()
   +modal({id:"modal-like", title:"thank you!", class:"--like"})
