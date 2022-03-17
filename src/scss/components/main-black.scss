@@ -1,3 +1,14 @@
+@mixin main-black-transition {
+  transform: translateY($translate);
+  opacity: 0;
+  transition: all var(--transition);
+
+  &.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .main-black {
   background-color: $color-black;
   color: $color-white;
@@ -90,6 +101,8 @@
     @media (min-width: $breakpoint-medium) {
       @include font-h1;
     }
+
+    @include main-black-transition;
   }
   &__subtitle {
     grid-column: 3 / -1;
@@ -109,6 +122,8 @@
       margin: -1.4em 0 -1em 1em;
       @include font-lead;
     }
+
+    @include main-black-transition;
   }
   &__title-2 {
     grid-column: 3 / -1;
@@ -129,6 +144,8 @@
 
       @include font-h1;
     }
+
+    @include main-black-transition;
   }
   &__text {
     grid-column: 1 / -1;
@@ -142,9 +159,13 @@
       grid-column: 1 / 5;
       grid-row: 5 / 6;
     }
+
+    @include main-black-transition;
   }
   &__button {
     // grid-column: 1 / 4;
     // grid-row: 7 / 8;
+
+    @include main-black-transition;
   }
 }
