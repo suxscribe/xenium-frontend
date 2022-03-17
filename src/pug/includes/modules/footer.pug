@@ -1,21 +1,24 @@
 footer.footer(class=footerClass)
   .footer__wrapper.container 
+    .footer__scrolltop 
+      a(href="#top").arrow.arrow--up.footer__scrolltop-link
+        +svg({name: 'arrow-head'}).arrow__head.footer__scrolltop-svg
     .footer__top
       .footer__left 
-        .footer__email(data-aos="fade-up", data-aos-delay="100")
+        .footer__email(data-aos="fade-up", data-aos-delay="100", data-aos-anchor=".footer")
           a(href="mailto:office@xeniumgallery.com ") office@xeniumgallery.com 
       .footer__right 
-        .footer__contacts(data-aos="fade-up", data-aos-delay="300")
+        .footer__contacts(data-aos="fade-up", data-aos-delay="200", data-aos-anchor=".footer")
           | Curation: Philip Firsov 
           a(href="tel:+447745022062") +44 7745 022062
     .footer__bottom
       .footer__left 
-        .footer__copyright(data-aos="fade-up", data-aos-delay="500")
+        .footer__copyright(data-aos="fade-up", data-aos-delay="300", data-aos-anchor=".footer")
           p © 2021 Xenium Gallery
           p 
             a(href="#") Privacy policy
       .footer__right 
-        .footer__social(data-aos="fade-up", data-aos-delay="700")
+        .footer__social(data-aos="fade-up", data-aos-delay="400", data-aos-anchor=".footer")
           a(href="").footer__social-link 
             +svg({name:'facebook'})
           a(href="").footer__social-link 
