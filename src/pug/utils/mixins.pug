@@ -17,6 +17,11 @@ mixin form-row(args)
     label.form__label(for=args.name)= args.title
 
 
+mixin close(args)
+  a(href="#" class=args.class).close
+    //- +svg({name: 'close'})
+    span.close__top
+    span.close__bottom
 
 
 mixin logo()
@@ -73,7 +78,8 @@ mixin main-slide-2(args)
       img(src="/assets/" + args.image, alt="")
 
 mixin main-black-bg-item(args)
-  .main-black__bg-item(class="main-black__bg-item--" + args.class, data-aos="zoom-in", data-aos-delay=args.delay)
+  .main-black__bg-item(class="main-black__bg-item--" + args.class)
+    //- data-aos="zoom-in", data-aos-delay=args.delay
     img(src="/assets/" + args.image, alt="")
 
 mixin content-slide(args)
