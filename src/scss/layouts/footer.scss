@@ -2,6 +2,7 @@
   padding: 95px 0 responsive-value(50px, 100px);
   border-top: 2px solid $color-black;
   overflow: hidden;
+  position: relative;
 
   @media (min-width: $breakpoint-medium) {
   }
@@ -117,5 +118,33 @@
         opacity: 0.5;
       }
     }
+  }
+
+  &__scrolltop {
+    body.page--index & {
+      display: block;
+    }
+    display: none;
+
+    position: absolute;
+    right: $container-margin;
+    top: -22px;
+    overflow: hidden;
+    cursor: pointer;
+
+    transform-origin: bottom right;
+    transform: rotate(-90deg);
+
+    &:hover {
+      .footer__scrolltop-link {
+        animation: OutIn 1s cubic-bezier(0.5, 0, 0.26, 0.99) forwards;
+      }
+    }
+
+    &-link {
+      &:hover {
+      }
+    }
+    // transform: rotate(90deg);
   }
 }

@@ -36,7 +36,7 @@ $nav-underline: 2px;
 
       opacity: 0;
       body.init & {
-        animation: SlideFadeLeft 0.6s var(--easing) 1.5s forwards;
+        animation: SlideFadeLeft 0.2s var(--easing) 1s forwards;
       }
     }
 

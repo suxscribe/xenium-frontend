@@ -6,8 +6,7 @@ header.header
       .header__menu-link
         +svg({name: 'menu', viewbox:'0 0 56.3 14.9'})
   nav.menu
-    a.menu__close
-      +svg({name: 'close'})
+    +close({class:'menu__close'})
     ul.menu__list
       +menu-item({name: 'Gallery', href: '/gallery.html'})
       +menu-item({name: 'Artists', href: '/gallery.html'})

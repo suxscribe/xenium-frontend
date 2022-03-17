@@ -45,7 +45,7 @@ block content
         .artwork__right 
           .artwork__gallery(itemscope, itemtype="http://schema.org/ImageGallery")
             figure.artwork__image(itemscope, itemtype="http://schema.org/ImageObject")
-              a(href="/assets/artwork-image-01.jpg",itemprop="contentUrl", data-size='996x1400').artwork__image-image 
+              a(href="/assets/artwork-image-01.jpg",itemprop="contentUrl", data-size='1000x1250').artwork__image-image 
                 img(src="/assets/artwork-image-01.jpg", alt="")
               .artwork__image-icons
                 a(href="").artwork__image-icon.artwork__image-icon--size 
@@ -55,8 +55,14 @@ block content
                 a(href="").artwork__image-icon.artwork__image-icon--zoom 
                   +svg-zoom()
             figure.artwork__image(itemscope, itemtype="http://schema.org/ImageObject")
-              a(href="/assets/artwork-image-01.jpg",itemprop="contentUrl", data-size='996x1400').artwork__image-image 
-                img(src="/assets/artwork-image-01.jpg", alt="")
+              a(href="/assets/artwork-image-02.jpg",itemprop="contentUrl", data-size='1400x1000').artwork__image-image 
+                img(src="/assets/artwork-image-02.jpg", alt="")
+              .artwork__image-icons
+                a(href="").artwork__image-icon.artwork__image-icon--zoom 
+                  +svg-zoom()
+            figure.artwork__image(itemscope, itemtype="http://schema.org/ImageObject")
+              a(href="/assets/artwork-image-03.jpg",itemprop="contentUrl", data-size='1400x1000').artwork__image-image 
+                img(src="/assets/artwork-image-03.jpg", alt="")
               .artwork__image-icons
                 a(href="").artwork__image-icon.artwork__image-icon--zoom 
                   +svg-zoom()
@@ -68,6 +74,8 @@ block content
           +gallery-item({image: 'gallery-item-01.jpg', title: 'Red <br> Man I', author: 'Valery Alyoshin', tags: 'nonconformism, avant-garde, 60th, russian art, all, oil canvas', class: ''})
           +gallery-item({image: 'gallery-item-02.jpg', title: 'Red <br> Man I', author: 'Valery Alyoshin', tags: 'nonconformism, avant-garde, 60th, russian art, all, oil canvas', class: 'reverse'})
           +gallery-item({image: 'gallery-item-01.jpg', title: 'Red <br> Man I', author: 'Valery Alyoshin', tags: 'nonconformism, avant-garde, 60th, russian art, all, oil canvas', class: ''})
+          +gallery-item({image: 'gallery-item-02.jpg', title: 'Red <br> Man I', author: 'Valery Alyoshin', tags: 'nonconformism, avant-garde, 60th, russian art, all, oil canvas', class: 'reverse'})
+          +gallery-item({image: 'gallery-item-02.jpg', title: 'Red <br> Man I', author: 'Valery Alyoshin', tags: 'nonconformism, avant-garde, 60th, russian art, all, oil canvas', class: 'reverse'})
           +gallery-item({image: 'gallery-item-02.jpg', title: 'Red <br> Man I', author: 'Valery Alyoshin', tags: 'nonconformism, avant-garde, 60th, russian art, all, oil canvas', class: 'reverse'})
       .artwork__navigation.navigation 
         +navigation-link({class:'right', name: 'show all works', desc: 'Valery Alyoshin'})

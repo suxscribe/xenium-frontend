@@ -4,6 +4,10 @@
   // overflow-x: hidden;
   position: relative;
 
+  .page--index & {
+    padding-bottom: 0;
+  }
+
   &__wrapper {
     display: flex;
     align-items: flex-start;
@@ -63,14 +67,37 @@
       display: flex;
       align-items: center;
       transition: all var(--transition);
+      z-index: 1;
+      position: relative;
       cursor: pointer;
 
+      transition-delay: 0.3s;
+
+      &:after {
+        content: '';
+        position: absolute;
+        transition: inherit;
+        z-index: -1;
+        top: 0;
+        width: 0;
+        height: 100%;
+        left: 0;
+        background: $color-white;
+      }
+
       &:hover {
-        background-color: $color-white;
+        background-color: $color-black;
         color: $color-black;
+
+        &:after {
+          background: $color-white;
+          transition-delay: 0.1s;
+          width: 100%;
+        }
 
         & svg {
           fill: $color-black;
+          transition-delay: 0.35s;
         }
       }
 
@@ -79,6 +106,7 @@
         transition: all var(--transition);
         width: 57px;
         height: 15px;
+        transition-delay: 0.4s;
       }
     }
   }

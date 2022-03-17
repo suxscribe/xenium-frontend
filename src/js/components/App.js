@@ -21,6 +21,8 @@ import {
   MainPostsNavSticky,
   MainPostsNavProgress,
 } from './main-posts-nav-sticky';
+import { initMainBlackAnimation } from './init-main-black-animation';
+import { scrollTop } from './scroll-top';
 
 export default class App {
   constructor(_options) {
@@ -34,6 +36,7 @@ export default class App {
       window.addEventListener('resize', setVh);
 
       menuToggle();
+      scrollTop();
 
       swiperMain();
       postsList();
@@ -61,6 +64,8 @@ export default class App {
 
       // artwork page
       artworkStickySidebar();
+
+      initMainBlackAnimation();
     });
 
     // Wait for everything to load
