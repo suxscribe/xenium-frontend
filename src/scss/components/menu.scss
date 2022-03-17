@@ -3,7 +3,7 @@
   right: 0;
   top: 0;
   background-color: $color-black;
-  padding: calc(#{$header-margin} * 2) 45px 102px 102px;
+  padding: calc(#{$header-margin} * 2) 0 102px 102px;
 
   box-sizing: border-box;
   width: 100%;
@@ -27,7 +27,8 @@
   }
 
   &__close {
-    display: block;
+    display: flex;
+    align-items: center;
     width: 60px;
     height: 60px;
     position: absolute;
@@ -35,10 +36,15 @@
     top: $header-margin;
     transform: translateY(-25%);
     cursor: pointer;
+    overflow: hidden;
     transition: opacity var(--transition);
 
     &:hover {
       opacity: 0.8;
+    }
+
+    & svg {
+      display: none;
     }
 
     @include animation-fade;
@@ -68,6 +74,29 @@
     &-link {
       @include font-menu;
       color: $color-white;
+      display: block;
+      position: relative;
+      padding-right: 45px;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: -4px;
+        border-bottom: 2px solid $color-white;
+        width: 100%;
+        transition: all var(--transition);
+        transform: translateX(100%);
+        transition-delay: 0.4s;
+      }
+
+      &:hover {
+        color: $color-white;
+        &:after {
+          transition-delay: 0s;
+          transform: translateX(0);
+        }
+      }
     }
   }
   &__buttons {
