@@ -41,16 +41,33 @@ export const swiperMain = () => {
       console.log(e);
     },
   });
+
+  const slideDelta = 20;
+  // const swiperMainSlides = document.querySelectorAll('.main-slider-2__item');
+  const swiperEffect = (swiper) => {
+    swiper.slides.forEach((slide, index) => {
+      const delta = (index - swiper.activeIndex) * slideDelta;
+      const slideInner = slide.querySelector('.main-slider-2__item-image');
+      slideInner.style.transform = `translateX(${delta}px)`;
+      if (index - swiper.activeIndex > 0) {
+        slideInner.style.opacity = 1 / (index - swiper.activeIndex);
+      } else {
+        slideInner.style.opacity = 1;
+      }
+    });
+  };
+
   let swiperMainSlider2 = new Swiper('.main-slider-2', {
     effect: 'creative',
     creativeEffect: {
       prev: {
         // will set `translateZ(-400px)` on previous slides
-        translate: [0, 0, -400],
+        translate: ['120%', 0, 0],
       },
       next: {
         // will set `translateX(100%)` on next slides
-        translate: ['120%', 0, 0],
+        translate: ['20%', 0, -400],
+        opacity: 0.5,
       },
     },
 
@@ -69,6 +86,15 @@ export const swiperMain = () => {
 
     onSlideChangeEnd: function (e) {
       console.log(e);
+    },
+    on: {
+      init: (swiper) => {
+        swiperEffect(swiper);
+      },
+      slideChange: (swiper) => {
+        // console.log(swiper.slides);
+        swiperEffect(swiper);
+      },
     },
   });
 

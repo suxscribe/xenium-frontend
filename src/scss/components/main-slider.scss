@@ -1,6 +1,14 @@
+$main-slider-gap: responsive-value(30px, 60px);
+
 .main-slider {
   margin-top: 0;
   position: relative;
+
+  transition: all var(--transition);
+  opacity: 0;
+  body.init & {
+    animation: SlideFadeTop 0.6s var(--easing) 0.8s forwards;
+  }
 
   &__wrapper {
     align-items: center;
@@ -10,7 +18,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: responsive-value(30px, 60px);
+    gap: $main-slider-gap;
 
     @media (min-width: $breakpoint-medium) {
       margin: 0 $container-margin;
@@ -133,8 +141,8 @@
   position: relative;
 
   @media (min-width: $breakpoint-medium) {
-    flex: 0 0 70%;
-    width: 70%;
+    flex: 0 0 calc(70% - #{$main-slider-gap});
+    width: calc(70% - #{$main-slider-gap});
   }
 
   &__item {
@@ -143,6 +151,7 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    overflow: visible !important;
 
     flex: 0 0 auto;
     transition-timing-function: $easing;
@@ -155,6 +164,7 @@
 
     &-image {
       order: -1;
+      transition: all 0.6s linear;
       // cursor: url(/assets/cursor-arrow-button.svg), auto;
 
       @media (min-width: $breakpoint-medium) {
@@ -177,10 +187,40 @@
 
     z-index: 5;
 
+    @media (min-width: $breakpoint-medium) {
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      align-items: stretch;
+      gap: 0;
+    }
+
     &-arrow {
+      flex: 1 1 auto;
+
+      &--left {
+        cursor: url(/assets/cursor-arrow-button-left.svg), auto;
+        &.swiper-button-disabled {
+          cursor: url(/assets/cursor-arrow-button-left-disabled.svg), auto;
+        }
+      }
+      &--right {
+        cursor: url(/assets/cursor-arrow-button-right.svg), auto;
+        &.swiper-button-disabled {
+          cursor: url(/assets/cursor-arrow-button-right-disabled.svg), auto;
+        }
+      }
+
       &.swiper-button-disabled {
         opacity: 0.5;
-        pointer-events: none;
+        // pointer-events: none;
+      }
+
+      & > * {
+        @media (min-width: $breakpoint-medium) {
+          display: none;
+        }
       }
     }
   }
