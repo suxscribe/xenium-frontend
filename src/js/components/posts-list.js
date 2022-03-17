@@ -59,7 +59,10 @@ export const postsHeadersAnimation = () => {
   document.querySelectorAll('.posts__list-title').forEach((header) => {
     let animation = gsap.timeline();
 
-    animation.to(header, { duration: 1, x: '-100vw' });
+    let xTo = '-100vw';
+    if (header.classList.contains('posts__list-title--news')) xTo = '100vw';
+
+    animation.to(header, { duration: 1, x: xTo });
 
     new ScrollMagic.Scene({
       triggerElement: header,

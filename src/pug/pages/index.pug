@@ -48,19 +48,19 @@ block content
                 span reviews
     .container
       ul.main-posts__list.posts__list.posts__list--articles#posts-list-articles
-        .posts__list-title articles
+        .posts__list-title.posts__list-title--articles articles
         +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'vertical', delay: '200'})
         +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'horizontal', delay: '200'})
         +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'The new <br> part of art <br> history', class: 'vertical', delay: '200'})
         +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'The Youth <br> of Antiquity', class: 'horizontal', delay: '200'})
       ul.main-posts__list.posts__list.posts__list--news#posts-list-news
-        .posts__list-title news
+        .posts__list-title.posts__list-title--news news
         +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'vertical', delay: '200'})
         +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'horizontal', delay: '200'})
         +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'The new <br> part of art <br> history', class: 'vertical', delay: '200'})
         +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'The Youth <br> of Antiquity', class: 'horizontal', delay: '200'})
       ul.main-posts__list.posts__list.posts__list--reviews#posts-list-reviews
-        .posts__list-title reviews
+        .posts__list-title.posts__list-title--reviews reviews
         +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'vertical', delay: '200'})
         +post-teaser({image: 'post-teaser-02.jpg', type: 'articles', title: 'Valery <br> Alyoshin', class: 'horizontal', delay: '200'})
         +post-teaser({image: 'post-teaser-01.jpg', type: 'articles', title: 'The new <br> part of art <br> history', class: 'vertical', delay: '200'})
@@ -79,14 +79,14 @@ block content
 
     .container 
       .main-black__grid
-        .main-black__title(data-aos="fade-up", data-aos-delay="1000") Xenium Gallery
-        .main-black__subtitle(data-aos="fade-up", data-aos-delay="1100", data-aos-anchor=".main-black__title")
+        .main-black__title() Xenium Gallery
+        .main-black__subtitle()
           | in association 
           br
           | with
-        .main-black__title-2(data-aos="fade-up", data-aos-delay="1200", data-aos-anchor=".main-black__title") The New Athens
-        .main-black__text(data-aos="fade-up", data-aos-delay="1300", data-aos-anchor=".main-black__title") The following catalogue comprises Russian painting, and Greek and Italian sculpture from the mid 20th to early 21st centuries, in bronze, marble, gold, and oil on canvas. 
-      a(href="#", data-aos="fade-up", data-aos-delay="1400", data-aos-anchor=".main-black__title").main-black__button.button.button--black Check gallery
+        .main-black__title-2() The New Athens
+        .main-black__text() The following catalogue comprises Russian painting, and Greek and Italian sculpture from the mid 20th to early 21st centuries, in bronze, marble, gold, and oil on canvas. 
+      a(href="#").main-black__button.button.button--black Check gallery
 
 
               
