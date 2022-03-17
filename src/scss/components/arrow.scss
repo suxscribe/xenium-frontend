@@ -64,4 +64,21 @@
       transform: rotate(180deg);
     }
   }
+
+  &--up {
+    width: $slide-arrow-width;
+
+    &:hover {
+      width: $slide-arrow-width;
+    }
+    // transform: rotate(-90deg);
+    .page--index & {
+      &:before {
+        background-color: $color-white;
+      }
+      & svg {
+        fill: $color-white;
+      }
+    }
+  }
 }
