@@ -14,9 +14,10 @@
   background: transparent; //$color-white;
   overflow: hidden;
   transition: all var(--transition);
+  transition-delay: 0.3s;
   cursor: pointer;
 
-  &:before,
+  // &:before,
   &:after {
     content: '';
     position: absolute;
@@ -25,30 +26,30 @@
     top: 0;
     width: 0;
     height: 100%;
+    transition-delay: 0s;
   }
-  &:before {
-    right: 0;
-    border: 1px solid $color-black;
-    border-left: 0;
-    border-right: 0;
-  }
+  // &:before {
+  //   right: 0;
+  //   border: 1px solid $color-black;
+  //   border-left: 0;
+  //   border-right: 0;
+  // }
   &:after {
     left: 0;
+    background: $color-black;
   }
 
   &:hover,
   &:focus {
-    // border-color: $color-white;
     transition-delay: 0.35s;
 
     text-decoration: none;
-    // background-color: $color-black;
     color: $color-white;
 
-    &:before {
-      transition-delay: 0s;
-      // width: 100%;
-    }
+    // &:before {
+    //   transition-delay: 0s;
+    //   width: 100%;
+    // }
     &:after {
       background: $color-black;
       transition-delay: 0.1s;
@@ -60,13 +61,22 @@
     color: $color-white;
     background-color: $color-black;
     border-color: $color-white;
+    z-index: 1;
+
+    &:after {
+      background-color: $color-white;
+    }
 
     &:hover,
     &:focus {
-      border-color: $color-black;
+      // border-color: $color-black;
       text-decoration: none;
-      background-color: $color-white;
+      // background-color: $color-white;
       color: $color-black;
+
+      &:after {
+        background: $color-white;
+      }
     }
   }
 
