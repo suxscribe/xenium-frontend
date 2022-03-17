@@ -236,8 +236,8 @@ export const artworkSizeCompare = () => {
 
   if (reference && artwork) {
     const referenceRealHeight = reference.dataset.height;
-    const referenceHeight = reference.offsetHeight;
-    console.log(referenceHeight, referenceRealHeight);
+    const referenceHeight = reference.clientHeight;
+    // console.log(referenceHeight, referenceRealHeight);
 
     const artworkRealHeight = artwork.dataset.height;
 
@@ -245,13 +245,7 @@ export const artworkSizeCompare = () => {
       (referenceHeight * artworkRealHeight) / referenceRealHeight;
 
     artwork.style.height = artworkHeight + 'px';
-    console.log(artworkHeight);
-
-    // set reference size as 100%
-
-    // calculate reference size
-
-    // calculate artwork size
+    // console.log(artworkHeight);
   }
 };
 
@@ -270,6 +264,9 @@ export const artworkSizeListener = () => {
       MicroModal.show('modal-size', {
         awaitOpenAnimation: true,
         awaitCloseAnimation: true,
+        // onShow: () => {
+        //   setTimeout(artworkSizeCompare, 2000);
+        // },
       });
       artworkSizeCompare();
     });
