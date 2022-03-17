@@ -1,0 +1,70 @@
+.close {
+  display: flex;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  cursor: pointer;
+  overflow: hidden;
+  transition: opacity var(--transition);
+
+  &:hover {
+    // opacity: 0.8;
+  }
+
+  & span {
+    width: 100%;
+    position: absolute;
+
+    &:before {
+      position: absolute;
+      display: block;
+      right: auto;
+      left: auto;
+      width: 100%;
+      height: 2px;
+      background: $color-white;
+      content: '';
+      transition: all var(--transition);
+    }
+  }
+
+  &__top {
+    transform: rotate(45deg);
+
+    &:before {
+      top: 0;
+      // transform: rotate(45deg);
+
+      .close:hover & {
+        animation: OutIn 0.4s $easing 0s forwards;
+      }
+    }
+  }
+  &__bottom {
+    transform: rotate(-45deg);
+
+    &:before {
+      // bottom: -3px;
+      // transform: rotate(-45deg);
+      .close:hover & {
+        animation: OutIn 0.4s $easing 0.1s forwards;
+      }
+    }
+  }
+
+  &--size {
+    & span {
+      &:before,
+      &:after {
+        background-color: $color-black;
+      }
+    }
+  }
+
+  // @include animation-fade;
+  // .menu.active & {
+  //   @include animation-fade-active;
+  //   transition-delay: 0.7s;
+  // }
+}
