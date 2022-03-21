@@ -20,7 +20,10 @@ block content
       hr 
       a.button(href="#", data-micromodal-open="modal-signup") Learn More
       a.button(href="#", data-micromodal-open="modal-like") Like
-    .modals 
+      //- a.button(href="#", data-micromodal-open="modal-artwork") Artwork
+      p: a(href="#").artwork-modal__link Open Artwork Modal 
+    +modal-artwork()
+    //- .modals 
       +modal({id:"modal-signup", title:"Sign up <br> for an event", class:'--form'})
         h3.modal__title !{'Sign up <br>for an event'}
         form.modal__form.form.form--modal
@@ -48,3 +51,4 @@ block content
             +svg({name:'instagram'})
           a.modal__social(href="#")
             +svg({name:'link'})
+      

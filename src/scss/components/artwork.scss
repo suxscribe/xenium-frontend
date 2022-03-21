@@ -432,4 +432,18 @@
       }
     }
   }
+  &__loader {
+    display: none;
+
+    &.active {
+      display: flex;
+      justify-content: center;
+    }
+
+    & svg {
+      flex: 0 0 auto;
+      width: 160px;
+      height: 160px;
+    }
+  }
 }

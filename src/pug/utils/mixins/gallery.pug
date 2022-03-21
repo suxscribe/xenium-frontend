@@ -2,7 +2,7 @@
 mixin gallery-item(args)
   li(class="gallery__item gallery__item--" + args.class, data-aos="fade-up", data-aos-delay="200")
     .gallery__item-image 
-      a(href="#").gallery__item-link
+      a(href="#").gallery__item-link.artwork-modal-reload
       img(src="/assets/" + args.image, alt="")
       div(data-micromodal-open="modal-like").gallery__item-like
         +svg-like()
@@ -10,7 +10,7 @@ mixin gallery-item(args)
         
     .gallery__item-content 
       .gallery__item-title
-        a(href="") !{args.title}
+        a(href="#").artwork-modal-reload !{args.title}
       .gallery__item-author !{args.author}
       .gallery__item-tags= args.tags
 

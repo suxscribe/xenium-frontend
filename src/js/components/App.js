@@ -23,6 +23,7 @@ import {
 } from './main-posts-nav-sticky';
 import { initMainBlackAnimation } from './init-main-black-animation';
 import { scrollTop } from './scroll-top';
+import { artworkModal } from './artwork-modal';
 
 export default class App {
   constructor(_options) {
@@ -49,6 +50,7 @@ export default class App {
       artworkGallery();
       // artworkSizeCompare();
       artworkSizeListener();
+      artworkModal();
 
       modals();
       setFormValidation();

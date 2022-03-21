@@ -11,7 +11,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 10;
+    z-index: 100;
     background: rgba(255, 255, 255, 0.6);
     background-image: none;
     display: flex;
@@ -40,15 +40,21 @@
       max-width: 484px;
     }
 
-    &--size {
+    &--size,
+    &--artwork {
       background: $color-white;
       margin: 0;
       max-width: none;
       width: 100%;
       min-height: calc(var(--vh, 1vh) * 100);
       display: flex;
-      align-items: center;
       color: $color-black;
+    }
+
+    &--artwork {
+    }
+    &--size {
+      align-items: center;
     }
   }
 
@@ -134,10 +140,8 @@
     width: 40px;
     height: 40px;
     // padding: 8px;
-    border-radius: 50%;
     right: $content-padding;
     top: $content-padding;
-    cursor: pointer;
     background: transparent;
     border: 0;
     transition: background-color var(--transition);
@@ -147,7 +151,8 @@
       transition: all var(--transition);
       pointer-events: none;
 
-      .modal--size & {
+      .modal--size &,
+      .modal--artwork & {
         stroke: $color-black;
       }
     }

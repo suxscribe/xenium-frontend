@@ -5,7 +5,9 @@
   position: relative;
 
   .page--index & {
-    padding-bottom: 0;
+    @media (min-width: $breakpoint-medium) {
+      padding-bottom: 0;
+    }
   }
 
   &__wrapper {
