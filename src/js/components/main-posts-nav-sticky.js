@@ -26,41 +26,6 @@ export const MainPostsNavSticky = () => {
 let activeIndex = 0;
 
 export const MainPostsNavProgress = () => {
-  // window.onscroll = () => {
-  //   const scrollTop = window.scrollY;
-  //   const docHeight = document.body.offsetHeight;
-  //   const winHeight = window.innerHeight;
-
-  //   const mainPostsBlock = document.querySelector('.main-posts');
-  //   const mainPostsNav = document.querySelector('.main-posts__nav');
-
-  //   const mainPostsBlockHeight = mainPostsBlock.offsetHeight;
-
-  //   const mainPostsTop = offset(mainPostsBlock);
-
-  //   // calculate width of nav blank space on the right
-  //   const blankSpaceWidth =
-  //     mainPostsBlock.offsetWidth - mainPostsNav.offsetWidth;
-
-  //   // start scroll position. .main-posts offset
-
-  //   // scrollTop - mainPostsTop
-  //   // const scrollPercent = scrollTop / (docHeight - winHeight);
-
-  //   // add mainpoststop
-  //   const scrollPercent = scrollTop / mainPostsBlockHeight;
-  //   const scrollPercentRounded = Math.round(scrollPercent * 100);
-
-  //   const mainPostsNavProgress = document.querySelector(
-  //     '.main-posts__nav-progress'
-  //   );
-  //   console.log(offset(mainPostsNavProgress));
-  //   mainPostsNavProgress.style.width = scrollPercentRounded + '%';
-  // };
-
-  // const mainPostsBlock = document.querySelector('.main-posts');
-  // const mainPostsNav = document.querySelector('.main-posts__nav');
-
   const mainPostsLists = document.querySelectorAll('.main-posts__list');
 
   mainPostsLists.forEach((section, index) => {
@@ -71,12 +36,10 @@ export const MainPostsNavProgress = () => {
     })
       .on('enter', () => {
         activeIndex += 1;
-        console.log(activeIndex);
         updateNavItem();
       })
       .on('leave', () => {
         activeIndex -= 1;
-        console.log(activeIndex);
         updateNavItem();
       });
 
