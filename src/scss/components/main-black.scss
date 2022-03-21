@@ -16,6 +16,7 @@
   padding: responsive-value(100px, 200px) 0;
   margin-bottom: 0;
   position: relative;
+  min-height: calc(var(--vh) * 100);
 
   &__bg {
     position: absolute;
