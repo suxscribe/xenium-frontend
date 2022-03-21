@@ -1,9 +1,6 @@
 import { gsap } from 'gsap';
 import { doc } from 'prettier';
-// import CustomEase from '../vendor/gsap-member/CustomEase';
-// import { Power3, Bounce, Elastic } from 'gsap/all';
-// gsap.registerPlugin(CustomEase);
-// import ScrollMagic from 'scrollmagic';
+
 import * as ScrollMagic from 'scrollmagic';
 import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
 
@@ -22,9 +19,6 @@ export const postsList = () => {
   });
 
   const controller = new ScrollMagic.Controller();
-  // let animation = gsap.timeline();
-
-  // animation.to('.posts__item', { duration: 1, y: '-50%' });
 
   document.querySelectorAll('.posts__list').forEach((posts) => {
     posts.querySelectorAll('.posts__item').forEach((post) => {
@@ -44,15 +38,6 @@ export const postsList = () => {
   });
 
   postsHeadersAnimation();
-
-  // const scene = new ScrollMagic.Scene({
-  //   triggerElement: '.posts__item',
-
-  //   duration: 5000,
-  //   triggerHook: 1,
-  // })
-  //   .setTween(animation)
-  //   .addTo(controller);
 };
 
 export const postsHeadersAnimation = () => {
