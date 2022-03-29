@@ -26,7 +26,7 @@ const config = {
     ],
   },
   output: {
-    filename: './js/bundle.[contenthash].js',
+    filename: './js/bundle.js', //.[contenthash]
     clean: true,
   },
   devtool: 'source-map',
@@ -119,7 +119,7 @@ const config = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './css/style.bundle.[contenthash].css',
+      filename: './css/style.bundle.css', //.[contenthash]
     }),
     new CopyWebpackPlugin({
       patterns: [
