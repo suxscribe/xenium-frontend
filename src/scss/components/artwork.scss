@@ -259,6 +259,7 @@
 
       & svg {
         transition: all var(--transition);
+        pointer-events: none;
       }
       &:hover {
         & svg {
