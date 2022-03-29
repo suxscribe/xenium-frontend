@@ -18,8 +18,6 @@ export const postsList = () => {
     });
   });
 
-  const controller = new ScrollMagic.Controller();
-
   document.querySelectorAll('.posts__list').forEach((posts) => {
     posts.querySelectorAll('.posts__item').forEach((post) => {
       let animation = gsap.timeline();
