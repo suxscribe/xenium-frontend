@@ -14,17 +14,25 @@ export const preloaderHide = () => {
   preloaderDom.classList.remove('preloader--visible');
 };
 
+const initBody = () => {
+  document.body.classList.add('init');
+};
+
 export const preloaderTransitionListener = () => {
   preloaderDom.addEventListener('transitionend', () => {
     preloaderHide();
-    document.body.classList.add('init');
+    initBody();
   });
 };
 
 export const initAnimations = () => {
-  // add class to start preloader transitions
-  // add event listener to end transitions
-  // add body class on transition ends/
-  preloaderTransitionListener();
-  preloaderInitTrantition();
+  if (preloaderDom) {
+    // add class to start preloader transitions
+    // add event listener to end transitions
+    // add body class on transition ends/
+    preloaderTransitionListener();
+    preloaderInitTrantition();
+  } else {
+    initBody(); // just add body init class if no preloader
+  }
 };
