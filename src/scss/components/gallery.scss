@@ -172,7 +172,8 @@
       margin-bottom: 0;
     }
 
-    &--reverse {
+    &--reverse,
+    &:nth-child(2n) {
       flex-direction: column;
       @media (min-width: $breakpoint-medium) {
         flex-direction: row-reverse;
@@ -194,6 +195,7 @@
       & img {
         filter: grayscale(1);
         user-select: none;
+        width: auto;
 
         transition: all var(--transition);
         // @include transition-fix;
