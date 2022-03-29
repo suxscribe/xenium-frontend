@@ -15,7 +15,7 @@
 
     &-image {
       order: -1;
-      cursor: url(/assets/cursor-arrow-button.svg), auto;
+      cursor: url(../assets/cursor-arrow-button.svg), auto;
 
       @media (min-width: $breakpoint-medium) {
         order: 1;

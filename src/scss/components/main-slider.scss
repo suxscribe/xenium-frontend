@@ -200,15 +200,15 @@ $main-slider-gap: responsive-value(30px, 60px);
       flex: 1 1 auto;
 
       &--left {
-        cursor: url(/assets/cursor-arrow-button-left.svg), auto;
+        cursor: url(../assets/cursor-arrow-button-left.svg), auto;
         &.swiper-button-disabled {
-          cursor: url(/assets/cursor-arrow-button-left-disabled.svg), auto;
+          cursor: url(../assets/cursor-arrow-button-left-disabled.svg), auto;
         }
       }
       &--right {
-        cursor: url(/assets/cursor-arrow-button-right.svg), auto;
+        cursor: url(../assets/cursor-arrow-button-right.svg), auto;
         &.swiper-button-disabled {
-          cursor: url(/assets/cursor-arrow-button-right-disabled.svg), auto;
+          cursor: url(../assets/cursor-arrow-button-right-disabled.svg), auto;
         }
       }
 

@@ -9,8 +9,8 @@
 
 @font-face {
   font-family: 'HeliosC';
-  src: url('/fonts/subset-HeliosC.woff2') format('woff2'),
-    url('/fonts/subset-HeliosC.woff') format('woff');
+  src: url('../fonts/subset-HeliosC.woff2') format('woff2'),
+    url('../fonts/subset-HeliosC.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: fallback;
@@ -18,8 +18,8 @@
 
 @font-face {
   font-family: 'HeliosC';
-  src: url('/fonts/subset-HeliosC-Bold.woff2') format('woff2'),
-    url('/fonts/subset-HeliosC-Bold.woff') format('woff');
+  src: url('../fonts/subset-HeliosC-Bold.woff2') format('woff2'),
+    url('../fonts/subset-HeliosC-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: fallback;
