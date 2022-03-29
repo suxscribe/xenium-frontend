@@ -3,6 +3,7 @@
   max-width: 100vw;
   // overflow-x: hidden;
   position: relative;
+  width: 100%;
 
   .page--index & {
     @media (min-width: $breakpoint-medium) {
