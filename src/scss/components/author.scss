@@ -11,7 +11,7 @@
     flex-direction: column;
     gap: responsive-value(50px, 100px);
     align-items: flex-start;
-    padding-bottom: responsive-value(35px, 76px);
+    padding-bottom: responsive-value(30px, 75px);
     margin-bottom: responsive-value(30px, 40px);
     position: relative;
 
@@ -42,6 +42,7 @@
     $avatar-size: 200px;
     width: $avatar-size;
     height: $avatar-size;
+    flex: 0 0 auto;
     overflow: hidden;
 
     @media (min-width: $breakpoint-medium) {
