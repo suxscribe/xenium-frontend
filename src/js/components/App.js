@@ -4,16 +4,10 @@ import { menuToggle } from './menu';
 import { swiperContent, swiperMain } from './swiper-main';
 import { postsList } from './posts-list';
 import { faqAccordion } from './faq';
-import {
-  artworkGallery,
-  artworkSizeListener,
-  artworkSizeCompare,
-  artworkStickySidebar,
-} from './artwork';
+
 import { modals } from './modals';
 import { setFormValidation } from './forms';
 import { cookies } from './cookie';
-import { preloaderHide, preloaderInit } from './preloader';
 import Aos from 'aos';
 import { initAnimations } from './init-animations';
 import { authorTitleAnimation } from './author';
@@ -47,9 +41,7 @@ export default class App {
       swiperContent();
       faqAccordion();
 
-      artworkGallery();
-      // artworkSizeCompare();
-      artworkSizeListener();
+      // artwork page
       artworkModal();
 
       modals();
@@ -64,19 +56,13 @@ export default class App {
         once: true,
       });
 
-      // artwork page
-      artworkStickySidebar();
-
       initMainBlackAnimation();
     });
 
     // Wait for everything to load
     window.addEventListener('load', (event) => {
-      // preloaderHide();
       initAnimations();
       authorTitleAnimation();
-      // headerAnimationInit();
-      // titleAnimationInit();
     });
   }
 }

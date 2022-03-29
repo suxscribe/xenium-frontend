@@ -1,26 +1,62 @@
+import Artwork, { artworkGallery } from './Artwork';
+import { modals } from './modals';
 import { vars } from './vars';
 
 const artworkModalDom = document.querySelector('.artwork-modal');
+const artworkDom = document.querySelector('.artwork');
+const loader = document.querySelector('.artwork__loader');
+const artworkPage = document.querySelector(vars.artworkPageClass);
+
+let artwork;
 
 export const artworkModal = () => {
-  if (artworkModalDom) {
-    artworkModalListener();
+  // if on artwork page - init everything on load
+  if (isArtworkPage()) {
+    console.log('init artwork page');
+
+    modals(); // init modals
+    artworkInit(); // init artwork scripts
+  } else {
+    // if artwork modal on page - listen to artwork ajax link
+    if (artworkModalDom) {
+      artworkModalListener();
+    }
   }
+
+  //todo if body hasclass page--artwork -> artworkinit, modals init
+
+  //todo next if body hasclass page--artwork - should be no artwork-modal-reload links. Or they should open as regular links.
+};
+
+const isArtworkPage = () => {
+  return document.body.classList.contains(vars.artworkPageClass);
 };
 
 const artworkModalListener = () => {
   document.addEventListener('click', (e) => {
     if (e.target.matches('.artwork-modal__link')) {
       e.preventDefault();
+      modals(); // init modals
+
       artworkModalOpen();
+      // artworkInit();
+      artworkModalLoadData();
     }
     if (e.target.matches('.artwork-modal__close')) {
       e.preventDefault();
+
       artworkModalClose();
+      artworkModalClear();
+      artworkDestroy();
     }
     if (e.target.matches('.artwork-modal-reload')) {
       e.preventDefault();
-      artworkModalReload();
+
+      artworkDestroy();
+      artworkModalClear();
+      showLoader(true);
+      artworkModalLoadData();
+      //todo add function to get artwork html with ajax
     }
   });
 
@@ -30,7 +66,7 @@ const artworkModalListener = () => {
 const artworkModalOpen = () => {
   console.log('artwork modal link click');
   artworkModalDom.classList.add('open');
-  artworkModalDom.ariaHidden = 'false';
+  artworkModalDom.setAttribute('aria-hidden', false);
 
   document.documentElement.classList.add(vars.bodyOverflowClass);
 };
@@ -38,25 +74,42 @@ const artworkModalOpen = () => {
 const artworkModalClose = () => {
   console.log('close modal ');
   artworkModalDom.classList.remove('open');
-  artworkModalDom.ariaHidden = 'true';
+  artworkModalDom.setAttribute('aria-hidden', true);
 
   document.documentElement.classList.remove(vars.bodyOverflowClass);
 };
 
-const artworkModalReload = () => {
-  // remove default content
-  const artworkDom = document.querySelector('.artwork');
-  const loader = document.querySelector('.artwork__loader');
-
+const artworkModalClear = () => {
   artworkDom.innerHTML = '';
-  // show loader
-  loader.classList.add('active');
-  // hide loader
-  setTimeout(() => {
+};
+
+const showLoader = (show) => {
+  if (show === true) {
+    loader.classList.add('active'); // show loader
+  } else {
     loader.classList.remove('active');
-    artworkDom.innerHTML = newArtwork;
-  }, 3000);
-  // show new content
+  }
+};
+
+const artworkModalLoadData = () => {
+  // load new data
+  // todo load data via ajax
+  setTimeout(() => {
+    // hide loader
+    showLoader(false);
+    artworkDom.innerHTML = newArtwork; // replace content with new/
+    modals();
+    artworkInit();
+  }, 1000);
+};
+
+const artworkInit = () => {
+  artwork = new Artwork({});
+};
+const artworkDestroy = () => {
+  if (artwork) {
+    artwork.destroy();
+  }
 };
 
 const newArtwork = `
@@ -89,7 +142,7 @@ const newArtwork = `
 										<figure class="artwork__image" itemscope itemtype="http://schema.org/ImageObject">
 											<a class="artwork__image-image" href="/assets/artwork-image-01.jpg" itemprop="contentUrl" data-size="1000x1250"> <img src="/assets/artwork-image-01.jpg" alt=""></a>
 											<div class="artwork__image-icons">
-												<a class="artwork__image-icon artwork__image-icon--size" href="">
+												<a class="artwork__image-icon artwork__image-icon--size artwork-gallery-ignore" href="">
 													<svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 42.5 54.1" style="enable-background:new 0 0 42.5 54.1;" xml:space="preserve">
 														<g>
 															<rect x="12" y="2" transform="matrix(0.866 -0.5 0.5 0.866 -10.6641 14.2555)" width="18.6" height="50.1"></rect>
@@ -99,7 +152,7 @@ const newArtwork = `
 														</g>
 													</svg>
 												</a>
-												<a class="artwork__image-icon artwork__image-icon--like" href="">
+												<a class="artwork__image-icon artwork__image-icon--like artwork-gallery-ignore" href="">
 													<svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 42.5 54.1" style="enable-background:new 0 0 42.5 54.1;" xml:space="preserve">
 														<path id="like" d="M21.3,44.9l-2.9-2.6C8.1,33.2,1.3,27.1,1.3,19.7c0-6,4.8-10.8,11-10.8c3.5,0,6.8,1.6,9,4.1    c2.2-2.5,5.5-4.1,9-4.1c6.2,0,11,4.7,11,10.8c0,7.4-6.8,13.5-17.1,22.6L21.3,44.9z"></path>
 													</svg>
@@ -152,9 +205,9 @@ const newArtwork = `
 							<div class="artwork__related">
 								<h4 class="artwork__related-title"><span>another works in collection by artist</span></h4>
 								<ul class="gallery__items">
-									<li class="gallery__item gallery__item--" data-aos="fade-up" data-aos-delay="200">
+									<li class="gallery__item gallery__item--" >
 										<div class="gallery__item-image">
-											<a class="gallery__item-link" href="#"></a><img src="/assets/gallery-item-01.jpg" alt="">
+											<a class="gallery__item-link artwork-modal-reload" href="#"></a><img src="/assets/gallery-item-01.jpg" alt="">
 											<div class="gallery__item-like" data-micromodal-open="modal-like">
 												<svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 42.5 54.1" style="enable-background:new 0 0 42.5 54.1;" xml:space="preserve">
 													<path id="like" d="M21.3,44.9l-2.9-2.6C8.1,33.2,1.3,27.1,1.3,19.7c0-6,4.8-10.8,11-10.8c3.5,0,6.8,1.6,9,4.1    c2.2-2.5,5.5-4.1,9-4.1c6.2,0,11,4.7,11,10.8c0,7.4-6.8,13.5-17.1,22.6L21.3,44.9z"></path>
@@ -162,14 +215,14 @@ const newArtwork = `
 											</div>
 										</div>
 										<div class="gallery__item-content">
-											<div class="gallery__item-title"><a href="">Red <br> Man I</a></div>
+											<div class="gallery__item-title"><a class="artwork-modal-reload" href="">Red <br> Man I</a></div>
 											<div class="gallery__item-author">Valery Alyoshin</div>
 											<div class="gallery__item-tags">nonconformism, avant-garde, 60th, russian art, all, oil canvas</div>
 										</div>
 									</li>
-									<li class="gallery__item gallery__item--reverse" data-aos="fade-up" data-aos-delay="200">
+									<li class="gallery__item gallery__item--reverse" >
 										<div class="gallery__item-image">
-											<a class="gallery__item-link" href="#"></a><img src="/assets/gallery-item-02.jpg" alt="">
+											<a class="gallery__item-link artwork-modal-reload" href="#"></a><img src="/assets/gallery-item-02.jpg" alt="">
 											<div class="gallery__item-like" data-micromodal-open="modal-like">
 												<svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 42.5 54.1" style="enable-background:new 0 0 42.5 54.1;" xml:space="preserve">
 													<path id="like" d="M21.3,44.9l-2.9-2.6C8.1,33.2,1.3,27.1,1.3,19.7c0-6,4.8-10.8,11-10.8c3.5,0,6.8,1.6,9,4.1    c2.2-2.5,5.5-4.1,9-4.1c6.2,0,11,4.7,11,10.8c0,7.4-6.8,13.5-17.1,22.6L21.3,44.9z"></path>
@@ -177,14 +230,14 @@ const newArtwork = `
 											</div>
 										</div>
 										<div class="gallery__item-content">
-											<div class="gallery__item-title"><a href="">Red <br> Man I</a></div>
+											<div class="gallery__item-title"><a class="artwork-modal-reload" href="">Red <br> Man I</a></div>
 											<div class="gallery__item-author">Valery Alyoshin</div>
 											<div class="gallery__item-tags">nonconformism, avant-garde, 60th, russian art, all, oil canvas</div>
 										</div>
 									</li>
-									<li class="gallery__item gallery__item--" data-aos="fade-up" data-aos-delay="200">
+									<li class="gallery__item gallery__item--" >
 										<div class="gallery__item-image">
-											<a class="gallery__item-link" href="#"></a><img src="/assets/gallery-item-01.jpg" alt="">
+											<a class="gallery__item-link artwork-modal-reload" href="#"></a><img src="/assets/gallery-item-01.jpg" alt="">
 											<div class="gallery__item-like" data-micromodal-open="modal-like">
 												<svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 42.5 54.1" style="enable-background:new 0 0 42.5 54.1;" xml:space="preserve">
 													<path id="like" d="M21.3,44.9l-2.9-2.6C8.1,33.2,1.3,27.1,1.3,19.7c0-6,4.8-10.8,11-10.8c3.5,0,6.8,1.6,9,4.1    c2.2-2.5,5.5-4.1,9-4.1c6.2,0,11,4.7,11,10.8c0,7.4-6.8,13.5-17.1,22.6L21.3,44.9z"></path>
@@ -192,14 +245,14 @@ const newArtwork = `
 											</div>
 										</div>
 										<div class="gallery__item-content">
-											<div class="gallery__item-title"><a href="">Red <br> Man I</a></div>
+											<div class="gallery__item-title"><a class="artwork-modal-reload" href="">Red <br> Man I</a></div>
 											<div class="gallery__item-author">Valery Alyoshin</div>
 											<div class="gallery__item-tags">nonconformism, avant-garde, 60th, russian art, all, oil canvas</div>
 										</div>
 									</li>
-									<li class="gallery__item gallery__item--reverse" data-aos="fade-up" data-aos-delay="200">
+									<li class="gallery__item gallery__item--reverse" >
 										<div class="gallery__item-image">
-											<a class="gallery__item-link" href="#"></a><img src="/assets/gallery-item-02.jpg" alt="">
+											<a class="gallery__item-link artwork-modal-reload" href="#"></a><img src="/assets/gallery-item-02.jpg" alt="">
 											<div class="gallery__item-like" data-micromodal-open="modal-like">
 												<svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 42.5 54.1" style="enable-background:new 0 0 42.5 54.1;" xml:space="preserve">
 													<path id="like" d="M21.3,44.9l-2.9-2.6C8.1,33.2,1.3,27.1,1.3,19.7c0-6,4.8-10.8,11-10.8c3.5,0,6.8,1.6,9,4.1    c2.2-2.5,5.5-4.1,9-4.1c6.2,0,11,4.7,11,10.8c0,7.4-6.8,13.5-17.1,22.6L21.3,44.9z"></path>
@@ -207,14 +260,14 @@ const newArtwork = `
 											</div>
 										</div>
 										<div class="gallery__item-content">
-											<div class="gallery__item-title"><a href="">Red <br> Man I</a></div>
+											<div class="gallery__item-title"><a class="artwork-modal-reload" href="">Red <br> Man I</a></div>
 											<div class="gallery__item-author">Valery Alyoshin</div>
 											<div class="gallery__item-tags">nonconformism, avant-garde, 60th, russian art, all, oil canvas</div>
 										</div>
 									</li>
-									<li class="gallery__item gallery__item--reverse" data-aos="fade-up" data-aos-delay="200">
+									<li class="gallery__item gallery__item--reverse" >
 										<div class="gallery__item-image">
-											<a class="gallery__item-link" href="#"></a><img src="/assets/gallery-item-02.jpg" alt="">
+											<a class="gallery__item-link artwork-modal-reload" href="#"></a><img src="/assets/gallery-item-02.jpg" alt="">
 											<div class="gallery__item-like" data-micromodal-open="modal-like">
 												<svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 42.5 54.1" style="enable-background:new 0 0 42.5 54.1;" xml:space="preserve">
 													<path id="like" d="M21.3,44.9l-2.9-2.6C8.1,33.2,1.3,27.1,1.3,19.7c0-6,4.8-10.8,11-10.8c3.5,0,6.8,1.6,9,4.1    c2.2-2.5,5.5-4.1,9-4.1c6.2,0,11,4.7,11,10.8c0,7.4-6.8,13.5-17.1,22.6L21.3,44.9z"></path>
@@ -222,14 +275,14 @@ const newArtwork = `
 											</div>
 										</div>
 										<div class="gallery__item-content">
-											<div class="gallery__item-title"><a href="">Red <br> Man I</a></div>
+											<div class="gallery__item-title"><a class="artwork-modal-reload" href="">Red <br> Man I</a></div>
 											<div class="gallery__item-author">Valery Alyoshin</div>
 											<div class="gallery__item-tags">nonconformism, avant-garde, 60th, russian art, all, oil canvas</div>
 										</div>
 									</li>
-									<li class="gallery__item gallery__item--reverse" data-aos="fade-up" data-aos-delay="200">
+									<li class="gallery__item gallery__item--reverse" >
 										<div class="gallery__item-image">
-											<a class="gallery__item-link" href="#"></a><img src="/assets/gallery-item-02.jpg" alt="">
+											<a class="gallery__item-link artwork-modal-reload" href="#"></a><img src="/assets/gallery-item-02.jpg" alt="">
 											<div class="gallery__item-like" data-micromodal-open="modal-like">
 												<svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 42.5 54.1" style="enable-background:new 0 0 42.5 54.1;" xml:space="preserve">
 													<path id="like" d="M21.3,44.9l-2.9-2.6C8.1,33.2,1.3,27.1,1.3,19.7c0-6,4.8-10.8,11-10.8c3.5,0,6.8,1.6,9,4.1    c2.2-2.5,5.5-4.1,9-4.1c6.2,0,11,4.7,11,10.8c0,7.4-6.8,13.5-17.1,22.6L21.3,44.9z"></path>
@@ -237,7 +290,7 @@ const newArtwork = `
 											</div>
 										</div>
 										<div class="gallery__item-content">
-											<div class="gallery__item-title"><a href="">Red <br> Man I</a></div>
+											<div class="gallery__item-title"><a class="artwork-modal-reload" href="">Red <br> Man I</a></div>
 											<div class="gallery__item-author">Valery Alyoshin</div>
 											<div class="gallery__item-tags">nonconformism, avant-garde, 60th, russian art, all, oil canvas</div>
 										</div>
