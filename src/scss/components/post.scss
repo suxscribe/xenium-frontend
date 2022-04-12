@@ -1,0 +1,224 @@
+.post {
+  position: relative;
+  // width: 40%;
+  grid-column: 1 / -1;
+  margin-bottom: 40px;
+  border: 1px solid $color-white;
+  overflow: hidden;
+  transition: transform 0.1s ease;
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media (min-width: $breakpoint-small) {
+    grid-column: 2 / 8;
+    margin-bottom: 90px;
+  }
+
+  @media (min-width: $breakpoint-medium) {
+    grid-column: 2 / 6;
+    margin-bottom: responsive-value(-70px, -150px);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &--horizontal {
+    @media (min-width: $breakpoint-small) {
+      grid-column: 2 / 8;
+    }
+
+    @media (min-width: $breakpoint-medium) {
+      grid-column: 2 / 9;
+    }
+  }
+  &--vertical {
+    @media (min-width: $breakpoint-small) {
+      grid-column: 2 / 8;
+    }
+
+    @media (min-width: $breakpoint-medium) {
+      grid-column: 2 / 6;
+    }
+  }
+
+  //&--horizontal,
+  &:nth-child(2n) {
+    grid-column: 1 / -1;
+    &.post--horizontal {
+      @media (min-width: $breakpoint-medium) {
+        grid-column: 5 / 12;
+      }
+    }
+
+    &.post--vertical {
+      @media (min-width: $breakpoint-medium) {
+        grid-column: 5 / 9;
+      }
+    }
+  }
+
+  &__bg {
+    background: $color-button-label;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    z-index: 0;
+    position: relative;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    & img {
+      filter: grayscale(1);
+      user-select: none;
+
+      transition: all var(--transition);
+      // @include transition-fix;
+
+      .post:hover & {
+        filter: grayscale(0);
+
+        transform: scale(1.05);
+      }
+    }
+  }
+  &__content {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+
+    display: flex;
+    flex-direction: column;
+    padding: $content-padding;
+    z-index: 1;
+  }
+  &__type {
+    // position: absolute;
+    top: $content-padding;
+    left: $content-padding;
+
+    font-size: 20px;
+    font-weight: 700;
+    color: $color-white;
+    overflow-wrap: break-word;
+
+    @media (min-width: $breakpoint-small) {
+      @include font-h4;
+    }
+
+    .post--horizontal & {
+      left: auto;
+      right: $content-padding;
+    }
+  }
+
+  &__bottom {
+    // position: absolute;
+    flex: 0 0 auto;
+    bottom: $content-padding;
+    left: $content-padding;
+    right: $content-padding;
+    color: $color-white;
+    overflow-wrap: break-word;
+    margin-top: $content-padding;
+
+    display: grid;
+    grid-template-columns: 1fr $button-arrow-size;
+    gap: 10px;
+
+    .post--horizontal & {
+      // width: 100%;
+    }
+  }
+  &__address {
+    grid-column: 1 / 2;
+  }
+  &__title {
+    grid-column: 1 / 2;
+    font-weight: 700;
+    color: $color-white;
+    overflow-wrap: break-word;
+
+    @media (min-width: $breakpoint-small) {
+      @include font-h3;
+    }
+
+    .post--horizontal & {
+      // width: 100%;
+    }
+
+    & > a {
+      color: $color-white;
+
+      @include underline-hover;
+      background-image: linear-gradient($color-white, $color-white);
+
+      .post:hover & {
+        @include underline-hover-hover;
+      }
+    }
+  }
+  &__date {
+    position: absolute;
+    right: $content-padding;
+    bottom: calc(#{$content-padding} + #{$button-arrow-size} + 20px);
+    top: $content-padding;
+    transform: rotate(180deg) translateX(-0.2em);
+    writing-mode: vertical-lr;
+    text-orientation: revert;
+    color: $color-white;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+  &__sections {
+    // position: absolute;
+    top: $content-padding;
+    left: $content-padding;
+    color: $color-white;
+    flex: 1 0 auto;
+  }
+
+  &__button {
+    // opacity: 0;
+    grid-column: 2 / 3;
+    align-self: flex-end;
+
+    transition: all var(--transition);
+
+    .post:hover & {
+      opacity: 1;
+
+      & > .button {
+        background-color: $color-white;
+        border-color: $color-black;
+        opacity: 1;
+
+        & svg {
+          path {
+            stroke: $color-black;
+          }
+        }
+      }
+    }
+  }
+}

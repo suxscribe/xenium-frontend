@@ -32,6 +32,13 @@ mixin modal-size()
         img(src="/assets/artwork-size-reference.svg", alt="", data-height="200")
         figcaption.artwork__size-caption.artwork__size-caption--right: span 200 cm
 
+mixin modal-video()
+  +modal({id:"modal-video", class:'--video'})
+    .artwork__video
+      video(controls, width="100%", disablepictureinpicture, muted, playsinline)
+        source(src="/assets/video.mp4", type="video/mp4")
+
+
 mixin modal-like()
   +modal({id:"modal-like", title:"thank you!", class:"--like"})
     .modal__like

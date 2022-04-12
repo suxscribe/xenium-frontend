@@ -23,6 +23,9 @@
         align-items: end;
       }
     }
+    &--next {
+      margin-left: auto;
+    }
   }
 
   &__arrow {
@@ -36,6 +39,10 @@
   &__name {
     @include font-h4;
     margin-bottom: responsive-value(16px, 30px);
+
+    .navigation__link--prev & {
+      text-align: right;
+    }
   }
   &__desc {
     // @include font-lead;

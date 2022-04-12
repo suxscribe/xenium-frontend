@@ -3,4 +3,7 @@ export const vars = {
   breakpointDesktop: 1024,
   bodyOverflowClass: 'no-overflow',
   artworkPageClass: 'page--artwork',
+  postTeaserClass: 'post',
+  modalVideoId: 'modal-video',
+  likeArtworkInput: '#like-artwork',
 };

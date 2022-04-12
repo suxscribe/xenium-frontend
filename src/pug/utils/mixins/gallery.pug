@@ -17,9 +17,12 @@ mixin gallery-item(args)
 
 mixin gallery-pagination(args)
   .gallery__pagination 
+    a(href="").gallery__pagination-item.gallery__pagination-item--prev
+      .arrow.arrow--prev
+        +svg({name: 'arrow-head'}).arrow__head
     a(href="").gallery__pagination-item.active 1 
     a(href="").gallery__pagination-item 2 
     a(href="").gallery__pagination-item 3
-    a(href="").gallery__pagination-item-next
+    a(href="").gallery__pagination-item.gallery__pagination-item--next
       .arrow.arrow--right
         +svg({name: 'arrow-head'}).arrow__head

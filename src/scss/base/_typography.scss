@@ -95,7 +95,7 @@ p + p {
   }
 }
 
-.text__content {
+.text {
   * + p,
   * + ul,
   * + ol,
@@ -116,7 +116,8 @@ p + p {
   & h2,
   & h3,
   & h4 {
-    margin-bottom: percent-view(53px);
+    margin-top: $block-margin;
+    margin-bottom: $block-margin;
   }
 
   & ul {

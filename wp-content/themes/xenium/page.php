@@ -1,17 +1,29 @@
-<?php get_header(); ?>
-<main id="content" role="main">
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-<header class="header">
-<h1 class="entry-title" itemprop="name"><?php the_title(); ?></h1> <?php edit_post_link(); ?>
-</header>
-<div class="entry-content" itemprop="mainContentOfPage">
-<?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'full', array( 'itemprop' => 'image' ) ); } ?>
-<?php the_content(); ?>
-<div class="entry-links"><?php wp_link_pages(); ?></div>
-</div>
-</article>
-<?php if ( comments_open() && !post_password_required() ) { comments_template( '', true ); } ?>
-<?php endwhile; endif; ?>
+<?php
+
+/**
+ * Template name: Page
+ * Template Post Type: page
+ */
+get_header();
+?>
+
+<main class="main">
+  <section class="section about">
+    <div class="container">
+      <h1 class="about__title title"><span class="title__wrap"><span class="title__text"><? get_the_title() ?></span></span></h1>
+      <div class="about__content-wrap">
+        <div class="about__left">
+          <div class="about__lead"><?= get_field('lead'); ?></div>
+        </div>
+        <div class="about__content">
+
+          <div class="about__content-text text">
+            <? the_content() ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
-<?php get_footer(); ?>
+
+<?php get_footer() ?>

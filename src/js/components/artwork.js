@@ -41,7 +41,6 @@ export default class Artwork {
   }
 
   initArtworkButtonsEvents(e) {
-    // if (artworkSizeButton) {
     if (e.target.matches('.artwork__image-icon--size')) {
       e.preventDefault();
       e.stopPropagation(); // prevent pswp from opening on button click
@@ -63,9 +62,25 @@ export default class Artwork {
         awaitCloseAnimation: true,
       });
     }
-    // }
 
-    // adjust artwork size to reference on window resize
+    if (e.target.matches('.artwork__image-icon--video')) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const modalVideo = document.querySelector(`#${vars.modalVideoId} video`);
+      if (modalVideo) {
+        MicroModal.show(vars.modalVideoId, {
+          awaitOpenAnimation: true,
+          awaitCloseAnimation: true,
+          onShow: () => {
+            modalVideo.play();
+          },
+          onClose: () => {
+            modalVideo.pause();
+          },
+        });
+      }
+    }
   }
 
   initArtworkEventListeners() {

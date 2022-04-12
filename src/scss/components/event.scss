@@ -47,6 +47,17 @@
     margin-bottom: responsive-value(40px, 60px);
   }
 
+  &__sections {
+    & a {
+      color: $color-gray;
+      text-decoration: underline;
+
+      &:hover {
+        color: $color-black;
+      }
+    }
+  }
+
   &__content {
     // animation
     opacity: 0;

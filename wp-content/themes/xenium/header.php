@@ -20,6 +20,36 @@
 </head>
 
 <body <?php body_class('page'); ?>>
+  <? if (is_front_page()) { ?>
+    <div class="preloader preloader--visible">
+      <div class="preloader__container">
+        <div class="preloader__left">
+          <svg>
+            <use xlink:href="#preloader-x"></use>
+          </svg>
+        </div>
+        <div class="preloader__center">
+          <svg>
+            <use xlink:href="#preloader-center"></use>
+          </svg>
+        </div>
+        <div class="preloader__right">
+          <svg>
+            <use xlink:href="#preloader-g"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+  <?  } else { ?>
+    <div class="preloader preloader--visible preloader--inner">
+      <div class="preloader__inner">
+        <div class="preloader__inner-center">
+          <div class="preloader__inner-image"></div><img class="preloader__logo" src="<?= get_template_directory_uri() ?>/assets/logo.svg" alt="">
+        </div>
+      </div>
+    </div>
+  <? } ?>
+
   <header class="header">
     <div class="header__wrapper container">
       <a class="header__logo" href="/">
@@ -83,7 +113,6 @@
       );
       ?>
 
-      <div class="menu__buttons"><a class="button button--black" href="">Send e-mail</a></div>
-      <div class="menu__language"><a class="menu__language-item" href="">RU</a></div>
+      <div class="menu__buttons"><a class="button button--black" data-micromodal-open="modal-email" href="#">Send e-mail</a></div>
     </nav>
   </header>

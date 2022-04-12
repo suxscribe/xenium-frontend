@@ -16,3 +16,7 @@ Text Domain: blankslate
 BlankSlate WordPress Theme © 2011-2022 TidyThemes
 BlankSlate is distributed under the terms of the GNU GPL
 */
+
+.grecaptcha-badge {
+  display: none;
+}

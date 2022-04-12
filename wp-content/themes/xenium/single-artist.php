@@ -1,12 +1,5 @@
 <?php get_header(); ?>
 <main class="main">
-  <div class="preloader preloader--visible preloader--inner">
-    <div class="preloader__inner">
-      <div class="preloader__inner-center">
-        <div class="preloader__inner-image"></div><img class="preloader__logo" src="/assets/logo.svg" alt="">
-      </div>
-    </div>
-  </div>
   <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
       <section class="section author">
@@ -23,16 +16,21 @@
 
             <ul class="author__tags tags">
               <?php
-              $terms = get_terms(array(
-                'taxonomy' => 'artwork_section',
-                'hide_empty' => true,
-                'hierarchical' => false // include upper level ?
-              ));
+              // $terms = get_terms(array(
+              //   'taxonomy' => 'artwork_section',
+              //   'hide_empty' => true,
+              //   'hierarchical' => false // include upper level ?
+              // ));
+
+              $terms = get_the_terms($post->ID, 'artwork_section');
 
               foreach ($terms as $term) {
                 echo '<li class="tag"><a href="'
-                  . get_term_link($term) . '">' . $term->name . '</a></li>';
+                  . str_replace('artist', 'artwork', get_term_link($term)) . '">' . $term->name . '</a></li>';
               }
+
+
+
               ?>
             </ul>
           </div>
@@ -47,19 +45,9 @@
               } ?>
             </ul>
           <? } ?>
-          <div class="author__navigation navigation"><a class="navigation__link navigation__link--prev" href="">
-              <div class="navigation__name">Valery Leontiev</div>
-              <div class="arrow--prev navigation__arrow arrow arrow--wide"><svg>
-                  <use xlink:href="#arrow-head"></use>
-                </svg></div>
-              <div class="navigation__desc">previous artist</div>
-            </a><a class="navigation__link navigation__link--next" href="">
-              <div class="navigation__name">Aurello Bruni</div>
-              <div class="arrow--next navigation__arrow arrow arrow--wide"><svg>
-                  <use xlink:href="#arrow-head"></use>
-                </svg></div>
-              <div class="navigation__desc">next artist</div>
-            </a></div>
+          <div class="author__navigation navigation">
+            <? get_template_part('partials/navigation-links') ?>
+          </div>
         </div>
         <div class="modal micromodal-slide modal--like" id="modal-like" aria-hidden="true">
           <div class="modal__overlay" tabindex="-1" data-micromodal-close="">

@@ -48,6 +48,7 @@ export const swiperMain = () => {
     swiper.slides.forEach((slide, index) => {
       const delta = (index - swiper.activeIndex) * slideDelta;
       const slideInner = slide.querySelector('.main-slider-2__item-image');
+      
       slideInner.style.transform = `translateX(${delta}px)`;
       if (index - swiper.activeIndex > 0) {
         slideInner.style.opacity = 1 / (index - swiper.activeIndex);
@@ -104,10 +105,19 @@ export const swiperMain = () => {
 
 export const swiperContent = () => {
   let swiperContentSlider = new Swiper('.content-slider', {
-    effect: 'slide',
-    // fadeEffect: {
-    //   crossFade: true,
-    // },
+    // effect: 'slide',
+    effect: 'creative',
+    creativeEffect: {
+      prev: {
+        // will set `translateZ(-400px)` on previous slides
+        translate: ['120%', 0, 0],
+      },
+      next: {
+        // will set `translateX(100%)` on next slides
+        translate: ['20%', 0, -400],
+        opacity: 0.5,
+      },
+    },
 
     speed: 600,
     loop: false,
@@ -117,8 +127,8 @@ export const swiperContent = () => {
     allowTouchMove: true,
     keyboard: true,
     navigation: {
-      nextEl: '.content-slider__nav-arrow--left',
-      prevEl: '.content-slider__nav-arrow--right',
+      nextEl: '.content-slider__nav-arrow--right',
+      prevEl: '.content-slider__nav-arrow--left',
     },
     keyboard: true,
 

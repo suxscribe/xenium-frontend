@@ -1,31 +1,18 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <?
-    $currentArtworkId = $post->ID;
+    $currentArtworkId = get_the_ID();
     $author = get_field('relations');
-    foreach ($author as $post) {
-      setup_postdata($post);
-      if ($post->post_type == 'artist') {
-        $authorData['url'] = get_the_permalink();
-        $authorData['title'] = get_the_title();
-        $authorData['years'] = get_field('years');
-      }
-      wp_reset_postdata();
-    }
+    $authorData = get_artwork_author($author);
+
+    $artworkSize = (get_field('size_width') != '') ? get_field('size_width') : 50;
     ?>
 
     <main class="main">
-      <div class="preloader preloader--visible preloader--inner">
-        <div class="preloader__inner">
-          <div class="preloader__inner-center">
-            <div class="preloader__inner-image"></div><img class="preloader__logo" src="/assets/logo.svg" alt="">
-          </div>
-        </div>
-      </div>
       <section class="section artwork">
         <div class="container">
           <h1 class="artwork__title title"><span class="title__wrap"><span class="title__text">
-              </span><?php the_title(); ?></span>
+                <?php the_title(); ?></span></span>
           </h1>
           <div class="artwork__wrap">
             <div class="artwork__left">
@@ -43,10 +30,13 @@
                 <? } ?>
 
                 <dl class="artwork__parameters">
-                  <dt class="artwork__parameter-name">style</dt>
-                  <dt class="artwork__parameter-value">
-                    <? the_terms($post->ID, 'artwork_section', '', ', ', ''); ?>
-                  </dt>
+                  <? if (has_term()) { ?>
+                    <dt class="artwork__parameter-name">style</dt>
+                    <dt class="artwork__parameter-value">
+                      <? the_terms($post->ID, 'artwork_section', '', ', ', ''); ?>
+                    </dt>
+                  <? } ?>
+
                   <? if (get_field('material') != '') { ?>
                     <dt class="artwork__parameter-name">material</dt>
                     <dt class="artwork__parameter-value"><?= get_field('material') ?></dt>
@@ -62,6 +52,7 @@
                     <dt class="artwork__parameter-value"><?= implode('x', array_filter($sizes)) ?></dt>
                   <? } ?>
                 </dl>
+
                 <div class="artwork__description">
                   <?php the_content(); ?>
                 </div><a class="artwork__enquire button" data-micromodal-open="modal-enquiry">Enquire</a>
@@ -93,7 +84,21 @@
                           <line x1="21" y1="13.1" x2="21" y2="27"></line>
                           <line x1="28.2" y1="19.8" x2="14.3" y2="19.8"></line>
                         </g>
-                      </svg></a></div>
+                      </svg></a>
+                  </div>
+                  <? if (get_field('video')) { ?>
+                    <a class="artwork__image-icon artwork__image-icon--video artwork-gallery-ignore" href=""><svg width="56" height="56" viewbox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="svg-fill" cx="28" cy="28" r="27.5"></circle>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M45.1608 25.5161C46.1585 25.5161 46.9673 24.7074 46.9673 23.7097C46.9673 22.712 46.1585 21.9032 45.1608 21.9032C44.1632 21.9032 43.3544 22.712 43.3544 23.7097C43.3544 24.7074 44.1632 25.5161 45.1608 25.5161ZM45.1608 26.4194C46.6574 26.4194 47.8705 25.2062 47.8705 23.7097C47.8705 22.2132 46.6574 21 45.1608 21C43.6643 21 42.4512 22.2132 42.4512 23.7097C42.4512 25.2062 43.6643 26.4194 45.1608 26.4194Z">
+                        </path>
+                        <path d="M16.2587 27.4593L15.6633 27.4434V26.7289C16.1555 26.7237 16.5577 26.6601 16.87 26.5384C17.1875 26.4167 17.5289 26.16 17.8941 25.7684C18.2645 25.3768 18.4498 24.911 18.4498 24.3712C18.4498 23.8261 18.2592 23.3657 17.8782 22.9899C17.4971 22.6089 17.0367 22.4183 16.4969 22.4183C15.9624 22.4183 15.5019 22.6062 15.1156 22.982C14.9039 23.199 14.7478 23.4424 14.6472 23.7123L13.9645 23.4424C14.0809 23.0719 14.2847 22.7465 14.5758 22.466C15.1103 21.9367 15.7507 21.6721 16.4969 21.6721C17.2537 21.6721 17.8941 21.9394 18.418 22.4739C18.9472 23.0031 19.2119 23.6356 19.2119 24.3712C19.2119 25.1227 19.0107 25.7155 18.6085 26.1494C18.2063 26.5781 17.8306 26.8639 17.4813 27.0068C18.2434 27.2608 18.8758 27.6578 19.3786 28.1976C20.1036 28.9755 20.4661 29.8858 20.4661 30.9284C20.4661 31.9763 20.0957 32.8707 19.3547 33.6116C18.6191 34.3526 17.7273 34.723 16.6795 34.723C15.6369 34.723 14.7451 34.3499 14.0042 33.6037C13.4167 33.011 13.0622 32.3177 12.9404 31.5238L13.6628 31.2618C13.7369 31.9657 14.028 32.5717 14.5361 33.0798C15.1341 33.6725 15.8486 33.9689 16.6795 33.9689C17.5209 33.9689 18.2381 33.6725 18.8308 33.0798C19.4235 32.487 19.7199 31.7699 19.7199 30.9284C19.7199 30.0922 19.4315 29.3592 18.8546 28.7295C18.2778 28.0997 17.4125 27.6763 16.2587 27.4593Z">
+                        </path>
+                        <path d="M24.102 27.8642C23.3981 28.568 23.0462 29.4175 23.0462 30.4124C23.0462 31.4074 23.3981 32.2568 24.102 32.9607C24.8059 33.6593 25.6553 34.0086 26.6502 34.0086C27.6452 34.0086 28.4946 33.6593 29.1985 32.9607C29.9024 32.2568 30.2543 31.4074 30.2543 30.4124C30.2543 29.4175 29.9024 28.568 29.1985 27.8642C28.4946 27.1603 27.6452 26.8083 26.6502 26.8083C25.6553 26.8083 24.8059 27.1603 24.102 27.8642ZM23.8241 27.0862C24.6233 26.3929 25.5653 26.0462 26.6502 26.0462C27.8569 26.0462 28.8836 26.4723 29.7304 27.3243C30.5824 28.1764 31.0085 29.2058 31.0085 30.4124C31.0085 31.6138 30.5824 32.6405 29.7304 33.4926C28.8836 34.3446 27.8569 34.7707 26.6502 34.7707C25.4489 34.7707 24.4222 34.3446 23.5701 33.4926C22.7498 32.6722 22.3237 31.6905 22.292 30.5474H22.2444C22.2973 28.6792 22.7471 27.1523 23.5939 25.9669C24.4407 24.7814 25.4886 23.49 26.7376 22.0929C26.8116 22.0082 26.8831 21.9262 26.9519 21.8468H27.9363C27.8304 21.9791 27.7193 22.1114 27.6029 22.2437C26.211 23.7996 25.1075 25.1571 24.2925 26.3161C24.1178 26.5596 23.9617 26.8163 23.8241 27.0862Z">
+                        </path>
+                        <path d="M40.1536 26.205C40.1536 25.21 39.8017 24.3633 39.0978 23.6647C38.3939 22.9608 37.5445 22.6089 36.5496 22.6089C35.5546 22.6089 34.7052 22.9608 34.0013 23.6647C33.2974 24.3633 32.9455 25.21 32.9455 26.205V30.4124C32.9455 31.4074 33.2974 32.2568 34.0013 32.9607C34.7052 33.6593 35.5546 34.0086 36.5496 34.0086C37.5445 34.0086 38.3939 33.6593 39.0978 32.9607C39.8017 32.2568 40.1536 31.4074 40.1536 30.4124V26.205ZM40.9078 30.4124C40.9078 31.6138 40.4818 32.6405 39.6297 33.4926C38.7829 34.3446 37.7562 34.7707 36.5496 34.7707C35.3482 34.7707 34.3215 34.3446 33.4694 33.4926C32.6173 32.6405 32.1913 31.6138 32.1913 30.4124V26.205C32.1913 25.0036 32.6173 23.9769 33.4694 23.1249C34.3215 22.2728 35.3482 21.8468 36.5496 21.8468C37.7562 21.8468 38.7829 22.2728 39.6297 23.1249C40.4818 23.9769 40.9078 25.0036 40.9078 26.205V30.4124Z">
+                        </path>
+                      </svg></a>
+                  <? } ?>
                 </figure>
                 <?
 
@@ -107,13 +112,16 @@
               </div>
             </div>
           </div>
-          <div class="artwork__related">
-            <h4 class="artwork__related-title"><span>another works in collection by artist</span></h4>
 
-            <? foreach ($author as $post) {
-              setup_postdata($post); ?>
-              <? $authorWorks = get_field('relations');
-              if ($authorWorks) { ?>
+          <? // Related works by author
+          foreach ($author as $post) {
+            setup_postdata($post); ?>
+            <? $authorWorks = get_field('relations'); // get author works
+            if ($authorWorks && (count($authorWorks) > 1)) { ?>
+              <div class="artwork__related">
+                <h4 class="artwork__related-title"><span>another works in collection by artist</span></h4>
+
+
                 <ul class="gallery__items">
                   <? foreach ($authorWorks as $post) {
                     setup_postdata($post); ?>
@@ -125,11 +133,11 @@
                     wp_reset_postdata();
                   } ?>
                 </ul>
-              <? } ?>
-            <? wp_reset_postdata();
-            } ?>
+              </div>
+            <? } ?>
+          <? wp_reset_postdata();
+          } ?>
 
-          </div>
           <? if (!empty($authorData)) { ?>
             <div class="artwork__navigation navigation"><a class="navigation__link navigation__link--right" href="<?= $authorData['url']; ?>">
                 <div class="navigation__name">show all works</div>
@@ -202,13 +210,17 @@
           <div class="modal__overlay" tabindex="-1" data-micromodal-close="">
             <div class="modal__container modal__container--size" role="dialog" aria-modal="true"><button class="modal__close close close--size" aria-label="Close modal" data-micromodal-close=""><span class="close__top"></span><span class="close__bottom"></span></button>
               <div class="modal__content modal__content--size">
-                <div class="artwork__size artwork__size--sculpture">
+
+                <div class="artwork__size artwork__size--<?= get_field('artwork_type') ?>">
                   <figure class="artwork__size-work">
-                    <figcaption class="artwork__size-caption artwork__size-caption--left"><span>100 cm</span></figcaption>
+                    <figcaption class="artwork__size-caption artwork__size-caption--left"><span><?= $artworkSize ?> cm</span></figcaption>
                     <? $image_data = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), "medium"); ?>
-                    <img src="<?= $image_data[0]; ?>" alt="" data-height="100">
+                    <img src="<?= $image_data[0]; ?>" alt="" data-height="<?= $artworkSize ?>">
                   </figure>
-                  <figure class="artwork__size-reference"><img src="<?= get_template_directory_uri() ?>/assets/artwork-size-reference.svg" alt="" data-height="200">
+                  <figure class="artwork__size-reference">
+                    <? $referenceImage = (get_field('artwork_type') == 'sculpture') ? 'sculpture-size-reference.svg' : 'artwork-size-reference.svg' ?>
+                    <img src="<?= get_template_directory_uri() ?>/assets/<?= $referenceImage ?>" alt="" data-height="200">
+
                     <figcaption class="artwork__size-caption artwork__size-caption--right"><span>200 cm</span>
                     </figcaption>
                   </figure>
@@ -238,6 +250,20 @@
             </div>
           </div>
         </div>
+        <? if (get_field('video')) { ?>
+          <div class="modal micromodal-slide modal--video" id="modal-video" aria-hidden="true">
+            <div class="modal__overlay" tabindex="-1" data-micromodal-close="">
+              <div class="modal__container modal__container--video" role="dialog" aria-modal="true"><button class="modal__close close close--video" aria-label="Close modal" data-micromodal-close=""><span class="close__top"></span><span class="close__bottom"></span></button>
+                <div class="modal__content modal__content--video">
+                  <div class="artwork__video"><video controls width="100%" disablepictureinpicture muted playsinline>
+                      <source src="<?= get_field('video')[0]['url']; ?>" type="video/mp4">
+                    </video></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <? } ?>
+
       </section>
     </main>
 

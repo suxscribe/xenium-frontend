@@ -97,7 +97,7 @@
             display: block;
             bottom: 0;
             right: -1em;
-            left: -40vw;
+            left: -100vw;
             @media (min-width: $breakpoint-medium) {
               right: 0;
             }
@@ -177,15 +177,23 @@
       flex-direction: column;
       @media (min-width: $breakpoint-medium) {
         flex-direction: row-reverse;
+        justify-content: space-between;
       }
     }
 
     &-image {
       display: block;
       grid-area: image;
-      flex: 0 1 auto;
+      flex: 0 0 auto;
       position: relative;
       overflow: hidden;
+
+      .gallery__item--horizontal & {
+        flex-basis: 58%;
+      }
+      .gallery__item--vertical & {
+        flex-basis: 42%;
+      }
 
       &:hover img {
         transform: scale(1.05);
@@ -201,11 +209,11 @@
         // @include transition-fix;
 
         @media (min-width: $breakpoint-small) {
-          max-height: 54vh;
+          // max-height: 54vh;
         }
 
         @media (min-width: $breakpoint-medium) {
-          max-height: 50vw;
+          // max-height: 50vw;
         }
       }
     }
@@ -233,6 +241,10 @@
         }
       }
 
+      & * {
+        pointer-events: none;
+      }
+
       & svg {
         width: $gallery-icon-width;
         stroke: $color-white;
@@ -242,7 +254,8 @@
       }
     }
     &-content {
-      grid-area: content;
+      // grid-area: content;
+      flex: 1 1 auto;
     }
     &-title {
       display: block;

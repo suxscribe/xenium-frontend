@@ -256,7 +256,7 @@
     }
     &-icon {
       fill: rgba($color-white, 0);
-
+      width: $gallery-icon-width;
       & svg {
         transition: all var(--transition);
         pointer-events: none;
@@ -268,16 +268,12 @@
         }
       }
       &--size {
-        width: $gallery-icon-width;
-
         & svg {
           stroke: $color-white;
           // stroke-width: 2px;
         }
       }
       &--like {
-        width: $gallery-icon-width;
-
         & svg {
           stroke: $color-white;
           // stroke-width: 2px;
@@ -288,8 +284,6 @@
         }
       }
       &--zoom {
-        width: $gallery-icon-width;
-
         & svg {
           stroke: $color-white;
           // stroke-width: 2px;
@@ -297,6 +291,24 @@
             stroke: $color-black;
             fill: $color-white;
           }
+        }
+      }
+      &--video {
+        position: absolute;
+        width: $gallery-video-icon-width;
+        padding: $content-padding;
+        box-sizing: content-box;
+        left: 0;
+        bottom: 0;
+
+        & svg {
+          stroke: $color-white;
+        }
+        & .svg-fill {
+          transition: fill var(--transition);
+        }
+        &:hover .svg-fill {
+          fill: $color-white;
         }
       }
     }
@@ -325,7 +337,7 @@
     justify-content: center;
     align-items: start;
     gap: responsive-value(40px, 100px);
-    flex: 1 1 auto;
+    flex: 0 0 auto;
     // max-height: 100vh;
     // height: 100vh;
     // overflow: hidden;

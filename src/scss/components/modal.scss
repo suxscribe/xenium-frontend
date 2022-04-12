@@ -56,6 +56,13 @@
     &--size {
       align-items: center;
     }
+    &--video {
+      margin: 0;
+      max-width: none;
+      width: 100%;
+      min-height: calc(var(--vh, 1vh) * 100);
+      display: flex;
+    }
   }
 
   &__content {
@@ -83,6 +90,18 @@
       max-height: calc(var(--vh, 1vh) * 100);
       flex-direction: row;
       padding: responsive-value(20px, 60px);
+      justify-content: end;
+
+      @media (min-width: $breakpoint-medium) {
+        justify-content: center;
+      }
+    }
+    &--video {
+      width: 100%;
+      max-height: calc(var(--vh, 1vh) * 100);
+      flex-direction: row;
+      padding: responsive-value(20px, 60px);
+      align-items: center;
     }
 
     & p {

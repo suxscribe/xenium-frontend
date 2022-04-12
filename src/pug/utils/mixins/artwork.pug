@@ -45,6 +45,8 @@ mixin artwork()
                 +svg-like()
               a(href="").artwork__image-icon.artwork__image-icon--zoom
                 +svg-zoom()
+            a(href="").artwork__image-icon.artwork__image-icon--video.artwork-gallery-ignore
+              +svg-video()
           figure.artwork__image(itemscope, itemtype="http://schema.org/ImageObject")
             a(href="/assets/artwork-image-02.jpg",itemprop="contentUrl", data-size='1400x1000').artwork__image-image 
               img(src="/assets/artwork-image-02.jpg", alt="")
@@ -100,3 +102,4 @@ mixin artwork()
   +modal-like()
   +modal-size()
   +modal-enquiry()
+  +modal-video()

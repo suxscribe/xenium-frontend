@@ -18,6 +18,7 @@ import {
 import { initMainBlackAnimation } from './init-main-black-animation';
 import { scrollTop } from './scroll-top';
 import { artworkModal } from './artwork-modal';
+import { modalLike } from './modal-like';
 
 export default class App {
   constructor(_options) {
@@ -43,6 +44,8 @@ export default class App {
 
       // artwork page
       artworkModal();
+
+      modalLike();
 
       modals();
       setFormValidation();

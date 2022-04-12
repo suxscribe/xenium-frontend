@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { doc } from 'prettier';
+import { vars } from './vars';
 
 import * as ScrollMagic from 'scrollmagic';
 import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
@@ -9,7 +10,7 @@ const controller = new ScrollMagic.Controller();
 
 export const postsList = () => {
   document.querySelectorAll('.posts__list').forEach((postList) => {
-    const postsItems = document.querySelectorAll('.posts__item');
+    const postsItems = document.querySelectorAll(`.${vars.postTeaserClass}`);
     const postsCount = postsItems.length;
     let zCounter = postsCount;
     postsItems.forEach((postItem) => {
@@ -19,7 +20,7 @@ export const postsList = () => {
   });
 
   document.querySelectorAll('.posts__list').forEach((posts) => {
-    posts.querySelectorAll('.posts__item').forEach((post) => {
+    posts.querySelectorAll(`.${vars.postTeaserClass}`).forEach((post) => {
       let animation = gsap.timeline();
 
       animation.fromTo(post, { y: '50%' }, { duration: 1, y: 0 });

@@ -209,13 +209,14 @@ $input-padding: responsive-value(16px, 24px);
 .wpcf7-response-output {
   opacity: 0;
   transition: all var(--transition);
-  border-radius: $button-border-radius;
-  height: $button-height;
+  // border-radius: $button-border-radius;
+  // height: $button-height;
+  margin: $block-margin 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $color-gray-2;
-  @include font-h2;
+  background-color: $color-button-label;
+  // @include font-h2;
 
   .wpcf7 form.sent & {
     opacity: 1;
@@ -232,4 +233,12 @@ $input-padding: responsive-value(16px, 24px);
 .wpcf7 .form-submitting .ajax-loader {
   // cf7 loader circle
   display: none;
+}
+
+.wpcf7-spinner {
+  display: none;
+}
+
+.wpcf7 form .wpcf7-response-output {
+  margin: $block-margin 0;
 }
