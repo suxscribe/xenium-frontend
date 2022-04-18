@@ -1,13 +1,14 @@
 .header {
-  padding: 54px 0;
+  margin: $header-margin 0;
   max-width: 100vw;
   // overflow-x: hidden;
   position: relative;
   width: 100%;
+  z-index: 1; // fix logo hover on main page
 
   .page--index & {
     @media (min-width: $breakpoint-medium) {
-      padding-bottom: 0;
+      margin-bottom: 0;
     }
   }
 
@@ -31,7 +32,7 @@
       @media (min-width: $breakpoint-small) {
         display: block;
 
-        height: responsive-value(54px, 101px, $tablet-width, $fhd-width);
+        height: $header-height;
         width: auto;
       }
     }

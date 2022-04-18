@@ -46,10 +46,12 @@ export const swiperMain = () => {
   // const swiperMainSlides = document.querySelectorAll('.main-slider-2__item');
   const swiperEffect = (swiper) => {
     swiper.slides.forEach((slide, index) => {
+      const deltaIndex = index - swiper.activeIndex;
       const delta = (index - swiper.activeIndex) * slideDelta;
       const slideInner = slide.querySelector('.main-slider-2__item-image');
-      
-      slideInner.style.transform = `translateX(${delta}px)`;
+
+      slideInner.style.transform = `translateX(${delta}px) scale(calc(1 / (${deltaIndex} + 1)))`;
+
       if (index - swiper.activeIndex > 0) {
         slideInner.style.opacity = 1 / (index - swiper.activeIndex);
       } else {
@@ -67,7 +69,7 @@ export const swiperMain = () => {
       },
       next: {
         // will set `translateX(100%)` on next slides
-        translate: ['20%', 0, -400],
+        translate: ['00%', 0, '-1px'],
         opacity: 0.5,
       },
     },
@@ -78,6 +80,8 @@ export const swiperMain = () => {
     slidesPerView: '1',
     grabCursor: false,
     allowTouchMove: true,
+    // preventClicks: false,
+    // preventClicksPropagation: false,
     keyboard: true,
     navigation: {
       nextEl: '.main-slider-2__nav-arrow--right',
@@ -86,7 +90,7 @@ export const swiperMain = () => {
     keyboard: true,
 
     onSlideChangeEnd: function (e) {
-      console.log(e);
+      // console.log(e);
     },
     on: {
       init: (swiper) => {
@@ -95,6 +99,13 @@ export const swiperMain = () => {
       slideChange: (swiper) => {
         // console.log(swiper.slides);
         swiperEffect(swiper);
+      },
+      click: (swiper) => {
+        console.log(swiper);
+        const url = swiper.slides[swiper.activeIndex].querySelector(
+          '.main-slider-2__item-image'
+        );
+        window.location.href = url;
       },
     },
   });

@@ -113,10 +113,10 @@
       transition: opacity var(--transition);
 
       .footer--black & {
-        filter: invert(1);
+        // filter: invert(1);
       }
       &:hover {
-        opacity: 0.5;
+        // opacity: 0.5;
       }
     }
   }

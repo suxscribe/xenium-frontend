@@ -25,9 +25,12 @@
 @import 'vendor/photoswipe/main.scss';
 @import 'vendor/photoswipe/default-skin/default-skin.scss';
 
+@import 'components/logo.scss';
 @import 'components/close.scss';
 @import 'components/section.scss';
 @import 'components/modal';
+@import 'components/icons';
+@import 'components/title.scss';
 @import 'components/preloader';
 @import 'components/button.scss';
 @import 'components/menu';
@@ -53,5 +56,4 @@
 @import 'components/content.scss';
 @import 'components/not-found.scss';
 @import 'components/cookie.scss';
-@import 'components/title.scss';
 @import 'components/artwork-modal.scss';

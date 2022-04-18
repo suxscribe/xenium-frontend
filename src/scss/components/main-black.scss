@@ -1,5 +1,5 @@
 @mixin main-black-transition {
-  transform: translateY($translate);
+  transform: translateY($animation-translate);
   opacity: 0;
   transition: all var(--transition);
 

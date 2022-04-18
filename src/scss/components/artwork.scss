@@ -2,6 +2,7 @@
   &__wrap {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
+    // grid-template-rows: minmax(0, auto) minmax(0, auto);
     // gap: 8.333%;
 
     margin-bottom: $margin-large;
@@ -12,6 +13,14 @@
       grid-template-columns: repeat(12, 1fr);
     }
   }
+
+  &__title {
+    // grid-column: 1 / 7; //alt
+    // grid-row: 1 / 2; //alt
+    align-self: start;
+    margin-bottom: $margin-100;
+  }
+
   &__left {
     flex: 1 1 auto;
     grid-column: 1 / -1;
@@ -21,6 +30,9 @@
       order: auto;
       order: 0;
     }
+
+    display: flex;
+    flex-direction: column;
 
     // animation
 
@@ -35,10 +47,14 @@
         // top: $margin-60;
       }
     }
+    &-sticky {
+      flex: 1 0 auto;
+    }
   }
   &__right {
     flex: 0 0 40%;
     grid-column: 1 / -1;
+    grid-row: 1 / -1;
     margin-bottom: $margin-large;
 
     @media (min-width: $breakpoint-small) {
@@ -245,71 +261,80 @@
         transform: scale(1.05);
       }
     }
-    &-icons {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      padding: $content-padding;
+  }
+
+  &__icons {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: $content-padding;
+  }
+  &__icon {
+    width: $gallery-icon-width;
+    height: $gallery-icon-width;
+    position: relative;
+    transition: all var(--transition);
+    overflow: hidden;
+
+    & svg {
+      transition: all var(--transition);
+      pointer-events: none;
+      position: relative;
+      z-index: 1;
     }
-    &-icon {
-      fill: rgba($color-white, 0);
+
+    &-fill {
+      position: absolute;
       width: $gallery-icon-width;
-      & svg {
-        transition: all var(--transition);
-        pointer-events: none;
-      }
-      &:hover {
-        & svg {
-          stroke: $color-black;
-          fill: $color-white;
+      height: $gallery-icon-width;
+      overflow: hidden;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: $color-white;
+        transform: translateX(-100%);
+        transition: transform var(--transition);
+        z-index: -1;
+
+        .artwork__icon:hover & {
+          transform: translateX(0);
         }
       }
+
       &--size {
-        & svg {
-          stroke: $color-white;
-          // stroke-width: 2px;
-        }
+        clip-path: url(#icon-size);
       }
       &--like {
-        & svg {
-          stroke: $color-white;
-          // stroke-width: 2px;
-        }
-
-        &:hover svg {
-          fill: $color-white;
-        }
+        clip-path: url(#icon-like);
       }
       &--zoom {
-        & svg {
-          stroke: $color-white;
-          // stroke-width: 2px;
-          .artwork__image:hover & {
-            stroke: $color-black;
-            fill: $color-white;
-          }
-        }
+        clip-path: url(#icon-zoom);
       }
-      &--video {
-        position: absolute;
-        width: $gallery-video-icon-width;
-        padding: $content-padding;
-        box-sizing: content-box;
-        left: 0;
-        bottom: 0;
+    }
 
-        & svg {
-          stroke: $color-white;
-        }
-        & .svg-fill {
-          transition: fill var(--transition);
-        }
-        &:hover .svg-fill {
-          fill: $color-white;
-        }
+    &--video {
+      position: absolute;
+      width: $gallery-video-icon-width;
+      padding: $content-padding;
+      box-sizing: content-box;
+      left: 0;
+      bottom: 0;
+
+      & svg {
+        stroke: $color-white;
+      }
+      & .svg-fill {
+        transition: fill var(--transition);
+      }
+      &:hover .svg-fill {
+        fill: $color-white;
       }
     }
   }
@@ -457,6 +482,22 @@
       flex: 0 0 auto;
       width: 160px;
       height: 160px;
+    }
+  }
+
+  &__back {
+    margin-bottom: responsive-value(40px, 80px);
+    text-align: right;
+
+    opacity: 0;
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 1.4s forwards;
+    }
+
+    &-link {
+      @include font-h4;
+      @include underline-hover($color-gray);
+      color: $color-gray;
     }
   }
 }

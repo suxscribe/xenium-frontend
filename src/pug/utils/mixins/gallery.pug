@@ -12,7 +12,8 @@ mixin gallery-item(args)
     .gallery__item-content 
       .gallery__item-title
         a(href="#").artwork-modal-reload !{args.title}
-      .gallery__item-author !{args.author}
+      .gallery__item-author 
+        a(href="#") !{args.author}
       .gallery__item-tags= args.tags
 
 mixin gallery-pagination(args)

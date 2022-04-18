@@ -18,7 +18,12 @@ get_header();
             the_row();
           ?>
             <div class="accordion__item">
-              <h2 class="accordion__item-header"><button class="accordion__item-trigger"><?= get_sub_field('question') ?></button></h2>
+              <h2 class="accordion__item-header">
+                <button class="accordion__item-trigger">
+                  <?= get_sub_field('question') ?>
+                  <span class="accordion__item-marker"></span>
+                </button>
+              </h2>
               <div class="accordion__item-panel">
                 <div class="accordion__item-text"><?= get_sub_field('answer') ?></div>
               </div>

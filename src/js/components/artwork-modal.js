@@ -22,10 +22,6 @@ export const artworkModal = () => {
       artworkModalListener();
     }
   }
-
-  //todo if body hasclass page--artwork -> artworkinit, modals init
-
-  //todo next if body hasclass page--artwork - should be no artwork-modal-reload links. Or they should open as regular links.
 };
 
 const isArtworkPage = () => {
@@ -111,6 +107,30 @@ const artworkDestroy = () => {
     artwork.destroy();
   }
 };
+
+const enquireButtonListener = () => {
+  document.addEventListener('click', (e) => {
+    if (e.target.matches('.artwork__enquire')) {
+      const formArtworkTitle = document.querySelector('#enquire-text');
+      // const formArtworkUrl = document.querySelector('#form-enquire-url');
+
+      const artworkTitle = document.querySelector('.artwork__title');
+      const authorTitle = document.querySelector('.artwork__author-name');
+
+      // const artworkUrl = window.location.href; // todo get url of artwork in modal
+
+      if (formArtworkTitle && artworkTitle) {
+        formArtworkTitle.value =
+          artworkTitle.textContent.trim() +
+          (authorTitle ? ' — ' + authorTitle.textContent.trim() : '');
+      }
+      // if (formArtworkUrl) {
+      //   formArtworkUrl.value = artworkUrl;
+      // }
+    }
+  });
+};
+enquireButtonListener();
 
 const newArtwork = `
 <div class="artwork">

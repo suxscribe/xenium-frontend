@@ -2,6 +2,7 @@ export const menuToggle = () => {
   const burgerLink = document.querySelector('.header__menu-link');
   const burgerMenu = document.querySelector('.menu');
   const burgerClose = document.querySelector('.menu__close');
+  const modalEmail = document.querySelector('.menu__button-email');
 
   const isVisible = (elem) =>
     !!elem &&
@@ -43,4 +44,11 @@ export const menuToggle = () => {
   const removeClickListener = () => {
     document.removeEventListener('click', outsideClickListener);
   };
+
+  // todo add modal-email listener. do closeMenu on modal-email click
+  if (modalEmail) {
+    modalEmail.addEventListener('click', (e) => {
+      closeMenu();
+    });
+  }
 };

@@ -4,7 +4,7 @@
   flex-direction: column-reverse;
   gap: 96px;
 
-  @media (min-width: $breakpoint-medium) {
+  @media (min-width: $breakpoint-small) {
     flex-direction: row;
   }
 
@@ -24,7 +24,7 @@
       }
     }
     &--next {
-      margin-left: auto;
+      // margin-left: auto;
     }
   }
 

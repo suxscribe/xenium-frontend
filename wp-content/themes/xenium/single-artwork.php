@@ -6,56 +6,61 @@
     $authorData = get_artwork_author($author);
 
     $artworkSize = (get_field('size_width') != '') ? get_field('size_width') : 50;
+
     ?>
 
     <main class="main">
       <section class="section artwork">
         <div class="container">
-          <h1 class="artwork__title title"><span class="title__wrap"><span class="title__text">
-                <?php the_title(); ?></span></span>
-          </h1>
+          <div class="artwork__back"><a class="artwork__back-link" href="/artwork/artwork_section/contemporary-art/">back to the gallery</a></div>
+
           <div class="artwork__wrap">
             <div class="artwork__left">
-              <div class="artwork__left-wrap">
+              <h1 class="artwork__title title"><span class="title__wrap"><span class="title__text">
+                    <?php the_title(); ?></span></span>
+              </h1>
+              <div class="artwork__left-sticky">
+                <div class="artwork__left-wrap">
 
-                <? if (!empty($authorData)) { ?>
-                  <a class="artwork__author" href="<?= $authorData['url']; ?>">
-                    <div class="artwork__author-name"><?= $authorData['title']; ?></div>
-                    <div class="artwork__author-years"><?= $authorData['years']; ?></div>
-                    <div class="artwork__author-hover">view<br>artist’s<br>profile</div>
-                    <div class="artwork__author-arrow"><svg>
-                        <use xlink:href="#arrow-alt"></use>
-                      </svg></div>
-                  </a>
-                <? } ?>
-
-                <dl class="artwork__parameters">
-                  <? if (has_term()) { ?>
-                    <dt class="artwork__parameter-name">style</dt>
-                    <dt class="artwork__parameter-value">
-                      <? the_terms($post->ID, 'artwork_section', '', ', ', ''); ?>
-                    </dt>
+                  <? if (!empty($authorData)) { ?>
+                    <a class="artwork__author" href="<?= $authorData['url']; ?>">
+                      <div class="artwork__author-name"><?= $authorData['title']; ?></div>
+                      <div class="artwork__author-years"><?= $authorData['years']; ?></div>
+                      <div class="artwork__author-hover">view<br>artist’s<br>profile</div>
+                      <div class="artwork__author-arrow"><svg>
+                          <use xlink:href="#arrow-alt"></use>
+                        </svg></div>
+                    </a>
                   <? } ?>
 
-                  <? if (get_field('material') != '') { ?>
-                    <dt class="artwork__parameter-name">material</dt>
-                    <dt class="artwork__parameter-value"><?= get_field('material') ?></dt>
-                  <? } ?>
-                  <? if (get_field('year') != '') { ?>
-                    <dt class="artwork__parameter-name">year</dt>
-                    <dt class="artwork__parameter-value"><?= get_field('year') ?></dt>
-                  <? } ?>
-                  <? if ((get_field('size_width') != '') || (get_field('size_height') != '') || (get_field('size_depth') != '')) { ?>
-                    <?
-                    $sizes = array(get_field('size_width'), get_field('size_height'), get_field('size_depth')) ?>
-                    <dt class="artwork__parameter-name">size</dt>
-                    <dt class="artwork__parameter-value"><?= implode('x', array_filter($sizes)) ?></dt>
-                  <? } ?>
-                </dl>
+                  <dl class="artwork__parameters">
+                    <? if (has_term()) { ?>
+                      <dt class="artwork__parameter-name">style</dt>
+                      <dt class="artwork__parameter-value">
+                        <? the_terms($post->ID, 'artwork_section', '', ', ', ''); ?>
+                      </dt>
+                    <? } ?>
 
-                <div class="artwork__description">
-                  <?php the_content(); ?>
-                </div><a class="artwork__enquire button" data-micromodal-open="modal-enquiry">Enquire</a>
+                    <? if (get_field('material') != '') { ?>
+                      <dt class="artwork__parameter-name">material</dt>
+                      <dt class="artwork__parameter-value"><?= get_field('material') ?></dt>
+                    <? } ?>
+                    <? if (get_field('year') != '') { ?>
+                      <dt class="artwork__parameter-name">year</dt>
+                      <dt class="artwork__parameter-value"><?= get_field('year') ?></dt>
+                    <? } ?>
+                    <? if ((get_field('size_width') != '') || (get_field('size_height') != '') || (get_field('size_depth') != '')) { ?>
+                      <?
+                      $sizes = array(get_field('size_width'), get_field('size_height'), get_field('size_depth')) ?>
+                      <dt class="artwork__parameter-name">size</dt>
+                      <dt class="artwork__parameter-value"><?= implode('x', array_filter($sizes)) ?></dt>
+                    <? } ?>
+                  </dl>
+
+                  <div class="artwork__description">
+                    <?php the_content(); ?>
+                  </div><a class="artwork__enquire button" data-micromodal-open="modal-enquiry">Enquire</a>
+                </div>
               </div>
             </div>
             <div class="artwork__right">
@@ -66,25 +71,39 @@
                   <a class="artwork__image-image" href="<?= $image_data[0] ?>" itemprop="contentUrl" data-size="<?= $image_data[1] . 'x' . $image_data[2] ?>">
                     <?php the_post_thumbnail('full', array('itemprop' => 'image')); ?>
                   </a>
-                  <div class="artwork__image-icons"><a class="artwork__image-icon artwork__image-icon--size artwork-gallery-ignore" href=""><svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 42.5 54.1" style="enable-background:new 0 0 42.5 54.1;" xml:space="preserve">
-                        <g>
-                          <rect x="12" y="2" transform="matrix(0.866 -0.5 0.5 0.866 -10.6641 14.2555)" width="18.6" height="50.1"></rect>
-                          <line x1="22.8" y1="12.5" x2="11.9" y2="18.8"></line>
-                          <line x1="35.7" y1="33.5" x2="24.8" y2="39.8"></line>
-                          <line x1="29.4" y1="22.6" x2="22.8" y2="26.3"></line>
-                        </g>
-                      </svg></a><a class="artwork__image-icon artwork__image-icon--like artwork-gallery-ignore" href=""><svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 42.5 54.1" style="enable-background:new 0 0 42.5 54.1;" xml:space="preserve">
-                        <path id="like" d="M21.3,44.9l-2.9-2.6C8.1,33.2,1.3,27.1,1.3,19.7c0-6,4.8-10.8,11-10.8c3.5,0,6.8,1.6,9,4.1    c2.2-2.5,5.5-4.1,9-4.1c6.2,0,11,4.7,11,10.8c0,7.4-6.8,13.5-17.1,22.6L21.3,44.9z">
-                        </path>
-                      </svg></a><a class="artwork__image-icon artwork__image-icon--zoom" href=""><svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 42.5 54.1" style="enable-background:new 0 0 42.5 54.1;" xml:space="preserve">
-                        <g id="zoom">
-                          <path d="M38.8,20.1c0,9.7-7.8,17.5-17.5,17.5c-9.7,0-17.5-7.9-17.5-17.5c0-9.7,7.8-17.5,17.5-17.5      C30.9,2.5,38.8,10.4,38.8,20.1z">
+                  <div class="artwork__icons"><a class="artwork__icon artwork__icon--size artwork-gallery-ignore" href="">
+                      <div class="artwork__icon-fill artwork__icon-fill--size"></div><svg width="62" height="62" viewbox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <clipPath id="icon-size">
+                          <rect class="icon__fill" x="10" y="13.4033" width="19.6242" height="51.0865" transform="rotate(-30 10 13.4033)" fill="white"></rect>
+                        </clipPath>
+                        <rect class="icon__stroke" x="10.683" y="13.5868" width="18.6242" height="50.0865" transform="rotate(-30 10.683 13.5868)" stroke="black"></rect>
+                        <line class="icon__stroke" x1="33.1748" y1="15.433" x2="22.25" y2="21.7405" stroke="black"></line>
+                        <line class="icon__stroke" x1="46.0405" y1="37.0736" x2="35.1157" y2="43.3811" stroke="black">
+                        </line>
+                        <line class="icon__stroke" x1="39.7329" y1="26.1483" x2="33.178" y2="29.9328" stroke="black">
+                        </line>
+                      </svg>
+                    </a><a class="artwork__icon artwork__icon--like artwork-gallery-ignore" href="">
+                      <div class="artwork__icon-fill artwork__icon-fill--like"></div><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 62 62" style="enable-background:new 0 0 62 62;" xml:space="preserve">
+                        <clipPath id="icon-like">
+                          <path class="icon__fill" d="M31,49l-2.9-2.6C17.8,37.2,11,31.2,11,23.8c0-6,4.8-10.8,11-10.8c3.5,0,6.8,1.6,9,4.1c2.2-2.5,5.5-4.1,9-4.1	c6.2,0,11,4.7,11,10.8c0,7.4-6.8,13.5-17.1,22.6L31,49z">
                           </path>
-                          <line x1="27.2" y1="36.5" x2="36.1" y2="51.8"></line>
-                          <line x1="21" y1="13.1" x2="21" y2="27"></line>
-                          <line x1="28.2" y1="19.8" x2="14.3" y2="19.8"></line>
-                        </g>
-                      </svg></a>
+                        </clipPath>
+                        <path class="icon__stroke" d="M31,49l-2.9-2.6C17.8,37.2,11,31.2,11,23.8c0-6,4.8-10.8,11-10.8c3.5,0,6.8,1.6,9,4.1c2.2-2.5,5.5-4.1,9-4.1c6.2,0,11,4.7,11,10.8c0,7.4-6.8,13.5-17.1,22.6L31,49z">
+                        </path>
+                      </svg>
+                    </a><a class="artwork__icon artwork__icon--zoom" href="">
+                      <div class="artwork__icon-fill artwork__icon-fill--zoom"></div><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 62 62" style="enable-background:new 0 0 62 62;" xml:space="preserve">
+                        <clipPath id="icon-zoom">
+                          <ellipse class="icon__fill" cx="31" cy="24" rx="18" ry="18"></ellipse>
+                        </clipPath>
+                        <path class="icon__stroke" d="M48.5,24c0,9.7-7.8,17.5-17.5,17.5c-9.7,0-17.5-7.9-17.5-17.5c0-9.7,7.8-17.5,17.5-17.5    C40.7,6.5,48.5,14.4,48.5,24z">
+                        </path>
+                        <line class="icon__stroke" x1="37" y1="40.4" x2="45.8" y2="55.7"></line>
+                        <line class="icon__stroke" x1="30.7" y1="17.1" x2="30.7" y2="31"></line>
+                        <line class="icon__stroke" x1="37.9" y1="23.8" x2="24.1" y2="23.8"></line>
+                      </svg>
+                    </a>
                   </div>
                   <? if (get_field('video')) { ?>
                     <a class="artwork__image-icon artwork__image-icon--video artwork-gallery-ignore" href=""><svg width="56" height="56" viewbox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -233,19 +252,21 @@
           <div class="modal__overlay" tabindex="-1" data-micromodal-close="">
             <div class="modal__container modal__container--form" role="dialog" aria-modal="true"><button class="modal__close close close--form" aria-label="Close modal" data-micromodal-close=""><span class="close__top"></span><span class="close__bottom"></span></button>
               <div class="modal__content modal__content--form">
-                <h3 class="modal__title">Sign up<br>for an event</h3>
-                <form class="modal__form form form--modal">
-                  <div class="form__row form__row-input stacked"><input class="validate--empty form__empty form__input" id="form-name" placeholder="Name" name="form-name" required>
-                    <div class="form__note"></div><label class="form__label" for="form-name"></label>
+                <h3 class="modal__title">Request<br>a price</h3>
+                <?= do_shortcode('[contact-form-7 id="436" title="Enquire form" html_class="modal__form form form--modal"]'); ?>
+
+                <!-- <form class="modal__form form form--modal">
+                  <div class="form__row form__row-input stacked"><input class="validate--empty form__empty form__input" id="enquire-name" placeholder="Name" name="enquire-name" required>
+                    <div class="form__note"></div><label class="form__label" for="enquire-name"></label>
                   </div>
-                  <div class="form__row form__row-input stacked"><input class="validate--email form__email form__input" id="form-email" placeholder="E-mail" name="form-email" required>
-                    <div class="form__note"></div><label class="form__label" for="form-email"></label>
+                  <div class="form__row form__row-input stacked"><input class="validate--email form__email form__input" id="enquire-email" placeholder="E-mail" name="enquire-email" required>
+                    <div class="form__note"></div><label class="form__label" for="enquire-email"></label>
                   </div>
-                  <div class="form__row form__row-input stacked"><input class="validate--empty form__empty form__input" id="form-text" placeholder="Number of participants" name="form-text" required>
-                    <div class="form__note"></div><label class="form__label" for="form-text"></label>
+                  <div class="form__row form__row-input stacked"><input class="validate--empty form__empty form__input" id="enquire-text" placeholder="Artwork name" name="enquire-text" required>
+                    <div class="form__note"></div><label class="form__label" for="enquire-text"></label>
                   </div>
                   <div class="form__row form__submit"><button class="form__submit-button button button--black" type="submit">Send</button></div>
-                </form>
+                </form> -->
               </div>
             </div>
           </div>

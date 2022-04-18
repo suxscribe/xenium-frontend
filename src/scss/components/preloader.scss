@@ -39,6 +39,8 @@ $preloader-transition-duration: 1s;
     background-color: $color-black;
     transition: transform $preloader-transition-duration $easing 0.6s;
     transform: translateX(-100%);
+    display: flex;
+    align-items: center;
 
     & > svg {
       width: 100%;
@@ -54,6 +56,8 @@ $preloader-transition-duration: 1s;
     background: $color-white;
     transition: transform $preloader-transition-duration $easing 0s;
     transform: translateY(-100%);
+    display: flex;
+    align-items: center;
 
     & > svg {
       width: 100%;
@@ -69,6 +73,8 @@ $preloader-transition-duration: 1s;
     background-color: $color-black;
     transition: transform $preloader-transition-duration $easing 0.6s;
     transform: translateX(100%);
+    display: flex;
+    align-items: center;
 
     & > svg {
       width: 100%;

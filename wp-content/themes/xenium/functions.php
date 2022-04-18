@@ -142,6 +142,9 @@ function add_post_type_body_class($classes)
   if (is_404()) {
     $classes[] = 'page--404';
   }
+  if (is_front_page()) {
+    $classes[] = 'page--index';
+  }
 
   return $classes;
 }

@@ -72,7 +72,7 @@ wp_reset_query();
         <ul class="main-slider__wrapper swiper-wrapper">
           <? foreach ($slider_items as $item) { ?>
             <li class="main-slider-2__item swiper-slide">
-              <div class="main-slider-2__item-image"><img src="<?= $item['image'] ?>" alt="<? $item['title'] ?>"></div>
+              <a href="<?= $item['url'] ?>" class="main-slider-2__item-image"><img src="<?= $item['image'] ?>" alt="<? $item['title'] ?>"></a>
             </li>
           <? } ?>
         </ul>

@@ -5,7 +5,6 @@ export const modalLike = () => {
 };
 
 const addArtworkLinkToLikeForm = (e) => {
-  console.log(e.target);
   if (e.target.matches('.gallery__item-like')) {
     // insert artwork url to like form hidden input
 

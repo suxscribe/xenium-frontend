@@ -4,6 +4,8 @@ $main-slider-gap: responsive-value(30px, 60px);
   margin-top: 0;
   position: relative;
 
+  margin-top: calc(#{$header-height} / -2);
+
   transition: all var(--transition);
   opacity: 0;
   body.init & {
@@ -57,7 +59,7 @@ $main-slider-gap: responsive-value(30px, 60px);
     align-items: center;
     // gap: $column-margin;
     // width: 75%;
-    background-color: $color-white;
+    // background-color: $color-white;
     box-sizing: border-box;
     overflow: hidden;
 
@@ -159,20 +161,22 @@ $main-slider-gap: responsive-value(30px, 60px);
     @media (min-width: $breakpoint-medium) {
       align-items: center;
       flex-direction: row;
-      justify-content: end;
+      justify-content: center;
     }
 
     &-image {
-      order: -1;
-      transition: all 0.6s linear;
-      // cursor: url(/assets/cursor-arrow-button.svg), auto;
+      transition: all 0.6s var(--transition), z-index 2s linear 2s;
+      transform-origin: right center;
+      pointer-events: all;
 
       @media (min-width: $breakpoint-medium) {
-        order: 1;
+        pointer-events: none;
       }
 
       & img {
-        max-height: 90vh;
+        max-height: calc(
+          var(--vh) * 100 - #{$header-margin} - #{$header-height}
+        );
       }
     }
   }

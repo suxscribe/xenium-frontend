@@ -150,7 +150,7 @@ get_header();
         <div class="main-black__subtitle"><?= get_field('line_2') ?></div>
         <div class="main-black__title-2"><?= get_field('line_3') ?></div>
         <div class="main-black__text"><?= get_field('text') ?></div>
-      </div><a class="main-black__button button button--black" href="/artwork/">Check gallery</a>
+      </div><a class="main-black__button button button--black" href="<?= get_field('link') ?>">Check gallery</a>
     </div>
   </section>
 </main>

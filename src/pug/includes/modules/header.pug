@@ -1,6 +1,6 @@
 header.header
   .header__wrapper.container 
-    a.header__logo(href="index.html") 
+    a.header__logo.logo(href="index.html") 
       +logo()
     .header__menu
       .header__menu-link
@@ -15,7 +15,7 @@ header.header
       +menu-item({name: 'Contacts', href: '/contacts.html'})
       +menu-item({name: 'FAQ', href: '/faq.html'})
     .menu__buttons 
-      a.button.button--black(href="") Send e-mail 
-    .menu__language 
+      a.button.button--black.menu__button-email(href="#", data-micromodal-open="modal-email") Send e-mail 
+    //- .menu__language 
       a.menu__language-item(href="") RU 
           

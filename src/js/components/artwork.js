@@ -99,7 +99,7 @@ export default class Artwork {
       let sidebar = new StickySidebar('.artwork__left-wrap', {
         topSpacing: 40,
         bottomSpacing: 40,
-        containerSelector: '.artwork__left',
+        containerSelector: '.artwork__left-sticky',
         resizeSensor: true,
         minWidth: vars.breakpointDesktop,
         innerWrapperSelector: '.artwork__left-wrap-sticky',

@@ -24,7 +24,9 @@ $post_class = ($image_sizes[0] > $image_sizes[1]) ? 'horizontal' : 'vertical';
     <? $author = get_field('relations');
 
     if (!empty($author[0]) && ($author[0]->post_type == 'artist')) { ?>
-      <div class="gallery__item-author"><?= $author[0]->post_title ?></div>
+      <div class="gallery__item-author">
+        <a href="<?= get_permalink($author[0]) ?>"><?= $author[0]->post_title ?></a>
+      </div>
     <? } ?>
 
     <?php

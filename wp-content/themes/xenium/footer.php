@@ -58,7 +58,7 @@
   <div class="modal__overlay" tabindex="-1" data-micromodal-close="">
     <div class="modal__container modal__container--form" role="dialog" aria-modal="true"><button class="modal__close close close--form" aria-label="Close modal" data-micromodal-close=""><span class="close__top"></span><span class="close__bottom"></span></button>
       <div class="modal__content modal__content--form">
-        <h3 class="modal__title">Send message</h3>
+        <h3 class="modal__title">Join to us</h3>
         <?= do_shortcode('[contact-form-7 id="424" title="Burger Form" html_class="modal__form form form--modal"]'); ?>
       </div>
     </div>

@@ -9,8 +9,6 @@ export const preloaderInitTrantition = () => {
 };
 
 export const preloaderHide = () => {
-  // preloaderDom.classList
-  // preloaderDom.classList.remove('preloader--transition');
   preloaderDom.classList.remove('preloader--visible');
 };
 

@@ -1,0 +1,77 @@
+.icon {
+  $social-icon-size: 51px;
+
+  position: relative;
+  transition: all var(--transition);
+  overflow: hidden;
+
+  &--social {
+    width: $social-icon-size;
+    height: $social-icon-size;
+  }
+
+  & svg {
+    transition: all var(--transition);
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: $color-white;
+      transform: translateX(-100%);
+      transition: transform var(--transition);
+      z-index: -1;
+
+      .icon:hover & {
+        transform: translateX(0);
+      }
+    }
+
+    &--size {
+      clip-path: url(#icon-size);
+    }
+    &--like {
+      clip-path: url(#icon-like);
+    }
+    &--zoom {
+      clip-path: url(#icon-zoom);
+    }
+    &--instagram {
+      clip-path: url(#icon-instagram);
+    }
+  }
+
+  &__fill {
+    fill: transparent;
+  }
+
+  &__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: $color-black;
+  }
+
+  &__stroke {
+    stroke: $color-white;
+    fill: transparent;
+    transition: stroke var(--transition);
+
+    .icon:hover & {
+      stroke: $color-black;
+    }
+  }
+}

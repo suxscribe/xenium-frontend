@@ -16,9 +16,9 @@ mixin modal-enquiry()
   +modal({id:"modal-enquiry", title:"Sign up <br> for an event", class:'--form'})
     h3.modal__title !{'Sign up <br>for an event'}
     form.modal__form.form.form--modal
-      +form-row({name: "form-name", title: "", validate: 'empty', inputmask: "", placeholder: 'Name'})
-      +form-row({name: "form-email", title: "", validate: 'email', inputmask: "", placeholder: 'E-mail'})
-      +form-row({name: "form-text", title: "", validate: 'empty', inputmask: "", placeholder: 'Number of participants'})
+      +form-row({name: "enquire-name", title: "", validate: 'empty', inputmask: "", placeholder: 'Name'})
+      +form-row({name: "enquire-email", title: "", validate: 'email', inputmask: "", placeholder: 'E-mail'})
+      +form-row({name: "enquire-text", title: "", validate: 'empty', inputmask: "", placeholder: 'Number of participants'})
       .form__row.form__submit
         button(type="submit").form__submit-button.button.button--black Send
 
@@ -69,3 +69,13 @@ mixin modal-artwork()
         +svg({name:'loader'})
       .artwork
         +artwork()
+
+mixin modal-email()
+  +modal({id:"modal-email", title:"Sign up <br> for an event", class:'--form'})
+    h3.modal__title !{'Sign up <br>for an event'}
+    form.modal__form.form.form--modal
+      +form-row({name: "form-name", title: "", validate: 'empty', inputmask: "", placeholder: 'Name'})
+      +form-row({name: "form-email", title: "", validate: 'email', inputmask: "", placeholder: 'E-mail'})
+      +form-row({name: "form-text", title: "", validate: 'empty', inputmask: "", placeholder: 'Number of participants'})
+      .form__row.form__submit
+        button(type="submit").form__submit-button.button.button--black Send

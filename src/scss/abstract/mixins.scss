@@ -283,8 +283,8 @@
   opacity: 1;
 }
 
-@mixin underline-hover {
-  background-image: linear-gradient($color-black, $color-black);
+@mixin underline-hover($color: $color-black) {
+  background-image: linear-gradient($color, $color);
   background-repeat: no-repeat;
   background-position: bottom left;
   background-size: 0% 2px;

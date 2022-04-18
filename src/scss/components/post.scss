@@ -3,12 +3,12 @@
   // width: 40%;
   grid-column: 1 / -1;
   margin-bottom: 40px;
-  border: 1px solid $color-white;
   overflow: hidden;
   transition: transform 0.1s ease;
+  display: flex;
 
-  display: grid;
-  grid-template-columns: 1fr;
+  // display: grid;
+  // grid-template-columns: 1fr;
 
   @media (min-width: $breakpoint-small) {
     grid-column: 2 / 8;
@@ -39,7 +39,7 @@
     }
 
     @media (min-width: $breakpoint-medium) {
-      grid-column: 2 / 6;
+      grid-column: 2 / 7;
     }
   }
 
@@ -48,15 +48,24 @@
     grid-column: 1 / -1;
     &.post--horizontal {
       @media (min-width: $breakpoint-medium) {
-        grid-column: 5 / 12;
+        grid-column: 6 / 13;
       }
     }
 
     &.post--vertical {
       @media (min-width: $breakpoint-medium) {
-        grid-column: 5 / 9;
+        grid-column: 5 / 10;
       }
     }
+  }
+
+  &__wrap {
+    position: relative;
+    border: 1px solid $color-white;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-self: start;
+    overflow: hidden;
   }
 
   &__bg {
@@ -79,11 +88,14 @@
     }
 
     & img {
-      filter: grayscale(1);
       user-select: none;
 
       transition: all var(--transition);
       // @include transition-fix;
+
+      @media (min-width: $breakpoint-medium) {
+        filter: grayscale(1);
+      }
 
       .post:hover & {
         filter: grayscale(0);
@@ -147,6 +159,7 @@
     font-weight: 700;
     color: $color-white;
     overflow-wrap: break-word;
+    @include font-h3;
 
     @media (min-width: $breakpoint-small) {
       @include font-h3;

@@ -187,6 +187,7 @@
       flex: 0 0 auto;
       position: relative;
       overflow: hidden;
+      flex-basis: 42%;
 
       .gallery__item--horizontal & {
         flex-basis: 58%;
@@ -195,13 +196,13 @@
         flex-basis: 42%;
       }
 
-      &:hover img {
+      &:hover img,
+      &:focus img {
         transform: scale(1.05);
         filter: grayscale(0);
       }
 
       & img {
-        filter: grayscale(1);
         user-select: none;
         width: auto;
 
@@ -214,6 +215,7 @@
 
         @media (min-width: $breakpoint-medium) {
           // max-height: 50vw;
+          filter: grayscale(1);
         }
       }
     }
@@ -276,6 +278,12 @@
       // }
       color: $color-gray;
       margin-bottom: 27px;
+
+      & > a {
+        color: $color-gray;
+
+        @include underline-hover($color-gray);
+      }
     }
     &-tags {
       color: $color-gray;

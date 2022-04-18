@@ -9,5 +9,6 @@ export const modals = () => {
     disableFocus: true,
     awaitOpenAnimation: true,
     awaitCloseAnimation: true,
+    onShow: (modal, trigger) => {},
   });
 };

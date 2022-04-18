@@ -1,0 +1,57 @@
+.logo {
+  background: $color-black;
+  overflow: hidden;
+  & * {
+    transition: all var(--transition);
+    pointer-events: none;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $color-white;
+    transform: translateX(-100%);
+    transition: transform var(--transition);
+    z-index: 0;
+  }
+  &:hover:before {
+    transform: translateX(0);
+  }
+  &__svg {
+    position: relative;
+    z-index: 1;
+  }
+  &__x {
+    fill: $color-white;
+
+    .logo:hover & {
+      fill: $color-black;
+    }
+  }
+  &__g {
+    fill: $color-white;
+
+    .logo:hover & {
+      fill: $color-black;
+    }
+  }
+  &__text * {
+    fill: $color-black;
+
+    .logo:hover & {
+      fill: $color-white;
+    }
+  }
+  &__middle {
+    fill: $color-white;
+
+    .logo:hover & {
+      fill: $color-black;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 .menu {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   background-color: $color-black;
@@ -12,10 +12,17 @@
   overflow: hidden;
   z-index: 1000;
   transform: translateX(100%);
-  min-height: calc(var(--vh) * 100);
+  min-height: 100vh;
+  height: calc(var(--vh) * 100);
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
 
   @media (min-width: $breakpoint-small) {
     width: 340px;
+  }
+
+  &:-webkit-scrollbar {
+    display: none;
   }
 
   &.active {

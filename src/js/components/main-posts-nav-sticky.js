@@ -17,7 +17,7 @@ export const MainPostsNavSticky = () => {
       containerSelector: '.main-posts',
       innerWrapperSelector: '.main-posts__nav-sticky',
       resizeSensor: true,
-      minWidth: vars.breakpointSmall,
+      // minWidth: vars.breakpointSmall,
       // scrollContainer: '.main',
     });
   }
