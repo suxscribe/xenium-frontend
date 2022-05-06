@@ -208,7 +208,8 @@
 
   &__socials {
     display: flex;
-    gap: responsive-value(22px, 54px);
+    // gap: responsive-value(22px, 54px);
+    justify-content: space-between;
   }
   &__social {
     $link-size: responsive-value(32px, 54px);
@@ -216,11 +217,12 @@
     display: block;
     width: $link-size;
     height: $link-size;
+    aspect-ratio: 1 / 1;
     transition: opacity var(--transition);
     filter: invert(1);
 
     &:hover {
-      opacity: 0.5;
+      // opacity: 0.5;
     }
   }
 

@@ -19,13 +19,13 @@ footer.footer(class=footerClass)
             a(href="#") Privacy policy
       .footer__right 
         .footer__social(data-aos="fade-up", data-aos-delay="400", data-aos-anchor=".footer")
-          a(href="").footer__social-link 
-            +svg({name:'facebook'})
-          a(href="").footer__social-link 
-            +svg({name:'twitter'})
-          a(href="").footer__social-link.icon
-            //- +svg({name:'instagram'})
-            .icon__bg
+          a(href="").footer__social-link.icon.icon--social
+            .icon__wrap.icon__wrap--facebook
+            +svg-facebook()
+          a(href="").footer__social-link.icon.icon--social
+            .icon__wrap.icon__wrap--twitter
+            +svg-twitter()
+          a(href="").footer__social-link.icon.icon--social
             .icon__wrap.icon__wrap--instagram
             +svg-instagram()
 

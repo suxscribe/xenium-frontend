@@ -19,6 +19,8 @@
   & span {
     width: 100%;
     position: absolute;
+    opacity: 1;
+    transition: opacity var(--transition);
 
     &:before {
       position: absolute;
@@ -36,6 +38,10 @@
   &__top {
     transform: rotate(45deg);
 
+    .close--zoom & {
+      transform: rotate(90deg);
+    }
+
     &:before {
       top: 0;
       // transform: rotate(45deg);
@@ -48,12 +54,30 @@
   &__bottom {
     transform: rotate(-45deg);
 
+    .close--zoom & {
+      transform: rotate(0deg);
+    }
+
     &:before {
       // bottom: -3px;
       // transform: rotate(-45deg);
       .close:hover & {
         animation: OutIn 0.4s $easing 0.1s forwards;
       }
+    }
+  }
+
+  &--zoom {
+    position: relative;
+
+    & span {
+      &:before {
+        height: 1px;
+      }
+    }
+
+    .pswp--zoomed-in & .close__top {
+      opacity: 0;
     }
   }
 

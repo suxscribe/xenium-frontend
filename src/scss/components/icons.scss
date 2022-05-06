@@ -1,13 +1,31 @@
 .icon {
   $social-icon-size: 51px;
+  $video-icon-size: 56px;
+
+  flex: 0 0 auto;
 
   position: relative;
   transition: all var(--transition);
   overflow: hidden;
 
+  width: $gallery-icon-width;
+  height: $gallery-icon-width;
+
   &--social {
     width: $social-icon-size;
     height: $social-icon-size;
+  }
+  &--video {
+    width: $video-icon-size;
+    height: $video-icon-size;
+  }
+
+  .footer--black & {
+    filter: invert(1);
+  }
+
+  & * {
+    pointer-events: none;
   }
 
   & svg {
@@ -48,8 +66,23 @@
     &--zoom {
       clip-path: url(#icon-zoom);
     }
+    &--close {
+      clip-path: url(#icon-close);
+    }
+    &--video {
+      clip-path: url(#icon-video);
+    }
     &--instagram {
       clip-path: url(#icon-instagram);
+      background: $color-black;
+    }
+    &--twitter {
+      clip-path: url(#icon-twitter);
+      background: $color-black;
+    }
+    &--facebook {
+      clip-path: url(#icon-facebook);
+      background: $color-black;
     }
   }
 
@@ -72,6 +105,21 @@
 
     .icon:hover & {
       stroke: $color-black;
+    }
+
+    &--white {
+      .icon:hover & {
+        stroke: $color-white;
+      }
+    }
+  }
+
+  &__front-fill {
+    fill: $color-white;
+    transition: fill var(--transition);
+
+    .icon:hover & {
+      fill: $color-black;
     }
   }
 }

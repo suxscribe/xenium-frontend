@@ -5,7 +5,9 @@ mixin gallery-item(args)
     .gallery__item-image 
       a(href="#").gallery__item-link.artwork-modal-reload
       img(src="/assets/" + args.image, alt="")
-      div(data-micromodal-open="modal-like").gallery__item-like
+      div(data-micromodal-open="modal-like").gallery__item-like.icon
+        //- +svg-like()
+        .icon__wrap.icon__wrap--like
         +svg-like()
 
         

@@ -51,13 +51,16 @@ mixin modal-like()
         button(type="submit").form__submit-button.button.button--black Send
 
     .modal__socials 
-      a.modal__social(href="#")
-        +svg({name:'facebook'})
-      a.modal__social(href="#")
-        +svg({name:'twitter'})
-      a.modal__social(href="#")
-        +svg({name:'instagram'})
-      a.modal__social(href="#")
+      a.modal__social.icon.icon--social(href="#")
+        .icon__wrap.icon__wrap--facebook
+        +svg-facebook()
+      a.modal__social.icon.icon--social(href="#")
+        .icon__wrap.icon__wrap--twitter
+        +svg-twitter()
+      a.modal__social.icon.icon--social(href="#")
+        .icon__wrap.icon__wrap--instagram
+        +svg-instagram()
+      a.modal__social.icon.icon--social(href="#")
         +svg({name:'link'})
 
 

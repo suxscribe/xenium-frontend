@@ -129,9 +129,38 @@
     align-items: center;
     cursor: pointer;
     transition: all var(--transition);
+    overflow: hidden;
 
     & * {
       pointer-events: none;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-100%);
+      transition: transform var(--transition);
+      background: $color-white;
+      z-index: 0;
+    }
+
+    &:hover {
+      // background-color: $color-white;
+      border-color: $color-black;
+
+      &:before {
+        transform: translateX(0);
+      }
+
+      & svg {
+        stroke: $color-black;
+        fill: transparent;
+        path {
+        }
+      }
     }
 
     & svg {
@@ -141,82 +170,70 @@
       stroke: $color-white;
       fill: transparent;
       transition: all var(--transition);
-      path {
-      }
-    }
-
-    &:hover {
-      background-color: $color-white;
-      border-color: $color-black;
-
-      & svg {
-        stroke: $color-black;
-        fill: transparent;
-        path {
-        }
-      }
+      position: relative;
+      z-index: 1;
     }
   }
 
   &--close-icon {
-    width: 36px;
-    height: 36px;
+    // width: 36px;
+    // height: 36px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    border-radius: 50%;
-    background-color: $color-white;
+    // border-radius: 50%;
+    // background-color: $color-white;
 
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 90%;
-      left: 26%;
-      background-color: $color-white;
-      width: 36px;
-      border-bottom: 1px solid $color-white;
-      transform: rotate(60deg);
-      z-index: -1;
-    }
+    // &:after {
+    //   content: '';
+    //   display: block;
+    //   position: absolute;
+    //   top: 90%;
+    //   left: 26%;
+    //   background-color: $color-white;
+    //   width: 36px;
+    //   border-bottom: 1px solid $color-white;
+    //   transform: rotate(60deg);
+    //   z-index: -1;
+    // }
 
     & * {
       pointer-events: none;
     }
 
     & svg {
-      width: 10px;
-      height: 10px;
-      stroke: $color-black;
+      // width: 10px;
+      // height: 10px;
+      // stroke: $color-black;
     }
   }
   &--zoom {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     width: $button-arrow-size;
     height: $button-arrow-size;
 
-    &:before {
-      content: '';
-      display: block;
-      width: 100%;
-      border-bottom: 1px solid $color-white;
-    }
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      width: 100%;
-      border-bottom: 1px solid $color-white;
-      transform: rotate(90deg);
-      transition: all var(--transition);
+    // &:before {
+    //   content: '';
+    //   display: block;
+    //   width: 100%;
+    //   border-bottom: 1px solid $color-white;
+    // }
+    // &:after {
+    //   content: '';
+    //   display: block;
+    //   position: absolute;
+    //   width: 100%;
+    //   border-bottom: 1px solid $color-white;
+    //   transform: rotate(90deg);
+    //   transition: all var(--transition);
 
-      .pswp--zoomed-in & {
-        opacity: 0;
-      }
-    }
+    //   .pswp--zoomed-in & {
+    //     opacity: 0;
+    //   }
+    // }
   }
 }

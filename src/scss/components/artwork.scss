@@ -273,11 +273,15 @@
     padding: $content-padding;
   }
   &__icon {
-    width: $gallery-icon-width;
-    height: $gallery-icon-width;
+    // width: $gallery-icon-width;
+    // height: $gallery-icon-width;
     position: relative;
     transition: all var(--transition);
     overflow: hidden;
+
+    & * {
+      pointer-events: none;
+    }
 
     & svg {
       transition: all var(--transition);
@@ -317,25 +321,28 @@
       &--zoom {
         clip-path: url(#icon-zoom);
       }
+      &--video {
+        clip-path: url(#icon-video);
+      }
     }
 
     &--video {
       position: absolute;
-      width: $gallery-video-icon-width;
+      // width: $gallery-video-icon-width;
       padding: $content-padding;
       box-sizing: content-box;
       left: 0;
       bottom: 0;
 
-      & svg {
-        stroke: $color-white;
-      }
-      & .svg-fill {
-        transition: fill var(--transition);
-      }
-      &:hover .svg-fill {
-        fill: $color-white;
-      }
+      // & svg {
+      //   stroke: $color-white;
+      // }
+      // & .svg-fill {
+      //   transition: fill var(--transition);
+      // }
+      // &:hover .svg-fill {
+      //   fill: $color-white;
+      // }
     }
   }
 

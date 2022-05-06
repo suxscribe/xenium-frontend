@@ -41,7 +41,7 @@ export default class Artwork {
   }
 
   initArtworkButtonsEvents(e) {
-    if (e.target.matches('.artwork__image-icon--size')) {
+    if (e.target.matches('.artwork__icon--size')) {
       e.preventDefault();
       e.stopPropagation(); // prevent pswp from opening on button click
       MicroModal.show('modal-size', {
@@ -54,7 +54,7 @@ export default class Artwork {
       this.initArtworkSizeCompare();
     }
 
-    if (e.target.matches('.artwork__image-icon--like')) {
+    if (e.target.matches('.artwork__icon--like')) {
       e.preventDefault();
       e.stopPropagation();
       MicroModal.show('modal-like', {
@@ -63,7 +63,7 @@ export default class Artwork {
       });
     }
 
-    if (e.target.matches('.artwork__image-icon--video')) {
+    if (e.target.matches('.artwork__icon--video')) {
       e.preventDefault();
       e.stopPropagation();
 
