@@ -22,6 +22,7 @@
     align-self: flex-start;
     grid-row: 3 / 4;
     grid-column: 1 / -1;
+    flex-wrap: wrap;
 
     @media (min-width: $breakpoint-medium) {
       grid-column: 1 / 5;
@@ -29,7 +30,10 @@
     }
 
     &-item {
-      font-size: 36px;
+      @include font-h4;
+      height: 1.4em;
+      display: flex;
+      align-items: center;
 
       margin-right: responsive-value(30px, 46px);
       color: $color-gray;
