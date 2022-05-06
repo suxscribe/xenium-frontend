@@ -120,6 +120,6 @@
       );
       ?>
 
-      <div class="menu__buttons"><a class="button button--black menu__button-email" data-micromodal-open="modal-email" href="#">Send e-mail</a></div>
+      <div class="menu__buttons"><a class="button button--black menu__button-email" data-micromodal-open="modal-email" href="#">Subscribe</a></div>
     </nav>
   </header>
