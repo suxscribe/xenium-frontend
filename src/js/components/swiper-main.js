@@ -47,10 +47,15 @@ export const swiperMain = () => {
   const swiperEffect = (swiper) => {
     swiper.slides.forEach((slide, index) => {
       const deltaIndex = index - swiper.activeIndex;
+
       const delta = (index - swiper.activeIndex) * slideDelta;
       const slideInner = slide.querySelector('.main-slider-2__item-image');
 
-      slideInner.style.transform = `translateX(${delta}px) scale(calc(1 / (${deltaIndex} + 1)))`;
+      if (deltaIndex < 1) {
+        slideInner.style.transform = `translateX(${delta}px) scale(1)`;
+      } else {
+        slideInner.style.transform = `translateX(${delta}px) scale(calc(1 / (${deltaIndex} + 1)))`;
+      }
 
       if (index - swiper.activeIndex > 0) {
         slideInner.style.opacity = 1 / (index - swiper.activeIndex);
@@ -97,7 +102,6 @@ export const swiperMain = () => {
         swiperEffect(swiper);
       },
       slideChange: (swiper) => {
-        // console.log(swiper.slides);
         swiperEffect(swiper);
       },
       click: (swiper) => {
