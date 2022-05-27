@@ -24,19 +24,20 @@ mixin modal-enquiry()
 
 mixin modal-size()
   +modal({id:"modal-size", class:'--size'})
-    .artwork__size.artwork__size--sculpture
-      figure.artwork__size-work 
-        figcaption.artwork__size-caption.artwork__size-caption--left: span 100 cm
-        img(src="/assets/artwork-size-01.jpg", alt="", data-height="100")
-      figure.artwork__size-reference 
-        img(src="/assets/artwork-size-reference.svg", alt="", data-height="200")
-        figcaption.artwork__size-caption.artwork__size-caption--right: span 200 cm
+    //- .artwork__size.artwork__size--sculpture
+    //-   figure.artwork__size-work 
+    //-     figcaption.artwork__size-caption.artwork__size-caption--left: span 100 cm
+    //-     img(src="/assets/artwork-size-01.jpg", alt="", data-height="100")
+    //-   figure.artwork__size-reference 
+    //-     img(src="/assets/artwork-size-reference.svg", alt="", data-height="200")
+    //-     figcaption.artwork__size-caption.artwork__size-caption--right: span 200 cm
+
 
 mixin modal-video()
   +modal({id:"modal-video", class:'--video'})
-    .artwork__video
-      video(controls, width="100%", disablepictureinpicture, muted, playsinline)
-        source(src="/assets/video.mp4", type="video/mp4")
+    //- .artwork__video
+    //-   video(controls, width="100%", disablepictureinpicture, muted, playsinline)
+    //-     source(src="/assets/video.mp4", type="video/mp4")
 
 
 mixin modal-like()
@@ -49,18 +50,38 @@ mixin modal-like()
       +form-row({name:"form-email", title:'', validate:'email', inputmask:'',placeholder:'E-mail'})
       .form__row.form__submit
         button(type="submit").form__submit-button.button.button--black Send
+      input(type="hidden", name="like-artwork", id="like-artwork")
 
     .modal__socials 
-      a.modal__social.icon.icon--social(href="#")
+      a.modal__social.icon.icon--social.modal__social--facebook(href="#")
         .icon__wrap.icon__wrap--facebook
         +svg-facebook()
-      a.modal__social.icon.icon--social(href="#")
+      a.modal__social.icon.icon--social.modal__social--twitter(href="#")
         .icon__wrap.icon__wrap--twitter
         +svg-twitter()
       a.modal__social.icon.icon--social(href="#")
-        .icon__wrap.icon__wrap--instagram
-        +svg-instagram()
-      a.modal__social.icon.icon--social(href="#")
+        +svg({name:'link'})
+
+mixin modal-gallery-like()
+  +modal({id:"modal-gallery-like", title:"thank you!", class:"--like"})
+    .modal__like
+      +svg({name:'like'})
+    h3.modal__title thank you!
+    p You can share your favorite post in your social networks.
+    form.modal__form.form.form--modal
+      +form-row({name:"form-email", title:'', validate:'email', inputmask:'',placeholder:'E-mail'})
+      .form__row.form__submit
+        button(type="submit").form__submit-button.button.button--black Send
+      input(type="hidden", name="gallery-like-artwork", id="gallery-like-artwork")
+
+    .modal__socials 
+      a.modal__social.icon.icon--social.modal__social--facebook(href="https://www.facebook.com/sharer/sharer.php?u=")
+        .icon__wrap.icon__wrap--facebook
+        +svg-facebook()
+      a.modal__social.icon.icon--social.modal__social--twitter(href="http://twitter.com/share?url=")
+        .icon__wrap.icon__wrap--twitter
+        +svg-twitter()
+      a.modal__social.icon.icon--social.js-copy-link(href="#")
         +svg({name:'link'})
 
 
