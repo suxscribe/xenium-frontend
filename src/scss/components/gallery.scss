@@ -208,7 +208,8 @@
 
       & img {
         user-select: none;
-        width: auto;
+        // width: auto;
+        width: 100%;
 
         transition: all var(--transition);
         // @include transition-fix;
