@@ -21,7 +21,7 @@ block content
       a.button(href="#", data-micromodal-open="modal-signup") Learn More
       a.button(href="#", data-micromodal-open="modal-like") Like
       //- a.button(href="#", data-micromodal-open="modal-artwork") Artwork
-      p: a(href="#").artwork-modal__link Open Artwork Modal 
+      p: a(href="/artwork-url/", data-artwork-id="test").artwork-modal__link Open Artwork Modal 
     +modal-artwork()
     //- .modals 
       +modal({id:"modal-signup", title:"Sign up <br> for an event", class:'--form'})
