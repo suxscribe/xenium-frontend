@@ -38,7 +38,7 @@
 
     opacity: 0;
     body.init & {
-      animation: Fade 0.6s var(--easing) 1.5s forwards;
+      animation: Fade 0.6s var(--easing) 1s forwards;
     }
 
     &-wrap {
@@ -69,7 +69,7 @@
     transform: translateY($animation-translate);
     opacity: 0;
     body.init & {
-      animation: SlideFadeTop 0.6s var(--easing) 2s forwards;
+      animation: SlideFadeTop 0.6s var(--easing) 1.2s forwards;
     }
   }
   &__title {
@@ -478,11 +478,26 @@
     }
   }
   &__loader {
-    display: none;
+    display: flex;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: -1;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    flex: 1 1 auto;
+
+    transition: opacity var(--transition);
 
     &.active {
-      display: flex;
-      justify-content: center;
+      opacity: 1;
     }
 
     & svg {
@@ -506,5 +521,9 @@
       @include underline-hover($color-gray);
       color: $color-gray;
     }
+  }
+
+  &__utils {
+    display: none;
   }
 }
