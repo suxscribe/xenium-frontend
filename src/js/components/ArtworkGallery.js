@@ -28,11 +28,8 @@ export default class ArtworkGallery {
     e = e || window.event;
     e.preventDefault ? e.preventDefault() : (e.returnValue = false);
 
-    console.log(e.target);
-
     if (!e.target.matches(this.galleryPreventClass)) {
       var clickedListItem = e.target.closest(this.galleryItemSelector);
-      // console.log(clickedListItem);
 
       var index = clickedListItem.dataset.pswpUid - 1;
       this.openPhotoSwipe(index, clickedListItem.parentNode);
@@ -45,9 +42,6 @@ export default class ArtworkGallery {
       linkEl,
       size,
       item;
-
-    // console.log(gallery);
-    // console.log(thumbElements);
 
     thumbElements.forEach((element, i) => {
       // include only element nodes
