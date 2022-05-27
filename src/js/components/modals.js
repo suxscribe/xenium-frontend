@@ -9,6 +9,23 @@ export const modals = () => {
     disableFocus: true,
     awaitOpenAnimation: true,
     awaitCloseAnimation: true,
-    onShow: (modal, trigger) => {},
+    onShow: (modal, trigger) => {
+      //todo if artwork modal -> add class to disable overflow.
+      // artworkModalOverflow(false);
+    },
+    onClose: (modal, trigger) => {
+      // artworkModalOverflow(true);
+    },
   });
+};
+
+export const artworkModalOverflow = (ovefrlow) => {
+  const artworkModal = document.querySelector('.artwork-modal.opened');
+  if (artworkModal) {
+    if (ovefrlow === false) {
+      artworkModal.classList.add('micromodal-opened');
+    } else {
+      artworkModal.classList.remove('micromodal-opened');
+    }
+  }
 };
