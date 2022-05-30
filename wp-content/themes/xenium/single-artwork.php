@@ -19,8 +19,8 @@
               <h1 class="artwork__title title"><span class="title__wrap"><span class="title__text">
                     <?php the_title(); ?></span></span>
               </h1>
-              <div class="artwork__left-sticky">
-                <div class="artwork__left-wrap">
+              <div class="artwork__left-sticky-container">
+                <div class="artwork__left-sticky">
 
                   <? if (!empty($authorData)) { ?>
                     <a class="artwork__author" href="<?= $authorData['url']; ?>">
@@ -143,7 +143,7 @@
             <? $authorWorks = get_field('relations'); // get author works
             if ($authorWorks && (count($authorWorks) > 1)) { ?>
               <div class="artwork__related">
-                <h4 class="artwork__related-title"><span>another works in collection by artist</span></h4>
+                <h4 class="artwork__related-title"><span>another works by artist</span></h4>
 
 
                 <ul class="gallery__items">
@@ -211,6 +211,7 @@
             </div>
           </div>
         </div>
+        <? /*
         <div class="modal micromodal-slide modal--like" id="modal-like" aria-hidden="true">
           <div class="modal__overlay" tabindex="-1" data-micromodal-close="">
             <div class="modal__container modal__container--like" role="dialog" aria-modal="true"><button class="modal__close close close--like" aria-label="Close modal" data-micromodal-close=""><span class="close__top"></span><span class="close__bottom"></span></button>
@@ -226,66 +227,75 @@
                   </div>
                   <div class="form__row form__submit"><button class="form__submit-button button button--black" type="submit">Send</button></div>
                 </form>
-                <div class="modal__socials"><a class="modal__social" href="#"><svg>
-                      <use xlink:href="#facebook"></use>
-                    </svg></a><a class="modal__social" href="#"><svg>
-                      <use xlink:href="#twitter"></use>
-                    </svg></a><a class="modal__social" href="#"><svg>
-                      <use xlink:href="#instagram"></use>
-                    </svg></a><a class="modal__social" href="#"><svg>
+                <div class="modal__socials">
+                  <a class="modal__social icon icon--social" target="_blank" onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode(get_permalink($currentArtworkId));  ?>">
+                    <div class="icon__wrap icon__wrap--facebook"></div><svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 51 51" style="enable-background:new 0 0 51 51;" xml:space="preserve">
+                      <clipPath id="icon-facebook" clipPathUnits="objectBoundingBox">
+                        <path class="icon__fill" d="M0.48,0.686 v0.324 H0.01 v-1 h1 v1 H0.638 V0.686 h0.108 l0.03,-0.138 h-0.118 h0 c-0.01,0,-0.02,0,-0.02,-0.01 V0.48 c0,-0.078,0.058,-0.104,0.088,-0.108 h0.05 v-0.12 c0,-0.004,-0.002,-0.008,-0.006,-0.008 c-0.06,-0.012,-0.126,-0.024,-0.184,-0.004 c-0.076,0.028,-0.102,0.088,-0.104,0.122 v0.186 h-0.128 v0.138 H0.48">
+                        </path>
+                      </clipPath>
+                      <path class="icon__stroke" d="M24,34.3v16.2H0.5v-50h50v50H31.9V34.3h5.4l1.5-6.9h-5.9h0c-0.5,0-1,0-1-0.5V24c0-3.9,2.9-5.2,4.4-5.4h2.5v-6    c0-0.2-0.1-0.4-0.3-0.4c-3-0.6-6.3-1.2-9.2-0.2c-3.8,1.4-5.1,4.4-5.2,6.1v9.3h-6.4v6.9H24z">
+                      </path>
+                    </svg>
+                  </a>
+                  <a class="modal__social icon icon--social" target="_blank" href="http://twitter.com/share?url=<?= urlencode(get_permalink($currentArtworkId));  ?>">
+                    <div class="icon__wrap icon__wrap--twitter"></div><svg id="Layer_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 51 51" style="enable-background:new 0 0 51 51;" xml:space="preserve">
+                      <clipPath id="icon-twitter" clipPathUnits="objectBoundingBox">
+                        <path class="icon__fill" d="M0.314,0.89L0.314,0.89c-0.096,0-0.19-0.024-0.275-0.071c0.002,0,0.006,0,0.008,0c0.094,0,0.186-0.031,0.261-0.09	l0.022-0.018H0.302c-0.041,0-0.08-0.014-0.114-0.039C0.161,0.651,0.137,0.624,0.124,0.59c0.027,0.004,0.055,0,0.08-0.006v-0.02	C0.159,0.555,0.12,0.531,0.092,0.496c-0.025-0.031-0.041-0.071-0.043-0.11c0.025,0.012,0.053,0.018,0.082,0.02l0.033,0.002	l-0.029-0.02C0.094,0.361,0.065,0.318,0.053,0.271c-0.01-0.043-0.004-0.09,0.014-0.129C0.118,0.2,0.178,0.249,0.249,0.284	c0.075,0.037,0.155,0.059,0.237,0.063H0.5L0.498,0.335C0.488,0.294,0.492,0.249,0.51,0.21c0.018-0.039,0.047-0.071,0.086-0.092	c0.037-0.02,0.082-0.027,0.124-0.02c0.043,0.008,0.082,0.027,0.112,0.059l0.004,0.004l0.006-0.002	c0.037-0.008,0.075-0.02,0.11-0.037C0.935,0.157,0.908,0.184,0.875,0.204L0.88,0.222c0.029-0.004,0.061-0.01,0.088-0.02	c-0.024,0.029-0.051,0.055-0.08,0.076L0.884,0.282v0.006c0,0.008,0,0.018,0,0.025C0.888,0.584,0.686,0.89,0.314,0.89z">
+                        </path>
+                      </clipPath>
+                      <path class="icon__stroke" d="M16,45.4L16,45.4c-4.9,0-9.7-1.2-14-3.6c0.1,0,0.3,0,0.4,0c4.8,0,9.5-1.6,13.3-4.6l1.1-0.9l-1.4,0c-2.1,0-4.1-0.7-5.8-2c-1.4-1.1-2.6-2.5-3.3-4.2c1.4,0.2,2.8,0,4.1-0.3l0-1c-2.3-0.5-4.3-1.7-5.7-3.5c-1.3-1.6-2.1-3.6-2.2-5.6c1.3,0.6,2.7,0.9,4.2,1l1.7,0.1l-1.5-1c-2.1-1.4-3.6-3.6-4.2-6c-0.5-2.2-0.2-4.6,0.7-6.6c2.6,3,5.7,5.5,9.3,7.3c3.8,1.9,7.9,3,12.1,3.2l0.7,0l-0.1-0.6c-0.5-2.1-0.3-4.4,0.6-6.4s2.4-3.6,4.4-4.7c1.9-1,4.2-1.4,6.3-1c2.2,0.4,4.2,1.4,5.7,3l0.2,0.2l0.3-0.1c1.9-0.4,3.8-1,5.6-1.9c-0.8,1.8-2.2,3.2-3.9,4.2l0.3,0.9c1.5-0.2,3.1-0.5,4.5-1c-1.2,1.5-2.6,2.8-4.1,3.9l-0.2,0.2l0,0.3c0,0.4,0,0.9,0,1.3C45.3,29.8,35,45.4,16,45.4z">
+                      </path>
+                    </svg>
+                  </a>
+                  
+                  <a class="modal__social icon icon--social js-copy-link" href="#"><svg>
                       <use xlink:href="#link"></use>
-                    </svg></a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal micromodal-slide modal--size" id="modal-size" aria-hidden="true">
-          <div class="modal__overlay" tabindex="-1" data-micromodal-close="">
-            <div class="modal__container modal__container--size" role="dialog" aria-modal="true"><button class="modal__close close close--size" aria-label="Close modal" data-micromodal-close=""><span class="close__top"></span><span class="close__bottom"></span></button>
-              <div class="modal__content modal__content--size">
+                    </svg></a>
 
-                <div class="artwork__size artwork__size--<?= get_field('artwork_type') ?>">
-                  <figure class="artwork__size-work">
-                    <figcaption class="artwork__size-caption artwork__size-caption--left"><span><?= $artworkSize ?> cm</span></figcaption>
-                    <? $image_data = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), "medium"); ?>
-                    <img src="<?= $image_data[0]; ?>" alt="" data-height="<?= $artworkSize ?>">
-                  </figure>
-                  <figure class="artwork__size-reference">
-                    <? $referenceImage = (get_field('artwork_type') == 'sculpture') ? 'sculpture-size-reference.svg' : 'artwork-size-reference.svg' ?>
-                    <img src="<?= get_template_directory_uri() ?>/assets/<?= $referenceImage ?>" alt="" data-height="200">
-
-                    <figcaption class="artwork__size-caption artwork__size-caption--right"><span>200 cm</span>
-                    </figcaption>
-                  </figure>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="modal micromodal-slide modal--form" id="modal-enquiry" aria-hidden="true">
-          <div class="modal__overlay" tabindex="-1" data-micromodal-close="">
-            <div class="modal__container modal__container--form" role="dialog" aria-modal="true"><button class="modal__close close close--form" aria-label="Close modal" data-micromodal-close=""><span class="close__top"></span><span class="close__bottom"></span></button>
-              <div class="modal__content modal__content--form">
-                <h3 class="modal__title">Request<br>a price</h3>
-                <?= do_shortcode('[contact-form-7 id="436" title="Enquire form" html_class="modal__form form form--modal"]'); ?>
+        */ ?>
+        <input type="hidden" id="artwork-url" name="artwork-url" value="<?= get_permalink($currentArtworkId) ?>" />
 
-              </div>
-            </div>
+        <div class="artwork__utils">
+          <div class="artwork__size artwork__size--<?= get_field('artwork_type') ?>">
+            <figure class="artwork__size-work">
+              <figcaption class="artwork__size-caption artwork__size-caption--left"><span><?= $artworkSize ?> cm</span></figcaption>
+              <? $image_data = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), "medium"); ?>
+              <img src="<?= $image_data[0]; ?>" alt="" data-height="<?= $artworkSize ?>">
+            </figure>
+            <figure class="artwork__size-reference">
+              <? $referenceImage = (get_field('artwork_type') == 'sculpture') ? 'sculpture-size-reference.svg' : 'artwork-size-reference.svg' ?>
+              <img src="<?= get_template_directory_uri() ?>/assets/<?= $referenceImage ?>" alt="" data-height="200">
+
+              <figcaption class="artwork__size-caption artwork__size-caption--right"><span>200 cm</span>
+              </figcaption>
+            </figure>
           </div>
-        </div>
-        <? if (get_field('video')) { ?>
-          <div class="modal micromodal-slide modal--video" id="modal-video" aria-hidden="true">
+
+          <? if (get_field('video')) { ?>
+            <!-- <div class="modal micromodal-slide modal--video" id="modal-video" aria-hidden="true">
             <div class="modal__overlay" tabindex="-1" data-micromodal-close="">
-              <div class="modal__container modal__container--video" role="dialog" aria-modal="true"><button class="modal__close close close--video" aria-label="Close modal" data-micromodal-close=""><span class="close__top"></span><span class="close__bottom"></span></button>
-                <div class="modal__content modal__content--video">
-                  <div class="artwork__video"><video controls width="100%" disablepictureinpicture muted playsinline>
-                      <source src="<?= get_field('video')[0]['url']; ?>" type="video/mp4">
-                    </video></div>
+              <div class="modal__container modal__container--video" role="dialog" aria-modal="true"><button class="modal__close close close--video" aria-label="Close modal" data-micromodal-close=""><span class="close__top"></span><span class="close__bottom"></span></button> 
+                <div class="modal__content modal__content--video"> -->
+            <div class="artwork__video"><video controls width="100%" disablepictureinpicture muted playsinline>
+                <source src="<?= get_field('video')[0]['url']; ?>" type="video/mp4">
+              </video> </div>
+            <!--
                 </div>
               </div>
             </div>
-          </div>
-        <? } ?>
+          </div> -->
+          <? } ?>
+
+        </div>
+
+
+
 
       </section>
     </main>
