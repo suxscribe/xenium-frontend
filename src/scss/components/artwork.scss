@@ -1,4 +1,7 @@
 .artwork {
+  &.section {
+    margin-top: 0;
+  }
   &__wrap {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
@@ -47,8 +50,13 @@
         // top: $margin-60;
       }
     }
-    &-sticky {
+    &-sticky-container {
       flex: 1 0 auto;
+    }
+
+    &-sticky {
+      position: sticky;
+      top: 40px;
     }
   }
   &__right {
