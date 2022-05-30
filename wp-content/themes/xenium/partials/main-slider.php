@@ -20,6 +20,7 @@ while ($the_query->have_posts()) : $the_query->the_post();
   $artist = get_field('relations');
 
   $item = array();
+  $item['id'] = get_the_ID();
   $item['title'] = get_the_title();
   $item['url'] = get_the_permalink();
   $item['image'] = get_the_post_thumbnail_url($post, 'large');
@@ -44,7 +45,7 @@ wp_reset_query();
             <li class="main-slider-1__item swiper-slide">
               <div class="main-slider-1__item-content">
                 <div class="main-slider-1__item-author"><?= $item['artist']['title'] ?></div>
-                <div class="main-slider-1__item-name"><a href="<?= $item['url'] ?>"><?= $item['title'] ?></a></div>
+                <div class="main-slider-1__item-name"><a href="<?= $item['url'] ?>" class="artwork-modal__link" data-artwork-id="<?= $item['id'] ?>"><?= $item['title'] ?></a></div>
                 <div class="main-slider-1__item-description">
                   <?
                   echo implode(
