@@ -13,7 +13,7 @@ mixin gallery-item(args)
         
     .gallery__item-content 
       .gallery__item-title
-        a(href="#").artwork-modal-reload !{args.title}
+        a(href="#", data-artwork-id="test").artwork-modal-reload0.artwork-modal__link !{args.title}
       .gallery__item-author 
         a(href="#") !{args.author}
       .gallery__item-tags= args.tags
