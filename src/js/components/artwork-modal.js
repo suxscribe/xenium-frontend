@@ -3,6 +3,7 @@ import axios from 'axios';
 import Artwork, { artworkGallery } from './Artwork';
 import { modals } from './modals';
 import { vars } from './vars';
+import { isArtworkPage } from './Utils';
 
 const artworkModalDom = document.querySelector('.artwork-modal');
 const artworkDom = document.querySelector('.artwork');
@@ -26,10 +27,6 @@ export const artworkModal = () => {
     }
   }
   // todo variant when artwork page is opened directly - what happens when we click on another works? just treat links as links.
-};
-
-const isArtworkPage = () => {
-  return document.body.classList.contains(vars.artworkPageClass);
 };
 
 const artworkModalListener = () => {
@@ -202,9 +199,9 @@ const newArtwork = `
         </h1>
         <div class="artwork__wrap">
           <div class="artwork__left">
-            <div class="artwork__left-sticky">
-              <div class="artwork__left-wrap">
-                <div class="artwork__left-wrap-sticky"><a class="artwork__author" href="">
+            <div class="artwork__left-sticky-container">
+              <div class="artwork__left-sticky">
+                <div class=""><a class="artwork__author" href="">
                     <div class="artwork__author-name">Valeriy<br>Alyoshin</div>
                     <div class="artwork__author-years">1937-2011</div>
                     <div class="artwork__author-hover">view<br>artist’s<br>profile</div>

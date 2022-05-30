@@ -1,3 +1,5 @@
+import { vars } from './vars';
+
 export const isEmptyObject = (object) => {
   return (
     object && // 👈 null and undefined check
@@ -28,4 +30,8 @@ export const setVh = () => {
   // Then we set the value in the --vh custom property to the root of the document
   document.documentElement.style.setProperty('--vh', `${vh}px`);
   // }
+};
+
+export const isArtworkPage = () => {
+  return document.body.classList.contains(vars.artworkPageClass);
 };
