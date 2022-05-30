@@ -4,6 +4,7 @@ import StickySidebar from 'sticky-sidebar-v2';
 import { vars } from './vars';
 import ArtworkGallery from './ArtworkGallery';
 import { artworkModalOverflow, modals } from './modals';
+import { isArtworkPage } from './Utils';
 
 export default class Artwork {
   constructor(_options) {
@@ -18,6 +19,7 @@ export default class Artwork {
     this.modalGalleryContainer = document.querySelector('.pswp-container');
     this.modalGalleryContainer.innerHTML = '';
     console.log(this.modalGalleryContainer);
+    this.isArtworkPage = isArtworkPage();
 
     this.init();
   }
@@ -155,27 +157,24 @@ export default class Artwork {
       'click',
       this.initArtworkButtonsEvents.bind(this)
     );
-
-    // this.initArtworkSizeLikeListener();
   }
 
   initArtworkStickySidebar() {
-    if (document.querySelector('.artwork__left-wrap')) {
-      let sidebar = new StickySidebar('.artwork__left-wrap', {
+    // if artwork page - use StickySidebar. if artwork modal - use position:sticky
+    if (this.isArtworkPage) {
+      let sidebar = new StickySidebar('.artwork__left-sticky-container', {
         topSpacing: 40,
         bottomSpacing: 40,
-        containerSelector: '.artwork__left-sticky',
+        containerSelector: '.artwork__left',
         resizeSensor: true,
         minWidth: vars.breakpointDesktop,
-        innerWrapperSelector: '.artwork__left-wrap-sticky',
-        scrollContainer: '.artwork-modal',
+        innerWrapperSelector: '.artwork__left-sticky',
+        // scrollContainer: '.artwork-modal',
       });
     }
   }
 
   destroy() {
-    //destroy pswp
-    // this.gallery.destroy();
     this.artworkGallery.destroy();
 
     window.removeEventListener('resize', this.artworkSizeCompare);
