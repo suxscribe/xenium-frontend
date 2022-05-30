@@ -114,23 +114,8 @@ mixin post-teaser(args)
             +button-arrow({class:'right'})
         .post__date= args.date
 
-mixin event-teaser(args)
-  li.post(class='post--' + args.class)
-    a(href="#").post__link
-    .post__bg 
-      img(src="/assets/" + args.image, alt="")
-    .post__content
-      .post__type !{args.type}
-      .post__sections= args.sections
-      .post__bottom
-        .post__address= args.address
-        .post__title !{args.title}
-      .post__date= args.date
-      .post__button
-        +button-arrow({class:'right'})
-
 mixin button-arrow(args)
-  a(href="#", class="button button--arrow-" + args.class)
+  a(href="#", class="button button--black button--arrow-" + args.class)
     svg(width='20', height='20', viewbox='0 0 20 20', fill='none', xmlns='http://www.w3.org/2000/svg')
       path(d='M3.34497 10.207H16.2415', stroke='white', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
       path(d='M10.9656 4.93115L16.2414 10.207L10.9656 15.4829', stroke='white', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
