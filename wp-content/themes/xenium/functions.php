@@ -122,6 +122,7 @@ $functions_includes = array(
   './inc/functions-relations.php',
   './inc/wp_bootstrap_navwalker.php',
   './inc/functions-cf7.php',
+  './inc/functions-artwork.php',
 );
 
 foreach ($functions_includes as $file) {
@@ -135,10 +136,14 @@ unset($file, $filepath);
 // get categories list
 function add_post_type_body_class($classes)
 {
-  global $post;
-
-  $classes[] = 'page--' . get_post_type();
-
+  if (is_archive()) {
+    $term = get_queried_object();
+    $classes[] = 'page--' . $term->taxonomy;
+  }
+  if (is_singular()) {
+    global $post;
+    $classes[] = 'page--' . get_post_type();
+  }
   if (is_404()) {
     $classes[] = 'page--404';
   }
