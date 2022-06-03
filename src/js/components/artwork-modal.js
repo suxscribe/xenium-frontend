@@ -26,7 +26,7 @@ export const artworkModal = () => {
       artworkModalListener();
     }
   }
-  // todo variant when artwork page is opened directly - what happens when we click on another works? just treat links as links.
+  //  if artwork page is opened directly - what happens when we click on another works? just treat links as links.
 };
 
 const artworkModalListener = () => {
@@ -68,14 +68,6 @@ const artworkModalListener = () => {
       artworkModalClear();
       showLoader(true);
       artworkModalLoadData();
-    }
-
-    if (e.target.matches('.js-copy-link')) {
-      // copy link to clipboard
-      const artworkUrlInput = document.querySelector('#artwork-url');
-
-      artworkUrlInput.select();
-      document.execCommand('copy');
     }
   });
 
@@ -138,9 +130,8 @@ const artworkModalLoadData = (id, url) => {
     form_data.append('action', 'artwork_modal_data');
     form_data.append('id', id);
 
-    //! remove xenium.enteragency.ru
     axios
-      .post('http://xenium.enteragency.ru/wp-admin/admin-ajax.php', form_data)
+      .post('/wp-admin/admin-ajax.php', form_data)
       .then(function (response) {
         // console.log(response);
         showLoader(false);
@@ -157,7 +148,7 @@ const artworkModalLoadData = (id, url) => {
 const artworkInit = (url) => {
   artwork = new Artwork({ url: url });
 
-  if (wpcf7) {
+  if (typeof wpcf7 !== 'undefined') {
     // console.log(wpcf7);
     wpcf7.init(document.querySelector('.form--enquire'));
     wpcf7.init(document.querySelector('.form--like'));
