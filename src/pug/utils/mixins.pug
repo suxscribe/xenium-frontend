@@ -109,7 +109,10 @@ mixin post-teaser(args)
         .post__sections= args.sections
         .post__bottom
           .post__address= args.address
-          .post__title !{args.title}
+          .post__info
+            .post__title !{args.title}
+            .post__description 
+              div Read it to find out about how our gallery was opened
           .post__button
             +button-arrow({class:'right'})
         .post__date= args.date
