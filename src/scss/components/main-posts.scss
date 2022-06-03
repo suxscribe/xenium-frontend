@@ -78,6 +78,10 @@ $nav-underline: 2px;
         overflow: hidden;
         padding: $nav-margin 0;
 
+        &:hover {
+          color: $color-black;
+        }
+
         & span {
           display: block;
 
