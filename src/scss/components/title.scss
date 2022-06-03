@@ -4,6 +4,14 @@
   position: relative;
   display: inline-block;
 
+  &--gallery {
+    margin-bottom: 0;
+
+    &:after {
+      display: none !important;
+    }
+  }
+
   &:after {
     content: '';
     display: block;
@@ -27,6 +35,10 @@
     overflow: hidden;
     margin-bottom: responsive-value(30px, 40px);
 
+    .title--gallery & {
+      margin-bottom: 0;
+    }
+
     // transform: translateY(100%);
   }
   &__text {
@@ -35,7 +47,7 @@
     // animation
     transform: translateY(100%);
     body.init & {
-      animation: SlideTop100 0.6s var(--easing) 0.7s forwards;
+      animation: SlideTop100 0.6s var(--easing) 0.5s forwards;
     }
   }
 }
