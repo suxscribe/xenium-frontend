@@ -10,15 +10,17 @@ block content
   include ../includes/modules/preloader
   section.section.gallery
     .container 
-      h1.gallery__title gallery
+      h1.gallery__title.title.title--gallery
+        span.title__wrap 
+          span.title__text gallery
       .gallery__navigation
         //- .gallery__navigation-left
         +gallery-pagination()
         //- .gallery__navigation-right  
         //- .gallery__filter 
         .gallery__filter-category 
-          a(href="").gallery__filter-category-item.active russian art
-          a(href="").gallery__filter-category-item contemporary art
+          a(href="").gallery__filter-category-item.active: span: span russian art
+          a(href="").gallery__filter-category-item: span: span contemporary art
         .gallery__filter-subcategory 
           a(href="").gallery__filter-subcategory-item.active all
           a(href="").gallery__filter-subcategory-item neorealism

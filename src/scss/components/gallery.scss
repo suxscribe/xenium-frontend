@@ -29,6 +29,13 @@
       grid-row: 2 / 3;
     }
 
+    // animations
+    opacity: 0;
+
+    body.init & {
+      animation: SlideFadeBottom 0.6s var(--easing) 0.9s forwards;
+    }
+
     &-item {
       @include font-h4;
       height: 1.4em;
@@ -75,6 +82,7 @@
         position: relative;
         padding-bottom: 20px;
         margin-bottom: 20px;
+        display: inline-block;
 
         @media (min-width: $breakpoint-medium) {
           // padding-bottom: 0;
@@ -82,6 +90,20 @@
         }
 
         color: $color-gray;
+
+        & > span {
+          display: inline-block;
+          overflow: hidden;
+
+          & > span {
+            display: inline-block;
+            // animation
+            transform: translateY(100%);
+            body.init & {
+              animation: SlideTop100 0.6s var(--easing) 0.6s forwards;
+            }
+          }
+        }
 
         &:hover {
           color: $color-black;
@@ -102,6 +124,13 @@
             bottom: 0;
             right: -1em;
             left: -100vw;
+
+            transform: translateX(-100%);
+
+            body.init & {
+              animation: SlideRight100 0.6s var(--easing) 0.3s forwards;
+            }
+
             @media (min-width: $breakpoint-medium) {
               right: 0;
             }
@@ -122,6 +151,13 @@
         grid-row: 2 / 3;
 
         margin-bottom: 0;
+      }
+
+      // animations
+      opacity: 0;
+
+      body.init & {
+        animation: SlideFadeBottom 0.6s var(--easing) 0.9s forwards;
       }
 
       &-item {
@@ -150,6 +186,12 @@
   }
 
   &__items {
+    // animation
+    opacity: 0;
+    body.init & {
+      animation: SlideFadeTop 0.6s var(--easing) 1.1s forwards;
+    }
+
     & + .gallery__pagination {
       margin-top: responsive-value(100px, 200px);
       justify-content: start;
