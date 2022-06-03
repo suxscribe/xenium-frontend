@@ -22,7 +22,9 @@ $topTerms = get_terms([
   <?
   foreach ($topTerms as $term) {
   ?>
-    <a class="gallery__filter-category-item <?= (($term->term_id == $parentId) ? 'active' : '') ?>" href=" <?= get_term_link($term) ?>"><?= $term->name ?></a>
+    <a class="gallery__filter-category-item <?= (($term->term_id == $parentId) ? 'active' : '') ?>" href=" <?= get_term_link($term) ?>">
+      <span><span><?= $term->name ?></span></span>
+    </a>
   <? } ?>
 </div>
 
