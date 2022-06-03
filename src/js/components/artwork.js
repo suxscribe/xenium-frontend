@@ -5,6 +5,7 @@ import { vars } from './vars';
 import ArtworkGallery from './ArtworkGallery';
 import { artworkModalOverflow, modals } from './modals';
 import { isArtworkPage } from './Utils';
+import { setShareUrls } from './modal-like';
 
 export default class Artwork {
   constructor(_options) {
@@ -97,6 +98,7 @@ export default class Artwork {
     if (e.target.matches('.artwork__icon--like')) {
       e.preventDefault();
       e.stopPropagation();
+
       MicroModal.show('modal-like', {
         awaitOpenAnimation: true,
         awaitCloseAnimation: true,
@@ -106,20 +108,7 @@ export default class Artwork {
       const likeArtworkInput = document.querySelector(vars.likeArtworkInput);
       likeArtworkInput.value = this.artworkUrl;
 
-      const likeArtworkFacebook = document.querySelector(
-        '.modal__social--facebook'
-      );
-      const likeArtworkTwitter = document.querySelector(
-        '.modal__social--twitter'
-      );
-
-      if (likeArtworkFacebook)
-        likeArtworkFacebook.href =
-          vars.facebookShareUrl + encodeURIComponent(this.artworkUrl);
-
-      if (likeArtworkTwitter)
-        likeArtworkTwitter.href =
-          vars.twitterShareUrl + encodeURIComponent(this.artworkUrl);
+      setShareUrls(this.artworkUrl);
     }
 
     if (e.target.matches('.artwork__icon--video')) {

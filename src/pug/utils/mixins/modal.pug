@@ -59,7 +59,7 @@ mixin modal-like()
       a.modal__social.icon.icon--social.modal__social--twitter(href="#")
         .icon__wrap.icon__wrap--twitter
         +svg-twitter()
-      a.modal__social.icon.icon--social(href="#")
+      a.modal__social.icon.icon--social.js-copy-link(href="#")
         +svg({name:'link'})
 
 mixin modal-gallery-like()
@@ -88,7 +88,8 @@ mixin modal-gallery-like()
 mixin modal-artwork()
   .artwork-modal(aria-hidden="true")
     .artwork-modal__container
-      +close({class: 'artwork-modal__close close--black'})
+      .artwork-modal__close-wrap
+        +close({class: 'artwork-modal__close close--black'})
       .artwork__loader 
         +svg({name:'loader'})
       .artwork

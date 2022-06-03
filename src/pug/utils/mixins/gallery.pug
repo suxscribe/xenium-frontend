@@ -3,7 +3,7 @@ mixin gallery-item(args)
   li(class="gallery__item gallery__item--" + args.class,  data-aos-delay="200")
     //- data-aos="fade-up",
     .gallery__item-image 
-      a(href="#").gallery__item-link.artwork-modal-reload
+      a(href="/artwork-url/", data-artwork-id="test").gallery__item-link.artwork-modal__link.artwork-modal-reload0
       img(src="/assets/" + args.image, alt="")
       div(data-micromodal-open="modal-like").gallery__item-like.icon
         //- +svg-like()
