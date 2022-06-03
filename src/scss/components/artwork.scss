@@ -1,4 +1,7 @@
 .artwork {
+  .artwork-modal__container > & {
+    margin-top: responsive-value(30px, 45px);
+  }
   &.section {
     margin-top: 0;
   }
