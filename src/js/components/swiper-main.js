@@ -31,14 +31,9 @@ export const swiperMain = () => {
     grabCursor: false,
     allowTouchMove: false,
     keyboard: false,
-    // navigation: {
-    //   nextEl: '.main-slider__nav-arrow--left',
-    //   prevEl: '.main-slider__nav-arrow--right',
-    // },
-    // keyboard: true,
 
     onSlideChangeEnd: function (e) {
-      console.log(e);
+      // console.log(e);
     },
   });
 
@@ -51,13 +46,13 @@ export const swiperMain = () => {
       const delta = (index - swiper.activeIndex) * slideDelta;
       const slideInner = slide.querySelector('.main-slider-2__item-image');
 
-      if (deltaIndex < 1) {
-        slideInner.style.transform = `translateX(${delta}px) scale(1)`;
-      } else {
+      if (deltaIndex >= 1) {
         slideInner.style.transform = `translateX(${delta}px) scale(calc(1 / (${deltaIndex} + 1)))`;
+      } else {
+        slideInner.style.transform = `translateX(0) scale(1)`;
       }
 
-      if (index - swiper.activeIndex > 0) {
+      if (deltaIndex > 0) {
         slideInner.style.opacity = 1 / (index - swiper.activeIndex);
       } else {
         slideInner.style.opacity = 1;
@@ -70,7 +65,7 @@ export const swiperMain = () => {
     creativeEffect: {
       prev: {
         // will set `translateZ(-400px)` on previous slides
-        translate: ['120%', 0, 0],
+        translate: ['140%', 0, 0],
       },
       next: {
         // will set `translateX(100%)` on next slides
