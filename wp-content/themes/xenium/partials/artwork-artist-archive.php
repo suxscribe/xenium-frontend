@@ -4,7 +4,13 @@
 <main class="main" id="content" role="main">
   <section class="section gallery">
     <div class="container">
-      <h1 class="gallery__title"><?= post_type_archive_title() ?></h1>
+      <h1 class="gallery__title title title--gallery">
+        <div class="title__wrap">
+          <div class="title__text">
+            <?= post_type_archive_title() ?>
+          </div>
+        </div>
+      </h1>
       <div class="gallery__navigation">
 
         <?php
