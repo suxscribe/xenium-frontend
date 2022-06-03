@@ -1,4 +1,4 @@
-import { gsap } from 'gsap';
+import { gsap, set } from 'gsap';
 import { doc } from 'prettier';
 import { vars } from './vars';
 
@@ -37,6 +37,7 @@ export const postsList = () => {
   });
 
   postsHeadersAnimation();
+  postDescriptionAnimation();
 };
 
 export const postsHeadersAnimation = () => {
@@ -56,5 +57,22 @@ export const postsHeadersAnimation = () => {
     })
       .setTween(animation)
       .addTo(controller);
+  });
+};
+
+const postDescriptionAnimation = () => {
+  document.querySelectorAll('.post').forEach((post) => {
+    let animation = gsap.timeline();
+
+    const description = post.querySelector('.post__description');
+    if (description) {
+      post.addEventListener('mouseenter', (e) => {
+        animation.set(description, { height: 'auto' });
+        animation.from(description, { duration: 0.4, height: 0 });
+      });
+      post.addEventListener('mouseleave', (e) => {
+        animation.to(description, { duration: 0.4, height: 0, delay: 0.15 });
+      });
+    }
   });
 };
