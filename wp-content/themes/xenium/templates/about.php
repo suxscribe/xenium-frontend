@@ -28,7 +28,7 @@ get_header();
               </ul>
               <div class="content-slider__nav">
                 <div class="content-slider__nav-arrow content-slider__nav-arrow--left">
-                  <a class="button button--arrow-left" href="#">
+                  <a class="button button--black button--arrow-left" href="#">
                     <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M3.34497 10.207H16.2415" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                       <path d="M10.9656 4.93115L16.2414 10.207L10.9656 15.4829" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -36,7 +36,7 @@ get_header();
                   </a>
                 </div>
                 <div class="content-slider__nav-arrow content-slider__nav-arrow--right">
-                  <a class="button button--arrow-right" href="#">
+                  <a class="button button--black button--arrow-right" href="#">
                     <svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M3.34497 10.207H16.2415" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                       <path d="M10.9656 4.93115L16.2414 10.207L10.9656 15.4829" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
