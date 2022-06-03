@@ -140,7 +140,7 @@
               </circle>
             </svg>
           </a> -->
-          <a class="modal__social icon icon--social" href="#"><svg>
+          <a class="modal__social icon icon--social js-copy-link" href="#"><svg>
               <use xlink:href="#link"></use>
             </svg></a>
         </div>
