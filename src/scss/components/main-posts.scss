@@ -74,16 +74,19 @@ $nav-underline: 2px;
 
       a {
         display: block;
-        color: $color-gray;
         overflow: hidden;
         padding: $nav-margin 0;
+        transition: background var(--transition);
 
+        // color: $color-gray;
         &:hover {
-          color: $color-black;
+          // color: $color-black;
         }
 
         & span {
           display: block;
+
+          @include link-hover-gradient($color-gray, $color-black);
 
           //animation
           transform: translateX(-100%);
@@ -96,7 +99,13 @@ $nav-underline: 2px;
 
       &.active {
         & a {
-          color: $color-black;
+          // color: $color-black;
+          // background: transparent;
+          background-position: 0 0;
+
+          & > span {
+            background-position: 0 0;
+          }
         }
         &:after {
           // content: '';

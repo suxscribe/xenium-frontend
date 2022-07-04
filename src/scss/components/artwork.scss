@@ -23,7 +23,7 @@
   &__title {
     // grid-column: 1 / 7; //alt
     // grid-row: 1 / 2; //alt
-    align-self: start;
+    // align-self: start;
     margin-bottom: $margin-100;
   }
 
@@ -378,7 +378,7 @@
   &__size {
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     gap: responsive-value(40px, 100px);
     flex: 0 0 auto;
     // max-height: 100vh;
@@ -386,7 +386,7 @@
     // overflow: hidden;
 
     &--sculpture {
-      align-items: end;
+      align-items: flex-end;
     }
 
     &-caption {
@@ -473,7 +473,7 @@
     &-reference {
       display: flex;
       flex: 1 1 auto;
-      justify-content: end;
+      justify-content: flex-end;
       position: relative;
       z-index: 1;
       // height: 100%;

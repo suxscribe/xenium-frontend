@@ -64,7 +64,7 @@
     border: 1px solid $color-white;
     display: grid;
     grid-template-columns: 1fr;
-    justify-self: start;
+    justify-self: flex-start;
     overflow: hidden;
   }
 

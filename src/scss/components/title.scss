@@ -46,6 +46,7 @@
 
     // animation
     transform: translateY(100%);
+    padding-bottom: 4px; // fix of overflow cutting bottoms of the letters
     body.init & {
       animation: SlideTop100 0.6s var(--easing) 0.5s forwards;
     }

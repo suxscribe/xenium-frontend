@@ -55,9 +55,9 @@
                   <rect class="icon__fill" x="0" y="0" width="1" height="1"></rect>
                 </clipPath>
                 <rect class="icon__stroke" x="0" y="0" width="51" height="51" fill="white" stroke="black"></rect>
-                <circle class="icon__stroke" cx="24.7031" cy="26.2969" r="5.9" stroke="black" stroke-width="12">
+                <circle class="icon__front-fill" cx="24.7031" cy="26.2969" r="12">
                 </circle>
-                <circle class="icon__stroke" cx="39.8438" cy="11.1562" r="1.3" stroke="black" stroke-width="2.6">
+                <circle class="icon__front-fill" cx="39.8438" cy="11.1562" r="2.6">
                 </circle>
               </svg>
             </a>
@@ -128,18 +128,7 @@
               </path>
             </svg>
           </a>
-          <!-- <a class="modal__social icon icon--social" href="#">
-            <div class="icon__wrap icon__wrap--instagram"></div><svg width="51" height="51" viewbox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <clipPath id="icon-instagram" clipPathUnits="objectBoundingBox">
-                <rect class="icon__fill" x="0" y="0" width="1" height="1"></rect>
-              </clipPath>
-              <rect class="icon__stroke" x="0" y="0" width="51" height="51" fill="white" stroke="black"></rect>
-              <circle class="icon__stroke" cx="24.7031" cy="26.2969" r="5.9" stroke="black" stroke-width="12">
-              </circle>
-              <circle class="icon__stroke" cx="39.8438" cy="11.1562" r="1.3" stroke="black" stroke-width="2.6">
-              </circle>
-            </svg>
-          </a> -->
+
           <a class="modal__social icon icon--social js-copy-link" href="#"><svg>
               <use xlink:href="#link"></use>
             </svg></a>
@@ -164,7 +153,10 @@
 </div>
 
 <div class="artwork-modal" aria-hidden="true">
-  <div class="artwork-modal__container"><a class="artwork-modal__close close--black close" href="#"><span class="close__top"></span><span class="close__bottom"></span></a>
+  <div class="artwork-modal__container">
+    <div class="artwork-modal__close-wrap">
+      <a class="artwork-modal__close close--black close" href="#"><span class="close__top"></span><span class="close__bottom"></span></a>
+    </div>
     <div class="artwork__loader"><svg>
         <use xlink:href="#loader"></use>
       </svg></div>

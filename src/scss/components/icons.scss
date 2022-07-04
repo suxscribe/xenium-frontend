@@ -103,6 +103,10 @@
     fill: transparent;
     transition: stroke var(--transition);
 
+    .icon--social & {
+      stroke: rgba($color-black, 0);
+    }
+
     .icon:hover & {
       stroke: $color-black;
     }

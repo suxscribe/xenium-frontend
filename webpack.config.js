@@ -73,8 +73,8 @@ const config = {
               postcssOptions: {
                 ident: 'postcss',
                 sourceMap: true,
-                plugins: () => [
-                  // autoprefixer({ grid: true }),
+                plugins: [
+                  require('autoprefixer'),
                   require('cssnano')({
                     preset: [
                       'default',

@@ -20,7 +20,7 @@
 
     &--prev {
       @media (min-width: $breakpoint-medium) {
-        align-items: end;
+        align-items: flex-end;
       }
     }
     &--next {

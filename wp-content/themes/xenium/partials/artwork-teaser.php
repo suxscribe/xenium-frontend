@@ -7,11 +7,14 @@ if (has_post_thumbnail()) {
 }
 
 $post_class = ($image_sizes[0] > $image_sizes[1]) ? 'horizontal' : 'vertical';
+
+$post_type_class = ($post->post_type != 'artist') ? 'artwork-modal__link' : '';
+
 ?>
 
 <li class="gallery__item gallery__item--<?= $post_class ?>" data-aos-delay="200">
   <div class="gallery__item-image">
-    <a class="gallery__item-link artwork-modal-reload0 artwork-modal__link" href="<?php the_permalink(); ?>" data-artwork-id="<?= $post->ID ?>"></a>
+    <a class="gallery__item-link artwork-modal-reload0 <?= $post_type_class ?>" href="<?php the_permalink(); ?>" data-artwork-id="<?= $post->ID ?>"></a>
     <?php the_post_thumbnail('large', array('itemprop' => 'image')); ?>
     <div class="gallery__item-like icon" data-micromodal-open="modal-like">
       <div class="icon__wrap icon__wrap--like"></div><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 62 62" style="enable-background:new 0 0 62 62;" xml:space="preserve">
@@ -25,7 +28,7 @@ $post_class = ($image_sizes[0] > $image_sizes[1]) ? 'horizontal' : 'vertical';
     </div>
   </div>
   <div class="gallery__item-content">
-    <div class="gallery__item-title"><a class="artwork-modal-reload0 artwork-modal__link" href="<?php the_permalink(); ?>" data-artwork-id="<?= $post->ID ?>"><?php the_title(); ?></a></div>
+    <div class="gallery__item-title"><a class="artwork-modal-reload0 <?= $post_type_class ?>" href="<?php the_permalink(); ?>" data-artwork-id="<?= $post->ID ?>"><?php the_title(); ?></a></div>
     <? $author = get_field('relations');
 
     if (!empty($author[0]) && ($author[0]->post_type == 'artist')) { ?>

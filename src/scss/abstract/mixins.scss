@@ -300,3 +300,27 @@
   // color: inherit;
   transition-delay: 0.1s;
 }
+
+@mixin link-hover-gradient($color, $color-hover) {
+  background: linear-gradient(
+    to right,
+    #{$color-hover},
+    #{$color-hover} 33%,
+    #{$color} 66%,
+    #{$color}
+  );
+  background-clip: text;
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  color: transparent;
+  transition-duration: 1s;
+
+  &:hover {
+    @include link-hover-gradient-on-hover();
+  }
+}
+
+@mixin link-hover-gradient-on-hover {
+  color: transparent;
+  background-position: 0 0;
+}

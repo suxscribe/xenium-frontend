@@ -45,8 +45,10 @@
       margin-right: responsive-value(30px, 46px);
       color: $color-gray;
 
+      @include link-hover-gradient($color-gray, $color-black);
+
       &:hover {
-        color: $color-black;
+        // color: $color-black;
       }
 
       &.active {
@@ -66,7 +68,7 @@
 
       display: flex;
       flex-direction: column;
-      align-items: start;
+      align-items: flex-start;
 
       @media (min-width: $breakpoint-medium) {
         display: block;
@@ -89,7 +91,10 @@
           margin-bottom: 0;
         }
 
-        color: $color-gray;
+        // color: $color-gray;
+        &:hover {
+          // color: $color-black;
+        }
 
         & > span {
           display: inline-block;
@@ -99,14 +104,13 @@
             display: inline-block;
             // animation
             transform: translateY(100%);
+
+            @include link-hover-gradient($color-gray, $color-black);
+
             body.init & {
               animation: SlideTop100 0.6s var(--easing) 0.6s forwards;
             }
           }
-        }
-
-        &:hover {
-          color: $color-black;
         }
 
         &:last-child {
@@ -115,6 +119,12 @@
 
         &.active {
           color: $color-black;
+          background: transparent;
+
+          & > span > span {
+            color: $color-black;
+            background: transparent;
+          }
 
           &:before {
             content: '';
@@ -162,10 +172,11 @@
 
       &-item {
         @include font-lead;
-        color: $color-gray;
+        @include link-hover-gradient($color-gray, $color-black);
+        // color: $color-gray;
 
         &:hover {
-          color: $color-black;
+          // color: $color-black;
         }
 
         &:after {
@@ -194,9 +205,9 @@
 
     & + .gallery__pagination {
       margin-top: responsive-value(100px, 200px);
-      justify-content: start;
+      justify-content: flex-start;
       @media (min-width: $breakpoint-medium) {
-        justify-content: end;
+        justify-content: flex-end;
       }
     }
   }

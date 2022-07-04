@@ -133,7 +133,7 @@ $input-padding: responsive-value(16px, 24px);
   }
   &__submit-button {
     font-family: $font-family;
-    align-self: end;
+    align-self: flex-end;
 
     flex: 0 0 auto;
     // margin-bottom: 28px;

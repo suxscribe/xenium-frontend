@@ -90,7 +90,7 @@
       max-height: calc(var(--vh, 1vh) * 100);
       flex-direction: row;
       padding: responsive-value(20px, 60px);
-      justify-content: end;
+      justify-content: flex-end;
 
       @media (min-width: $breakpoint-medium) {
         justify-content: center;
